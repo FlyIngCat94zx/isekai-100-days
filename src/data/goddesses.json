@@ -1,0 +1,363 @@
+{
+  "baseStats": {
+    "attack": 10,
+    "defense": 10,
+    "luck": 5,
+    "hp": 200
+  },
+  "rarityWeights": {
+    "N": 55,
+    "R": 27,
+    "SR": 13,
+    "SSR": 5
+  },
+  "rarityColors": {
+    "N": "#9aa0a6",
+    "R": "#4dabf7",
+    "SR": "#cc5de8",
+    "SSR": "#f59f00"
+  },
+  "goddesses": [
+    {
+      "id": "trainee_angel",
+      "rarity": "N",
+      "name": "见习天使",
+      "title": "天界实习生",
+      "description": "刚从天界学院毕业的小天使，紧张地给你随机两项祝福。",
+      "bonusType": "random",
+      "bonusConfig": { "pickCount": 2, "value": 1 }
+    },
+    {
+      "id": "archangel",
+      "rarity": "R",
+      "name": "大天使",
+      "title": "天界的高阶守望者",
+      "description": "稚嫩的见习天使褪去青涩，化身为庄严的大天使守护着你。",
+      "drawable": false,
+      "bonus": { "attack": 1, "defense": 1, "luck": 1, "hp": 1 }
+    },
+    {
+      "id": "shiina_mashiro",
+      "rarity": "R",
+      "name": "椎名真白",
+      "title": "天才画师",
+      "description": "笨拙却天才的少女，她的「日常」是治愈疲惫的良药。",
+      "bonus": { "attack": 1, "defense": 1, "luck": 1, "hp": 1 },
+      "skills": [
+        {
+          "name": "日常",
+          "type": "skill",
+          "description": "每日恢复 10% 的总生命值。"
+        }
+      ],
+      "dailyEffects": [
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "mashiro_herb_learned" },
+          "then": [{ "type": "hp_heal_percent", "percent": 0.2 }],
+          "else": [{ "type": "hp_heal_percent", "percent": 0.1 }]
+        }
+      ]
+    },
+    {
+      "id": "kitagawa_marin",
+      "rarity": "R",
+      "name": "喜多川海梦",
+      "title": "更衣人偶坠入爱河",
+      "description": "活力满满的辣妹 coser，赠你一个救命的替身人偶。",
+      "bonus": { "attack": 1, "defense": 1, "luck": 1, "hp": 1 },
+      "skills": [
+        {
+          "name": "替身人偶",
+          "type": "skill",
+          "description": "可免除一次死亡。"
+        }
+      ]
+    },
+    {
+      "id": "marin_no_shame",
+      "rarity": "SR",
+      "name": "喜多川海梦（没羞没躁）",
+      "title": "形影不离的恋人",
+      "description": "和海梦订下了没羞没躁的甜蜜契约。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 },
+      "dailyEffects": [
+        { "type": "stat_delta_all", "amount": 5 },
+        { "type": "stat_delta", "stat": "luck", "amount": 10 }
+      ]
+    },
+    {
+      "id": "marin_succubus",
+      "rarity": "SR",
+      "name": "真魅魔附身",
+      "title": "被吸干的肉体",
+      "description": "披着海梦皮囊的真魅魔，每日榨干你的精气。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 },
+      "dailyEffects": [
+        { "type": "stat_delta_all", "amount": -5 }
+      ]
+    },
+    {
+      "id": "yor_forger",
+      "rarity": "R",
+      "name": "约尔·福杰",
+      "title": "茨莉斯",
+      "description": "白天是公务员，夜晚是顶级杀手。温柔与杀气并存。",
+      "bonus": { "attack": 8, "defense": 8, "luck": 8, "hp": 8 }
+    },
+    {
+      "id": "yor_thorn_princess",
+      "rarity": "SR",
+      "name": "荆棘公主 · 约尔",
+      "title": "鲜血浸染的猩红刺",
+      "description": "完全觉醒的杀手形态，刺杀与温柔并存。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 }
+    },
+    {
+      "id": "asuna",
+      "rarity": "R",
+      "name": "亚丝娜",
+      "title": "闪光的副团长",
+      "description": "「血盟骑士团」副团长，以光速与你并肩。",
+      "bonus": { "attack": 20, "defense": 0, "luck": 20, "hp": 0 }
+    },
+    {
+      "id": "cc",
+      "rarity": "SR",
+      "name": "C.C.",
+      "title": "不老不死的魔女",
+      "description": "古老契约者的祝福，随时间静静增长。",
+      "bonus": { "attack": 10, "defense": 10, "luck": 10, "hp": 10 },
+      "skills": [
+        {
+          "name": "时之恩泽",
+          "type": "daily",
+          "description": "每过一日，随机一项属性 +1 或恢复 10 点生命值。"
+        }
+      ],
+      "dailyEffects": [
+        {
+          "type": "conditional",
+          "cond": { "type": "stat_lt", "stat": "hp", "value": 9999 },
+          "then": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [{ "type": "random_stat_delta", "amount": 1, "pickCount": 1 }],
+              "else": [
+                {
+                  "type": "conditional",
+                  "cond": { "type": "stat_lt", "stat": "hp", "value": 99999 },
+                  "then": [{ "type": "hp_heal", "amount": 10 }],
+                  "else": [{ "type": "random_stat_delta", "amount": 1, "pickCount": 1 }]
+                }
+              ]
+            }
+          ],
+          "else": [{ "type": "random_stat_delta", "amount": 1, "pickCount": 1 }]
+        }
+      ]
+    },
+    {
+      "id": "kanzaki_kaori",
+      "rarity": "SR",
+      "name": "神裂火织",
+      "title": "圣人 · 七天七刀",
+      "description": "唯一的东方圣人，持七天七刀，所向披靡。",
+      "bonus": { "attack": 15, "defense": 5, "luck": 5, "hp": 5 },
+      "skills": [
+        {
+          "name": "七天七刀",
+          "type": "weapon",
+          "description": "20% 概率使攻击无视防御；每击杀一个敌人，攻击力 +1。"
+        }
+      ]
+    },
+    {
+      "id": "wisdom_aqua",
+      "rarity": "SR",
+      "name": "智慧女神阿库娅",
+      "title": "（其实只擅长幸运）",
+      "description": "口口声声自称智慧女神，实际只把幸运玩出了花。",
+      "bonus": { "attack": -1, "defense": -1, "luck": 10, "hp": -1 },
+      "skills": [
+        {
+          "name": "命运骰子",
+          "type": "daily",
+          "description": "每日幸运值随机变化 -2 ~ +20。"
+        }
+      ],
+      "dailyEffects": [
+        { "type": "stat_delta", "stat": "luck", "min": -2, "max": 20 }
+      ]
+    },
+    {
+      "id": "saber",
+      "rarity": "SSR",
+      "name": "Saber · 阿尔托莉雅",
+      "title": "誓约的骑士王",
+      "description": "湖中之剑的持有者，以骑士之姿与你订下契约。",
+      "bonus": { "attack": 8, "defense": 5, "luck": 3, "hp": 5 },
+      "skills": [
+        {
+          "name": "誓约胜利之剑 · Excalibur",
+          "type": "ultimate",
+          "description": "必杀。"
+        },
+        {
+          "name": "遥远的理想乡 · Avalon",
+          "type": "passive",
+          "description": "免疫一次致命伤害。"
+        },
+        {
+          "name": "骑士王的日课",
+          "type": "daily",
+          "description": "每日攻击力 +1。"
+        }
+      ],
+      "dailyEffects": [
+        { "type": "stat_delta", "stat": "attack", "amount": 1 }
+      ]
+    },
+    {
+      "id": "saber_lancer",
+      "rarity": "SSR",
+      "name": "Lancer · 阿尔托莉雅",
+      "title": "燃烧的红枪兵",
+      "description": "得到圣枪 Rhongomyniad 的 Lancer 阶。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 }
+    },
+    {
+      "id": "saber_alter",
+      "rarity": "SSR",
+      "name": "Alter · 黑化阿尔托莉雅",
+      "title": "黑泥浸蚀的暴君",
+      "description": "意识被深渊腐蚀的阿尔托莉雅，每日缓慢自损。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 },
+      "dailyEffects": [
+        { "type": "stat_delta", "stat": "hp", "min": 10, "max": 100, "negative": true }
+      ]
+    },
+    {
+      "id": "frieren",
+      "rarity": "SSR",
+      "name": "芙莉莲",
+      "title": "时间长河中的魔法使",
+      "description": "活过千年的精灵魔法使，馈赠你以静水深流的力量。",
+      "bonus": { "attack": 20, "defense": 20, "luck": 20, "hp": 20 },
+      "skills": [
+        {
+          "name": "千年修行",
+          "type": "daily",
+          "description": "每日全属性 +1。"
+        }
+      ],
+      "dailyEffects": [
+        { "type": "stat_delta_all", "amount": 1 },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_memory_1" },
+          "then": [{ "type": "stat_delta_all", "amount": 1 }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_memory_2" },
+          "then": [{ "type": "stat_delta_all", "amount": 2 }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_memory_3" },
+          "then": [{ "type": "stat_delta_all", "amount": 2 }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_true_heart" },
+          "then": [{ "type": "stat_delta_all", "amount": 10, "hpMultiplier": 10 }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_thousand_year" },
+          "then": [{ "type": "stat_delta_all", "amount": 5, "hpMultiplier": 10 }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "frieren_elf_eternity" },
+          "then": [{ "type": "stat_delta_all", "amount": 3, "hpMultiplier": 10 }]
+        }
+      ]
+    },
+    {
+      "id": "misaka_mikoto",
+      "rarity": "SSR",
+      "name": "御坂美琴",
+      "title": "学园都市第三位 · 超电磁炮",
+      "description": "用电磁力把硬币加速成毁天灭地的弹丸的少女。",
+      "bonus": { "attack": 10, "defense": 10, "luck": 10, "hp": 10 },
+      "skills": [
+        {
+          "name": "超电磁炮",
+          "type": "ultimate",
+          "description": "战斗时消耗硬币 1 枚，造成 6~10 倍攻击力的伤害，无视防御。"
+        },
+        {
+          "name": "硬币",
+          "type": "item",
+          "description": "特殊物品，每日有 5% 概率获得一枚。"
+        }
+      ],
+      "dailyEffects": [
+        {
+          "type": "chance",
+          "chance": 0.05,
+          "then": [{ "type": "add_item", "key": "coin", "label": "硬币" }]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "misaka_network_daily" },
+          "then": [{ "type": "stat_delta_all", "amount": 3, "hpMultiplier": 10 }]
+        }
+      ]
+    },
+    {
+      "id": "misaka_level6",
+      "rarity": "SSR",
+      "name": "御坂美琴 · LEVEL 6",
+      "title": "神之意志的觊觎者",
+      "description": "强行突破等级 6 的御坂，每日代价惨重。",
+      "drawable": false,
+      "bonus": { "attack": 0, "defense": 0, "luck": 0, "hp": 0 },
+      "skills": [
+        {
+          "name": "超电磁炮 · LEVEL 6",
+          "type": "ultimate",
+          "description": "战斗时消耗硬币 1 枚，造成 8~12 倍攻击力的伤害，无视防御。"
+        }
+      ],
+      "dailyEffects": [
+        { "type": "stat_delta", "stat": "hp", "amount": 100, "negative": true },
+        {
+          "type": "chance",
+          "chance": 0.01,
+          "then": [
+            { "type": "log", "text": "你的身躯无法承受神之意志，能力崩解……" },
+            { "type": "revoke_skill", "name": "超电磁炮 · LEVEL 6" },
+            { "type": "revoke_skill", "name": "超电磁炮" },
+            { "type": "revoke_skill", "name": "硬币" },
+            { "type": "set_flag", "key": "misaka_level6", "value": false, "silent": true },
+            { "type": "set_flag", "key": "misaka_collapsed", "value": true, "label": "失去御坂美琴的庇护与所有硬币" }
+          ]
+        },
+        {
+          "type": "conditional",
+          "cond": { "type": "has_flag", "key": "misaka_network_daily" },
+          "then": [{ "type": "stat_delta_all", "amount": 3, "hpMultiplier": 10 }]
+        }
+      ]
+    }
+  ]
+}

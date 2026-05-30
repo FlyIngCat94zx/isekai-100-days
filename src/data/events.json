@@ -1,0 +1,7135 @@
+{
+  "events": [
+    {
+      "id": "loc_desert",
+      "category": "location",
+      "weight": 20,
+      "title": "旅途 · 沙漠",
+      "description": "炽热的风沙扑面而来，你踏入了一望无际的沙海。脚下的沙丘随风缓慢移动，远处升起诡异的塔楼。",
+      "choices": [
+        {
+          "text": "继续前进",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "day_gte",
+                "value": 11
+              },
+              "then": [
+                {
+                  "type": "chance",
+                  "chance": 0.55,
+                  "then": [
+                    {
+                      "type": "spawn_battle",
+                      "terrain": "desert"
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "log",
+                      "text": "你顺利穿过了沙海，途中拾起一些遗落的旅人钱袋。"
+                    },
+                    {
+                      "type": "gold_delta",
+                      "min": 4,
+                      "max": 10
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "风沙温和，前 10 日的新人受到大地之神的眷顾，你平安穿过沙海。"
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 5,
+                  "max": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "绕路（小心翼翼，消耗少量体力）",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你沿岩壁迂回，安全无事。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "hp",
+              "min": 2,
+              "max": 8,
+              "negative": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loc_jungle",
+      "category": "location",
+      "weight": 20,
+      "title": "旅途 · 丛林",
+      "description": "你踏入潮湿的密林，藤蔓与剧毒蚊虫遮蔽了天日，脚下的腐叶吱呀作响。",
+      "choices": [
+        {
+          "text": "继续前进",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "day_gte",
+                "value": 11
+              },
+              "then": [
+                {
+                  "type": "chance",
+                  "chance": 0.5,
+                  "then": [
+                    {
+                      "type": "spawn_battle",
+                      "terrain": "jungle"
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "log",
+                      "text": "你避开了野兽的视野，在树洞里发现旅商遗物。"
+                    },
+                    {
+                      "type": "gold_delta",
+                      "min": 4,
+                      "max": 10
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "林间精灵悄悄护送你度过新人保护期，你毫发无伤地穿过密林。"
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 5,
+                  "max": 12
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "绕路",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你沿溪流绕行，平安无事。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "hp",
+              "min": 2,
+              "max": 8,
+              "negative": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loc_ocean",
+      "category": "location",
+      "weight": 20,
+      "title": "旅途 · 海洋",
+      "description": "你乘上一艘破旧的木船，迎着咸涩的海风驶向远方，海面下隐约有暗影游动。",
+      "choices": [
+        {
+          "text": "继续航行",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "has_skill",
+                "name": "海神馈赠"
+              },
+              "then": [
+                {
+                  "type": "log",
+                  "text": "海神的馈赠流入掌心，海面平静如镜。"
+                },
+                {
+                  "type": "gold_delta",
+                  "amount": 50
+                }
+              ],
+              "else": [
+                {
+                  "type": "conditional",
+                  "cond": {
+                    "type": "day_gte",
+                    "value": 11
+                  },
+                  "then": [
+                    {
+                      "type": "chance",
+                      "chance": 0.5,
+                      "then": [
+                        {
+                          "type": "spawn_battle",
+                          "terrain": "ocean"
+                        }
+                      ],
+                      "else": [
+                        {
+                          "type": "log",
+                          "text": "海面平静，你打捞起一些漂浮的金钱袋。"
+                        },
+                        {
+                          "type": "gold_delta",
+                          "min": 5,
+                          "max": 12
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "type": "log",
+                      "text": "海风温和，前 10 日的新人受到海神庇佑，你顺利穿过这片海域。"
+                    },
+                    {
+                      "type": "gold_delta",
+                      "min": 6,
+                      "max": 14
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "靠岸（沿海岸缓行）",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你沿海岸线缓行，平安无事。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "hp",
+              "min": 2,
+              "max": 8,
+              "negative": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loc_human_town",
+      "category": "location",
+      "weight": 20,
+      "title": "人类城镇",
+      "description": "炊烟袅袅的人类城镇近在眼前。集市喧闹，旅馆飘出酒香，你决定停留下来打理装备。",
+      "choices": [
+        {
+          "text": "补给（回满生命，5 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 5
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 5,
+              "negative": true
+            },
+            {
+              "type": "hp_restore_to",
+              "value": 99999
+            }
+          ]
+        },
+        {
+          "text": "打工（8~20 $）",
+          "effects": [
+            {
+              "type": "gold_delta",
+              "min": 8,
+              "max": 20
+            }
+          ]
+        },
+        {
+          "text": "打听消息",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 30,
+                  "label": "「听说沙漠尽头藏着古代法老的秘宝……」",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 30,
+                  "label": "「丛林深处的遗迹很危险，没人敢深入。」",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 25,
+                  "label": "「海上最近常有海龙王作祟，船员们都不敢出海。」",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "「魔族城镇深处住着几位特殊的领主，普通人去送死的居多。」",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loc_demon_town",
+      "category": "location",
+      "weight": 20,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 50
+        }
+      ],
+      "title": "魔族城镇",
+      "description": "黑色的塔楼自地平线升起，街上的眼瞳齐刷刷地朝你打量。你压低了兜帽走入魔族城镇。",
+      "choices": [
+        {
+          "text": "补给（回满生命，20 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 20
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 20,
+              "negative": true
+            },
+            {
+              "type": "hp_restore_to",
+              "value": 99999
+            }
+          ]
+        },
+        {
+          "text": "花钱放松（30 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 30
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 30,
+              "negative": true
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 70,
+                  "label": "你度过了一段轻松的时光，精神饱满地回到旅店。",
+                  "effects": [
+                    {
+                      "type": "hp_restore_to",
+                      "value": 99999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 1
+                    }
+                  ]
+                },
+                {
+                  "weight": 30,
+                  "label": "你遇到了真正的魅魔，整夜被狠狠地榨干……",
+                  "effects": [
+                    {
+                      "type": "hp_restore_to",
+                      "value": 99999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 2,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "挑战城主",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 45,
+                  "label": "你击败了恶魔领主，从他的金库里搬走了财宝。",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 50,
+                      "max": 100
+                    },
+                    {
+                      "type": "hp_restore_to",
+                      "value": 99999
+                    }
+                  ]
+                },
+                {
+                  "weight": 45,
+                  "label": "你不敌恶魔领主，被剥光金币狼狈逃出城镇。",
+                  "effects": [
+                    {
+                      "type": "gold_set",
+                      "value": 0,
+                      "label": "金币归零"
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 10,
+                      "negative": true,
+                      "hpMultiplier": 10
+                    }
+                  ]
+                },
+                {
+                  "weight": 4,
+                  "label": "你竟然险胜了一位特殊城主，获得了惊人的财富。",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 80,
+                      "max": 150
+                    },
+                    {
+                      "type": "hp_restore_to",
+                      "value": 99999
+                    }
+                  ]
+                },
+                {
+                  "weight": 6,
+                  "label": "你被特殊城主轻易击垮，丢盔弃甲。",
+                  "effects": [
+                    {
+                      "type": "gold_set",
+                      "value": 0,
+                      "label": "金币归零"
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 10,
+                      "negative": true,
+                      "hpMultiplier": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u1_old_man_potion",
+      "category": "unconditional",
+      "weight": 20,
+      "title": "神秘老者",
+      "description": "你在路边遇到一位拄杖的老者。他从怀中掏出一瓶散发幽光的药水，问你是否愿意尝试。",
+      "choices": [
+        {
+          "text": "喝下",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.15,
+              "then": [
+                {
+                  "type": "random_stat_delta",
+                  "min": 1,
+                  "max": 3,
+                  "pickCount": 1,
+                  "negative": true
+                }
+              ],
+              "else": [
+                {
+                  "type": "random_stat_delta",
+                  "min": 2,
+                  "max": 5,
+                  "pickCount": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "婉拒",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你礼貌地谢绝，老者颔首离去。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u3_magic_book",
+      "category": "unconditional",
+      "weight": 12,
+      "positive": true,
+      "title": "魔法书",
+      "description": "你在丛林间翻到一本被苔藓覆盖的魔法书，残页中流出的知识涌入你的脑海。",
+      "effects": [
+        {
+          "type": "random_stat_delta",
+          "min": 5,
+          "max": 12,
+          "pickCount": 1
+        }
+      ]
+    },
+    {
+      "id": "u4_ancient_ruins",
+      "category": "unconditional",
+      "weight": 8,
+      "positive": true,
+      "title": "远古遗迹",
+      "description": "你探索一座沉睡千年的遗迹，得到了一份远古祝福。",
+      "effects": [
+        {
+          "type": "set_flag",
+          "key": "u4_ruins_visited",
+          "value": true,
+          "silent": true
+        },
+        {
+          "type": "weighted",
+          "branches": [
+            {
+              "weight": 5,
+              "effects": [
+                {
+                  "type": "stat_delta_all",
+                  "amount": 10,
+                  "hpMultiplier": 10
+                }
+              ]
+            },
+            {
+              "weight": 20,
+              "effects": [
+                {
+                  "type": "stat_delta_all",
+                  "amount": 5,
+                  "hpMultiplier": 10
+                }
+              ]
+            },
+            {
+              "weight": 30,
+              "effects": [
+                {
+                  "type": "random_stat_delta",
+                  "amount": 10,
+                  "pickCount": 1
+                }
+              ]
+            },
+            {
+              "weight": 45,
+              "effects": [
+                {
+                  "type": "stat_delta_all",
+                  "amount": 2,
+                  "hpMultiplier": 10
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u6_crystal_touch",
+      "category": "unconditional",
+      "weight": 10,
+      "title": "神秘水晶",
+      "description": "一块半埋在沙土中的水晶散发着诡谲微光，你伸手触碰。",
+      "effects": [
+        {
+          "type": "weighted",
+          "branches": [
+            {
+              "weight": 55,
+              "effects": [
+                {
+                  "type": "random_stat_delta",
+                  "min": 3,
+                  "max": 8,
+                  "pickCount": 1
+                }
+              ]
+            },
+            {
+              "weight": 25,
+              "effects": [
+                {
+                  "type": "random_stat_delta",
+                  "min": 1,
+                  "max": 3,
+                  "pickCount": 1,
+                  "negative": true
+                }
+              ]
+            },
+            {
+              "weight": 20,
+              "effects": [
+                {
+                  "type": "gold_delta",
+                  "min": 8,
+                  "max": 20
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u10_poison_spring",
+      "category": "unconditional",
+      "weight": 8,
+      "title": "巢穴毒泉",
+      "description": "你口渴难耐，蹲下身饮下了泉水，却隐约觉察一丝苦味……",
+      "effects": [
+        {
+          "type": "chance",
+          "chance": 0.4,
+          "then": [
+            {
+              "type": "random_stat_delta",
+              "min": 2,
+              "max": 5,
+              "pickCount": 1,
+              "negative": true
+            }
+          ],
+          "else": [
+            {
+              "type": "random_stat_delta",
+              "min": 2,
+              "max": 4,
+              "pickCount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u11_sword_in_stone",
+      "category": "unconditional",
+      "weight": 0.02,
+      "unique": true,
+      "title": "石中剑",
+      "description": "一柄通体金色的长剑深插在巨石中，仿佛在等待真正的勇者。",
+      "choices": [
+        {
+          "text": "尝试拔出",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.08,
+              "then": [
+                {
+                  "type": "grant_skill",
+                  "skill": {
+                    "name": "誓约胜利之剑 · Excalibur",
+                    "type": "ultimate",
+                    "description": "拔出石中剑获得的一次性必杀技能。"
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "石中剑纹丝不动，但天命嘉奖了你的勇气。"
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 10,
+                  "hpMultiplier": 10
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "不敢妄动",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你退后一步，没有触碰那柄圣剑。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "u12_barrett",
+      "category": "unconditional",
+      "weight": 0.015,
+      "unique": true,
+      "positive": true,
+      "title": "次世代武器",
+      "description": "一只发着锈光的金属箱倒在路边，打开一看竟是巴雷特狙击步枪。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "巴雷特狙击步枪",
+            "type": "ultimate",
+            "description": "次世代武器，对魔王阶层有效的必杀。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "s1_lucky_coin",
+      "category": "stat",
+      "weight": 14,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 50
+        }
+      ],
+      "positive": true,
+      "title": "幸运金币",
+      "description": "你低头时正好瞥见一枚闪闪发光的金币。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 3,
+          "max": 6,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "gold_delta",
+          "min": 5,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "id": "s4_clover_field",
+      "category": "stat",
+      "weight": 15,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 40
+        }
+      ],
+      "positive": true,
+      "title": "四叶草田",
+      "description": "你踩进一片摇曳的四叶草田，运势悄然攀升。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 5,
+          "max": 12
+        }
+      ]
+    },
+    {
+      "id": "s5_curse_of_bad_luck",
+      "category": "stat",
+      "weight": 20,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "luck",
+          "value": 10
+        }
+      ],
+      "title": "霉运诅咒",
+      "description": "一片乌云笼罩在你头顶，仿佛被霉运缠身。",
+      "effects": [
+        {
+          "type": "random_stat_delta",
+          "min": 3,
+          "max": 6,
+          "pickCount": 1,
+          "negative": true
+        },
+        {
+          "type": "set_flag",
+          "key": "next_event_double",
+          "label": "「下一次事件收益翻倍」"
+        }
+      ]
+    },
+    {
+      "id": "s6_misfortune_haunt",
+      "category": "stat",
+      "weight": 25,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "luck",
+          "value": 5
+        }
+      ],
+      "title": "厄运缠身",
+      "description": "你脚下不知踩到什么诡异符号，全身泛起寒意。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 2,
+          "max": 5,
+          "negative": true
+        },
+        {
+          "type": "set_flag",
+          "key": "force_positive_next",
+          "label": "「下一日必触发正面事件」"
+        }
+      ]
+    },
+    {
+      "id": "s7_gamblers_bet",
+      "category": "stat",
+      "weight": 12,
+      "conditions": [
+        {
+          "type": "stat_between",
+          "stat": "luck",
+          "min": 30,
+          "max": 70
+        }
+      ],
+      "title": "与赌徒博弈",
+      "description": "一位面色阴险的赌徒邀你押注一局。",
+      "choices": [
+        {
+          "text": "接受赌局",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "stat_delta",
+                  "stat": "luck",
+                  "min": 8,
+                  "max": 15
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 20,
+                  "max": 50
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "luck",
+                  "min": 4,
+                  "max": 10,
+                  "negative": true
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 10,
+                  "max": 30,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "拒绝",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你不喜冒险，转身离去。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s9_sword_saint_duel",
+      "category": "stat",
+      "weight": 8,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "attack",
+          "value": 50
+        }
+      ],
+      "title": "挑战剑圣分身",
+      "description": "传说中的剑圣分身现身道前，邀你一战。",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "stat_delta",
+                  "stat": "attack",
+                  "min": 15,
+                  "max": 25
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "attack",
+                  "min": 8,
+                  "max": 15,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "暂避锋芒",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你压下心头战意，与对方擦肩而过。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s10_weak_technique",
+      "category": "stat",
+      "weight": 15,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "attack",
+          "value": 12
+        }
+      ],
+      "positive": true,
+      "title": "弱者战技",
+      "description": "在一连串苦战之后，你领悟出专属弱者的战斗技巧。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 10,
+          "max": 18
+        }
+      ]
+    },
+    {
+      "id": "s11_titan_armor",
+      "category": "stat",
+      "weight": 10,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "defense",
+          "value": 45
+        }
+      ],
+      "positive": true,
+      "title": "泰坦护甲",
+      "description": "你在矿洞深处寻到一副铭刻着泰坦古文的护甲。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "defense",
+          "min": 8,
+          "max": 15
+        },
+        {
+          "type": "stat_delta",
+          "stat": "hp",
+          "min": 15,
+          "max": 25
+        }
+      ]
+    },
+    {
+      "id": "s12_softening_technique",
+      "category": "stat",
+      "weight": 18,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "defense",
+          "value": 18
+        }
+      ],
+      "positive": true,
+      "title": "卸力技巧",
+      "description": "面对一波猛击，你顿悟了卸力的奥义。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "defense",
+          "min": 7,
+          "max": 14
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 2,
+          "max": 5
+        }
+      ]
+    },
+    {
+      "id": "s13_death_gaze",
+      "category": "stat",
+      "weight": 8,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "hp",
+          "value": 90
+        }
+      ],
+      "title": "被死神注视",
+      "description": "走在月夜小径，一阵阴冷气息从背后袭来。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "hp",
+          "min": 20,
+          "max": 40,
+          "negative": true
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 10,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "s14_last_stand_rebirth",
+      "category": "stat",
+      "weight": 25,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "hp",
+          "value": 15
+        }
+      ],
+      "positive": true,
+      "title": "绝境重生",
+      "description": "命悬一线之际，你的灵魂闪过一道光辉。",
+      "effects": [
+        {
+          "type": "hp_restore_to",
+          "value": 60
+        },
+        {
+          "type": "hp_max_delta",
+          "min": 15,
+          "max": 30
+        }
+      ]
+    },
+    {
+      "id": "s15_fountain_of_life",
+      "category": "stat",
+      "weight": 20,
+      "conditions": [
+        {
+          "type": "stat_lte",
+          "stat": "hp",
+          "value": 30
+        }
+      ],
+      "positive": true,
+      "title": "生命之泉",
+      "description": "你跌跌撞撞跪在一泓清泉边，掬水入口，温暖蔓延全身。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "hp",
+          "min": 30,
+          "max": 50
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 3,
+          "max": 8
+        }
+      ]
+    },
+    {
+      "id": "s16_wishing_well",
+      "category": "stat",
+      "weight": 10,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 20
+        }
+      ],
+      "positive": true,
+      "title": "许愿池",
+      "description": "你向许愿池投下一枚铜币，水面泛起七彩涟漪。",
+      "effects": [
+        {
+          "type": "random_stat_delta",
+          "min": 2,
+          "max": 12,
+          "pickCount": 1
+        }
+      ]
+    },
+    {
+      "id": "s18_wheel_of_fate",
+      "category": "stat",
+      "weight": 8,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 55
+        }
+      ],
+      "title": "命运轮盘",
+      "description": "命运女神的金色轮盘在你眼前缓缓旋转。",
+      "effects": [
+        {
+          "type": "weighted",
+          "branches": [
+            {
+              "weight": 90,
+              "effects": [
+                {
+                  "type": "stat_delta_all",
+                  "min": 4,
+                  "max": 8,
+                  "hpMultiplier": 10
+                }
+              ]
+            },
+            {
+              "weight": 10,
+              "effects": [
+                {
+                  "type": "stat_delta_all",
+                  "min": 8,
+                  "max": 12,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s19_world_blessing",
+      "category": "stat",
+      "weight": 5,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 80
+        }
+      ],
+      "positive": true,
+      "title": "被世界祝福",
+      "description": "万物的低语汇成一道祝福，环绕着你。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 15,
+          "max": 25
+        }
+      ]
+    },
+    {
+      "id": "s20_hero_relic",
+      "category": "stat",
+      "weight": 6,
+      "conditions": [
+        {
+          "type": "stat_gte",
+          "stat": "attack",
+          "value": 30
+        },
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 40
+        }
+      ],
+      "positive": true,
+      "title": "英雄遗物",
+      "description": "你在战场废墟中翻到一柄已故英雄的遗物。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 8,
+          "max": 15
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 5,
+          "max": 10
+        }
+      ]
+    },
+    {
+      "id": "g1_trainee_to_archangel",
+      "category": "goddess",
+      "weight": 20,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "trainee_angel"
+        }
+      ],
+      "title": "天使进阶",
+      "description": "见习天使褪去稚嫩，化身为庄严的大天使在你身侧展开光翼。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 10
+        },
+        {
+          "type": "transform",
+          "toForm": "archangel",
+          "blessingOverride": {
+            "id": "archangel",
+            "name": "大天使",
+            "title": "天界的高阶守望者",
+            "description": "见习天使羽化升格而成。",
+            "rarity": "R"
+          },
+          "label": "你的女神进阶为「大天使」。"
+        }
+      ]
+    },
+    {
+      "id": "g2_archangel_favor",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "archangel"
+        }
+      ],
+      "title": "大天使的青睐",
+      "description": "大天使在你额头印下祝福之吻，许诺会守护你的来世。",
+      "effects": [
+        {
+          "type": "set_meta_flag",
+          "key": "start_as_archangel",
+          "value": true,
+          "label": "「下一次抽到见习天使将直接获得大天使」"
+        }
+      ]
+    },
+    {
+      "id": "g3_mashiro_herb",
+      "category": "goddess",
+      "weight": 15,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "shiina_mashiro"
+        }
+      ],
+      "title": "猫猫的草药课",
+      "description": "椎名真白蹲在你身边和小猫研究草药，把心得分享给你。",
+      "effects": [
+        {
+          "type": "set_flag",
+          "key": "mashiro_herb_learned",
+          "value": true,
+          "label": "「日常」的恢复量提升至 20%"
+        }
+      ]
+    },
+    {
+      "id": "g4_mashiro_doodle",
+      "category": "goddess",
+      "weight": 5,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "shiina_mashiro"
+        }
+      ],
+      "title": "真白的涂鸦",
+      "description": "椎名真白专注作画时一甩笔，颜料溅到了你的幸运物上。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 10,
+          "max": 20,
+          "negative": true
+        },
+        {
+          "type": "set_flag",
+          "key": "marin_doodle_boost",
+          "value": true,
+          "label": "「下一次事件收益 +30%」"
+        }
+      ]
+    },
+    {
+      "id": "g5_marin_cosplay",
+      "category": "goddess",
+      "weight": 10,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kitagawa_marin"
+        }
+      ],
+      "title": "海梦的 cos",
+      "description": "喜多川海梦穿上你心仪角色的衣装亮相，整片空气都明亮了起来。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 5
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "amount": 10
+        },
+        {
+          "type": "stat_delta",
+          "stat": "lewdness",
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "id": "g6_marin_succubus_or_love",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kitagawa_marin"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "lewdness",
+          "value": 100
+        }
+      ],
+      "title": "魅魔之夜",
+      "description": "海梦今晚 cos 成魅魔，色气满满地凑近你。是否答应她的邀请？",
+      "choices": [
+        {
+          "text": "答应",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 80,
+                  "label": "与海梦没羞没躁地生活在一起。",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 10
+                    },
+                    {
+                      "type": "transform",
+                      "toForm": "marin_no_shame",
+                      "blessingOverride": {
+                        "id": "marin_no_shame",
+                        "name": "喜多川海梦（没羞没躁）",
+                        "title": "形影不离的恋人",
+                        "description": "和海梦订下了没羞没躁的甜蜜契约。",
+                        "rarity": "SR"
+                      }
+                    },
+                    {
+                      "type": "set_flag",
+                      "key": "marin_no_shame_life",
+                      "value": true
+                    }
+                  ]
+                },
+                {
+                  "weight": 20,
+                  "label": "她其实是真魅魔附身——精气被榨干。",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 20,
+                      "negative": true
+                    },
+                    {
+                      "type": "transform",
+                      "toForm": "marin_succubus",
+                      "blessingOverride": {
+                        "id": "marin_succubus",
+                        "name": "真魅魔附身",
+                        "title": "被吸干的肉体",
+                        "description": "披着海梦皮囊的真魅魔。",
+                        "rarity": "SR"
+                      }
+                    },
+                    {
+                      "type": "revoke_skill",
+                      "name": "替身人偶"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "拒绝",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你忍住冲动婉拒了她。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g7_marin_god_descent",
+      "category": "goddess",
+      "weight": 2,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "marin_no_shame"
+        },
+        {
+          "type": "has_flag",
+          "key": "marin_no_shame_life"
+        }
+      ],
+      "title": "神之降临 · cos",
+      "description": "海梦扮演起「神之降临」的角色，从此每 10 日你可任意更换一次陪伴的女神。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "cos · 神之降临",
+            "type": "passive",
+            "description": "每 10 日可指定一位女神变更陪伴，每位仅可变换一次。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "cos_god_descent",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "g8_yor_drink",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "yor_forger"
+        }
+      ],
+      "title": "共饮美酒",
+      "description": "约尔取出一壶藏酿，与你对斟到月色微醺，杀气和酒气一同流淌进你的血液。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "amount": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "yor_drink_done",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g9_yor_identity",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "yor_forger"
+        }
+      ],
+      "title": "身份暴露",
+      "description": "深夜旅店，你撞见约尔擦拭血刃。她沉默良久，最终袒露了「茨莉斯」的秘密。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "amount": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "yor_identity_done",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g10_yor_danger",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "yor_forger"
+        }
+      ],
+      "title": "路遇险境",
+      "description": "山道之上突遇刺客围杀，约尔一脚踢飞身后的你，转瞬间将敌人尽数斩落。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "amount": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "yor_danger_done",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g11a_yor_thorn_partial",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "yor_forger"
+        },
+        {
+          "type": "not",
+          "cond": {
+            "type": "and",
+            "all": [
+              {
+                "type": "has_flag",
+                "key": "yor_drink_done"
+              },
+              {
+                "type": "has_flag",
+                "key": "yor_identity_done"
+              },
+              {
+                "type": "has_flag",
+                "key": "yor_danger_done"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "荆棘公主 · 觉醒",
+      "description": "约尔的眼瞳染上了猩红，她拔出双刺向你颔首——「我会保护你的，亲爱的。」",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 20,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "transform",
+          "toForm": "yor_thorn_princess",
+          "blessingOverride": {
+            "id": "yor_thorn_princess",
+            "name": "荆棘公主 · 约尔",
+            "title": "鲜血浸染的猩红刺",
+            "description": "完全觉醒的杀手形态，刺杀与温柔并存。",
+            "rarity": "SR"
+          },
+          "label": "约尔化身为「荆棘公主」。"
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "刺杀",
+            "type": "ultimate",
+            "description": "造成 150%~220% 攻击力伤害，不可闪避。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g11b_yor_thorn_full",
+      "category": "goddess",
+      "weight": 50,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "yor_forger"
+        },
+        {
+          "type": "has_flag",
+          "key": "yor_drink_done"
+        },
+        {
+          "type": "has_flag",
+          "key": "yor_identity_done"
+        },
+        {
+          "type": "has_flag",
+          "key": "yor_danger_done"
+        }
+      ],
+      "title": "荆棘公主 · 完全体",
+      "description": "你与约尔共历酒、誓与险，她终于卸下所有伪装——荆棘公主真正现世。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 20,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "transform",
+          "toForm": "yor_thorn_princess",
+          "blessingOverride": {
+            "id": "yor_thorn_princess",
+            "name": "荆棘公主 · 约尔",
+            "title": "鲜血浸染的猩红刺",
+            "description": "完全觉醒的杀手形态，刺杀与温柔并存。",
+            "rarity": "SR"
+          },
+          "label": "约尔化身为「荆棘公主」。"
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "刺杀",
+            "type": "ultimate",
+            "description": "造成 150%~220% 攻击力伤害，不可闪避。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g12_cc_power",
+      "category": "goddess",
+      "weight": 10,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "cc"
+        }
+      ],
+      "title": "C.C. · 能力增强",
+      "description": "C.C. 嚼着比萨懒懒地伸出手指，几缕魔力顺着你的脊背流入身体。",
+      "effects": [
+        {
+          "type": "increment_flag",
+          "key": "cc_power_count"
+        },
+        {
+          "type": "conditional",
+          "cond": {
+            "type": "flag_gte",
+            "key": "cc_power_count",
+            "value": 1
+          },
+          "then": [
+            {
+              "type": "random_stat_delta",
+              "pickCount": 1,
+              "min": 1,
+              "max": 12,
+              "keys": [
+                "attack",
+                "defense",
+                "luck",
+                "hp"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g13_cc_geass",
+      "category": "goddess",
+      "weight": 30,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "cc"
+        }
+      ],
+      "title": "最亲爱的共犯",
+      "description": "C.C. 牵着鲁路修走入夜色，他的左眼飞出血色印记落入你掌心——GEASS。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "GEASS",
+            "type": "ultimate",
+            "description": "降低对方全属性 30%~50%，不可闪避。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g14_cc_immortal_witch",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "cc"
+        }
+      ],
+      "title": "不老不死的魔女",
+      "description": "C.C. 用古老的契约语轻声咏唱，承诺下一次轮回时你能再次寻到她。",
+      "effects": [
+        {
+          "type": "set_meta_flag",
+          "key": "next_can_choose_cc",
+          "value": true,
+          "label": "「下一次抽取时可直接选择 C.C.」"
+        }
+      ]
+    },
+    {
+      "id": "g15_kanzaki_qishan",
+      "category": "goddess",
+      "weight": 30,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kanzaki_kaori"
+        }
+      ],
+      "title": "技能 · 七闪",
+      "description": "神裂火织挥出七道残影，剑光所至万物皆寂——她将「七闪」的奥义传授于你。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "七闪",
+            "type": "ultimate",
+            "description": "造成 120%~180% 攻击力伤害，20% 概率无视防御。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g16_kanzaki_weishan",
+      "category": "goddess",
+      "weight": 0.4,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kanzaki_kaori"
+        }
+      ],
+      "title": "技能 · 唯闪",
+      "description": "传说中的唯一斩。神裂火织在月下握住你的手，将这道终极秘奥铭刻进你的灵魂。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "唯闪",
+            "type": "ultimate",
+            "description": "造成 220%~280% 攻击力伤害或一击必杀；20% 概率无视防御；每场战斗仅可使用一次，不可闪避。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g17_kanzaki_maid",
+      "category": "goddess",
+      "weight": 15,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kanzaki_kaori"
+        }
+      ],
+      "title": "女仆装侍奉",
+      "description": "神裂火织穿上一身典雅女仆装，端着红茶向你低头微笑：「请慢用，主人。」",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 15,
+          "hpMultiplier": 10
+        }
+      ]
+    },
+    {
+      "id": "g18_kanzaki_apron",
+      "category": "goddess",
+      "weight": 15,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kanzaki_kaori"
+        }
+      ],
+      "title": "裸体围裙的侍奉",
+      "description": "神裂火织只系着一条围裙在厨房忙碌，回头一笑让你下意识屏住了呼吸。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 16,
+          "hpMultiplier": 10
+        }
+      ]
+    },
+    {
+      "id": "g19_aqua_lucky_goddess",
+      "category": "goddess",
+      "weight": 20,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        }
+      ],
+      "title": "自称幸运女神",
+      "description": "阿库娅一边喝酒一边嚷嚷自己是真正的幸运女神，可惜你已经熟悉她的智商了。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 5,
+          "max": 15
+        },
+        {
+          "type": "random_stat_delta",
+          "min": 1,
+          "max": 3,
+          "pickCount": 1,
+          "negative": true,
+          "keys": [
+            "attack",
+            "defense",
+            "hp"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g20_aqua_flower_bird",
+      "category": "goddess",
+      "weight": 10,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        }
+      ],
+      "title": "花鸟风月",
+      "description": "阿库娅带你迷失在自然奇景，差点忘了赶路。代价是损失了一些属性，但运气来得猛烈。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 5,
+          "max": 10,
+          "negative": true,
+          "keys": [
+            "attack",
+            "defense",
+            "hp"
+          ]
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 20,
+          "max": 30
+        }
+      ]
+    },
+    {
+      "id": "g21_aqua_rampage",
+      "category": "goddess",
+      "weight": 8,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        }
+      ],
+      "title": "智障女神大暴走",
+      "description": "阿库娅又干了什么蠢事，整片营地鸡飞狗跳。你被牵连得鼻青脸肿，但她确实带来了好运。",
+      "effects": [
+        {
+          "type": "random_stat_delta",
+          "min": 8,
+          "max": 15,
+          "pickCount": 1,
+          "negative": true
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 10,
+          "max": 25
+        }
+      ]
+    },
+    {
+      "id": "g22_aqua_party",
+      "category": "goddess",
+      "weight": 12,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        }
+      ],
+      "title": "宴会才艺表演",
+      "description": "阿库娅在篝火旁炫耀自己的水神才艺，居然奇迹般地把所有人都唱舒服了。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 1,
+          "max": 5
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "min": 5,
+          "max": 10
+        }
+      ]
+    },
+    {
+      "id": "g23_aqua_drunk",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 50
+        }
+      ],
+      "title": "派对上喝多",
+      "description": "阿库娅强行灌了你几大杯神圣红酒。你瘫倒在桌下，醒来时手里多了一道熟悉的法术。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "min": 3,
+          "max": 8,
+          "negative": true
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "神水召唤",
+            "type": "skill",
+            "description": "战斗中可恢复 30% 生命值。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g24_aqua_megumin",
+      "category": "goddess",
+      "weight": 4,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 50
+        }
+      ],
+      "title": "偶遇慧慧",
+      "description": "「我的名字是惠惠！红魔族第一的爆裂魔法使！」——一道刺眼的红光后，少女加入了队伍。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "Explosion",
+            "type": "ultimate",
+            "description": "对自身造成 100 点固定伤害，对敌人造成 300%~600% 伤害；每场战斗仅可使用一次。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g25_saber_dinner",
+      "category": "goddess",
+      "weight": 22,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "saber"
+        }
+      ],
+      "title": "共进晚餐",
+      "description": "阿尔托莉雅一脸正经地清空了桌上的烤鸡，还要求加饭。你欣慰地为她又添了一盘。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "hp",
+          "min": 100,
+          "max": 200
+        },
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 3,
+          "max": 8
+        }
+      ]
+    },
+    {
+      "id": "g26_saber_sword_training",
+      "category": "goddess",
+      "weight": 18,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "saber"
+        }
+      ],
+      "title": "剑术指导",
+      "description": "阿尔托莉雅手把手为你纠正每一次挥剑的角度，言语简练却让你受益匪浅。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 10,
+          "max": 18
+        },
+        {
+          "type": "stat_delta",
+          "stat": "defense",
+          "min": 5,
+          "max": 10
+        }
+      ]
+    },
+    {
+      "id": "g27_saber_lancer",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "saber"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "attack",
+          "value": 200
+        }
+      ],
+      "title": "职阶变化 · Lancer",
+      "description": "湖中之剑化作一柄通体血红的圣枪。Saber 转生为 Lancer，红衣如曙光燃起。",
+      "effects": [
+        {
+          "type": "transform",
+          "toForm": "saber_lancer",
+          "blessingOverride": {
+            "id": "saber_lancer",
+            "name": "Lancer · 阿尔托莉雅",
+            "title": "燃烧的红枪兵",
+            "description": "得到圣枪 Rhongomyniad 的 Lancer 阶。",
+            "rarity": "SSR"
+          },
+          "label": "你的女神转换为「Lancer · 阿尔托莉雅」。"
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "闪耀于终焉之枪 · Rhongomyniad",
+            "type": "ultimate",
+            "description": "无视 50% 防御，造成 260%~330% 攻击力伤害。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g28_saber_alter",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "saber"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "attack",
+          "value": 300
+        }
+      ],
+      "title": "坠入黑暗",
+      "description": "理想之乡的光辉熄灭，王者之剑被泥潭吞噬。阿尔托莉雅低着头，眼瞳染上幽暗的金光。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 20,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "transform",
+          "toForm": "saber_alter",
+          "blessingOverride": {
+            "id": "saber_alter",
+            "name": "Alter · 黑化阿尔托莉雅",
+            "title": "黑泥浸蚀的暴君",
+            "description": "意识被深渊腐蚀的阿尔托莉雅，每日缓慢自损。",
+            "rarity": "SSR"
+          },
+          "label": "阿尔托莉雅坠入了黑暗。"
+        },
+        {
+          "type": "revoke_skill",
+          "name": "誓约胜利之剑 · Excalibur"
+        },
+        {
+          "type": "revoke_skill",
+          "name": "遥远的理想乡 · Avalon"
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "Excalibur · Morgan",
+            "type": "ultimate",
+            "description": "必杀，可对任何人使用（即便是魔王阶）。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "saber_alter_daily_drain",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g29_saber_destined",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "or",
+          "any": [
+            {
+              "type": "form_is",
+              "form": "saber"
+            },
+            {
+              "type": "form_is",
+              "form": "saber_lancer"
+            },
+            {
+              "type": "form_is",
+              "form": "saber_alter"
+            }
+          ]
+        },
+        {
+          "type": "all_stats_gte",
+          "value": 100
+        }
+      ],
+      "title": "命定一生 · 专属 Master",
+      "description": "阿尔托莉雅在你额前留下圣徽：「即便这次失败，下一次轮回我仍会选择你。」",
+      "effects": [
+        {
+          "type": "set_meta_flag",
+          "key": "next_can_choose_saber",
+          "value": true,
+          "label": "「本次冒险未成功时，下一次开局可直接选择阿尔托莉雅」"
+        }
+      ]
+    },
+    {
+      "id": "g30_frieren_search",
+      "category": "goddess",
+      "weight": 35,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        }
+      ],
+      "title": "寻找魔法",
+      "description": "芙莉莲在道旁的草丛里慢慢挖了一下午，乐此不疲地把另一种小魔法收进笔记本。",
+      "effects": [
+        {
+          "type": "random_stat_delta",
+          "amount": 3,
+          "pickCount": 1
+        }
+      ]
+    },
+    {
+      "id": "g31_frieren_demon_slayer",
+      "category": "goddess",
+      "weight": 12,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_lte",
+          "value": 99
+        }
+      ],
+      "title": "跨越千年的真正实力",
+      "description": "芙莉莲抬眼，眸底古老法阵层层展开——她终于让你见识到了千年魔法使的真本事。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "魔王寂灭",
+            "type": "ultimate",
+            "description": "秒杀所有非最后一日的魔王阶敌人。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "g32_frieren_memory1",
+      "category": "goddess",
+      "weight": 20,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        }
+      ],
+      "title": "勇者辛美尔的回忆 · 壹",
+      "description": "芙莉莲翻出一本旧册子，向你讲起辛美尔年轻时的傻气与温柔。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 15,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_memory_1",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g33_frieren_memory2",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_memory_1"
+        }
+      ],
+      "title": "勇者辛美尔的回忆 · 贰",
+      "description": "她忽然停下脚步，望向旷野尽头，喃喃说起辛美尔曾在那里独自拦下整支魔族先锋。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 25,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_memory_2",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g34_frieren_memory3",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_memory_2"
+        }
+      ],
+      "title": "勇者辛美尔的回忆 · 叁",
+      "description": "在篝火另一端，芙莉莲第一次哭了。她说，她终于读懂了辛美尔最后的笑容。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 40,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_memory_3",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g35_frieren_true_heart",
+      "category": "goddess",
+      "weight": 100,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_memory_1"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_memory_2"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_memory_3"
+        }
+      ],
+      "title": "勇者辛美尔真正的心意",
+      "description": "三段回忆贯穿。芙莉莲第一次主动牵起了你的手——千年的心意，跨越了死亡找到你。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 200,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "辛美尔的心意",
+            "type": "passive",
+            "description": "每日全属性 +20、生命上限 +200（与原千年修行叠加）。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_true_heart",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g42_frieren_ancient_research",
+      "category": "goddess",
+      "weight": 25,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "古代魔法钻研",
+      "description": "你看着芙莉莲伏案研究一卷古老的咒文——她偶尔抬头给你解读一段，知识便流入你脑海。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 5,
+          "hpMultiplier": 10
+        }
+      ]
+    },
+    {
+      "id": "g43_frieren_fairy_circle",
+      "category": "goddess",
+      "weight": 20,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_gte",
+          "value": 50
+        }
+      ],
+      "title": "妖精环之夜",
+      "description": "芙莉莲带你踏入妖精环，无数古老的祝福顺着月色蔓延到你身上。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 8,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "amount": 5
+        }
+      ]
+    },
+    {
+      "id": "g44_frieren_mass_magic",
+      "category": "goddess",
+      "weight": 15,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_gte",
+          "value": 70
+        }
+      ],
+      "title": "群魔之诗",
+      "description": "她将千年来记录的所有攻击魔法连成一首长诗，咏唱时整片天空被法力照亮。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 12,
+          "hpMultiplier": 10
+        }
+      ]
+    },
+    {
+      "id": "g45_frieren_thousand_year",
+      "category": "goddess",
+      "weight": 8,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_true_heart"
+        },
+        {
+          "type": "day_gte",
+          "value": 80
+        }
+      ],
+      "title": "千年魔法全集",
+      "description": "你与芙莉莲一同整理她千年来的全部魔法笔记——这是属于你的、跨越时间的礼物。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 80,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "千年魔法全集",
+            "type": "passive",
+            "description": "每日额外全属性 +15（与辛美尔的心意叠加）。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_thousand_year",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g46_frieren_elf_eternity",
+      "category": "goddess",
+      "weight": 5,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "has_flag",
+          "key": "frieren_thousand_year"
+        }
+      ],
+      "title": "精灵的永恒",
+      "description": "你向她许下永远陪伴的承诺。芙莉莲沉默良久，回赠以精灵族最深沉的祝福。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 150,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "精灵的永恒",
+            "type": "passive",
+            "description": "免疫一切致命伤害一次；每日额外全属性 +5。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "frieren_elf_eternity",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g36_misaka_kuroko",
+      "category": "goddess",
+      "weight": 10,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_mikoto"
+        }
+      ],
+      "title": "风纪委员的任务",
+      "description": "「御坂大人～♡」白井黑子拽着你和御坂巡逻一整天，最后一枚硬币塞到你掌心。",
+      "effects": [
+        {
+          "type": "chance",
+          "chance": 0.5,
+          "then": [
+            {
+              "type": "add_item",
+              "key": "coin",
+              "label": "硬币"
+            }
+          ],
+          "else": [
+            {
+              "type": "log",
+              "text": "白井黑子的任务过于繁杂，最终你两手空空地回家。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g37_misaka_date",
+      "category": "goddess",
+      "weight": 10,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_mikoto"
+        }
+      ],
+      "title": "与教主约会",
+      "description": "御坂气鼓鼓地塞给你电影票：「不、不是约会哦！」回去的路上她偷偷把硬币给了你。",
+      "effects": [
+        {
+          "type": "chance",
+          "chance": 0.5,
+          "then": [
+            {
+              "type": "add_item",
+              "key": "coin",
+              "label": "硬币"
+            }
+          ],
+          "else": [
+            {
+              "type": "log",
+              "text": "电影票没用上——御坂临时被叫去抓变态。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g38_misaka_sisters",
+      "category": "goddess",
+      "weight": 10,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_mikoto"
+        }
+      ],
+      "title": "看望御坂妹妹们",
+      "description": "你和御坂一起去看望复制人妹妹。她们郑重地把贵重的硬币赠送给了你。",
+      "effects": [
+        {
+          "type": "chance",
+          "chance": 0.5,
+          "then": [
+            {
+              "type": "add_item",
+              "key": "coin",
+              "label": "硬币"
+            }
+          ],
+          "else": [
+            {
+              "type": "log",
+              "text": "妹妹们今天忙于实验，你没能见到她们。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g39_misaka_network",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_mikoto"
+        },
+        {
+          "type": "has_item",
+          "key": "coin",
+          "count": 3
+        }
+      ],
+      "title": "与妹妹们的羁绊",
+      "description": "御坂网络在你耳畔嗡嗡作响——上万个妹妹同时与你共享意识。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "御坂网络",
+            "type": "passive",
+            "description": "每日全属性 +3。"
+          }
+        },
+        {
+          "type": "set_flag",
+          "key": "misaka_network_daily",
+          "value": true,
+          "silent": true
+        }
+      ]
+    },
+    {
+      "id": "g40_misaka_level6",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_mikoto"
+        },
+        {
+          "type": "all_stats_gte",
+          "value": 200
+        }
+      ],
+      "title": "进化 · LEVEL 6",
+      "description": "电光顺着发梢炸响。御坂双手按住自己滚烫的头颅——以非神之躯领悟神之意志。",
+      "choices": [
+        {
+          "text": "进化（电磁炮 ×8~12，每日 -100 生命，1% 概率崩解）",
+          "effects": [
+            {
+              "type": "add_item",
+              "key": "coin",
+              "count": 5,
+              "label": "硬币"
+            },
+            {
+              "type": "transform",
+              "toForm": "misaka_level6",
+              "blessingOverride": {
+                "id": "misaka_level6",
+                "name": "御坂美琴 · LEVEL 6",
+                "title": "神之意志的觊觎者",
+                "description": "强行突破等级 6 的御坂，每日代价惨重。",
+                "rarity": "SSR"
+              },
+              "label": "御坂强行突破 LEVEL 6。"
+            },
+            {
+              "type": "set_flag",
+              "key": "misaka_level6",
+              "value": true,
+              "silent": true
+            }
+          ]
+        },
+        {
+          "text": "不进化（获得 2 枚硬币）",
+          "effects": [
+            {
+              "type": "add_item",
+              "key": "coin",
+              "count": 2,
+              "label": "硬币"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "g41_misaka_touma",
+      "category": "goddess",
+      "weight": 50,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "misaka_level6"
+        }
+      ],
+      "title": "上条当麻的幻想杀手",
+      "description": "「这种力量，由我来终结吧。」一只右手伸出，撞碎了缠绕在你身上的电光。",
+      "effects": [
+        {
+          "type": "transform",
+          "toForm": "misaka_mikoto",
+          "blessingOverride": {
+            "id": "misaka_mikoto",
+            "name": "御坂美琴",
+            "title": "学园都市第三位 · 超电磁炮",
+            "description": "在幻想杀手下，御坂回到原本的姿态。",
+            "rarity": "SSR"
+          },
+          "label": "LEVEL 6 状态被「幻想杀手」消除。"
+        },
+        {
+          "type": "set_flag",
+          "key": "misaka_level6",
+          "value": false,
+          "silent": true
+        },
+        {
+          "type": "hp_restore_to",
+          "value": 99999
+        }
+      ]
+    },
+    {
+      "id": "p1_frieren_desert",
+      "category": "goddess",
+      "weight": 12,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_gte",
+          "value": 10
+        }
+      ],
+      "title": "前置 · 沙漠中的失传魔法",
+      "description": "芙莉莲在沙丘下兴致勃勃地挖掘——一本早已失传的「沙海行走术」古卷重见天日。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 6,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "沙海行走术",
+            "type": "passive",
+            "description": "在沙漠地形遭遇的伤害减半。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p2_frieren_jungle",
+      "category": "goddess",
+      "weight": 12,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "frieren"
+        },
+        {
+          "type": "day_gte",
+          "value": 15
+        }
+      ],
+      "title": "前置 · 妖精的低语",
+      "description": "芙莉莲循着妖精的指引走入丛林深处，授予你一缕属于精灵族的祝福。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 8,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "amount": 10
+        }
+      ]
+    },
+    {
+      "id": "p3_kanzaki_kill_pyrite",
+      "category": "goddess",
+      "weight": 4,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "kanzaki_kaori"
+        },
+        {
+          "type": "has_flag",
+          "key": "killed_meruem"
+        }
+      ],
+      "title": "前置 · 圣人之试炼",
+      "description": "击败了蚁王后，神裂火织终于认可了你的力量，授予你最后一刀的奥义。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "唯闪 · 极",
+            "type": "ultimate",
+            "description": "造成 300% 攻击力伤害，必定无视防御，每场战斗一次。"
+          }
+        },
+        {
+          "type": "stat_delta_all",
+          "amount": 15,
+          "hpMultiplier": 10
+        }
+      ]
+    },
+    {
+      "id": "p4_saber_vs_gilgamesh",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "or",
+          "any": [
+            {
+              "type": "form_is",
+              "form": "saber"
+            },
+            {
+              "type": "form_is",
+              "form": "saber_lancer"
+            },
+            {
+              "type": "form_is",
+              "form": "saber_alter"
+            }
+          ]
+        },
+        {
+          "type": "has_flag",
+          "key": "killed_gilgamesh"
+        }
+      ],
+      "title": "前置 · 王者间的对话",
+      "description": "击败了黄金英雄王后，阿尔托莉雅默然望着王之财宝的余烬，将那份王者之重传递给你。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "amount": 30
+        },
+        {
+          "type": "stat_delta",
+          "stat": "defense",
+          "amount": 20
+        },
+        {
+          "type": "stat_delta",
+          "stat": "hp",
+          "amount": 300
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "王者气场",
+            "type": "passive",
+            "description": "对所有领主阶以下敌人的伤害 +30%。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p5_saber_high_attack",
+      "category": "goddess",
+      "weight": 20,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "or",
+          "any": [
+            {
+              "type": "form_is",
+              "form": "saber"
+            },
+            {
+              "type": "form_is",
+              "form": "saber_lancer"
+            }
+          ]
+        },
+        {
+          "type": "stat_gte",
+          "stat": "attack",
+          "value": 100
+        }
+      ],
+      "title": "前置 · 王者剑指南",
+      "description": "阿尔托莉雅亲自陪你磨剑三日，每一寸刃口都被铭刻了她的剑意。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 20,
+          "max": 40
+        },
+        {
+          "type": "stat_delta",
+          "stat": "defense",
+          "min": 10,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "p6_misaka_ocean",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "or",
+          "any": [
+            {
+              "type": "form_is",
+              "form": "misaka_mikoto"
+            },
+            {
+              "type": "form_is",
+              "form": "misaka_level6"
+            }
+          ]
+        },
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "前置 · 电磁与海的交响",
+      "description": "御坂在海岸边连发电磁炮，惊飞了无数水妖，也唤醒了沉睡的海中宝藏。",
+      "effects": [
+        {
+          "type": "add_item",
+          "key": "coin",
+          "count": 3,
+          "label": "硬币"
+        },
+        {
+          "type": "gold_delta",
+          "min": 30,
+          "max": 60
+        },
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "min": 10,
+          "max": 20
+        }
+      ]
+    },
+    {
+      "id": "p7_yor_lucky_assassin",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "or",
+          "any": [
+            {
+              "type": "form_is",
+              "form": "yor_forger"
+            },
+            {
+              "type": "form_is",
+              "form": "yor_thorn_princess"
+            }
+          ]
+        },
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 80
+        }
+      ],
+      "title": "前置 · 杀手协会试镜",
+      "description": "约尔把你引荐给杀手协会，凭着惊人运势你顺利通过了入会试镜。",
+      "effects": [
+        {
+          "type": "stat_delta",
+          "stat": "attack",
+          "amount": 25
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "amount": 15
+        },
+        {
+          "type": "gold_delta",
+          "min": 50,
+          "max": 120
+        }
+      ]
+    },
+    {
+      "id": "p8_cc_in_ruins",
+      "category": "goddess",
+      "weight": 10,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "cc"
+        },
+        {
+          "type": "has_flag",
+          "key": "u4_ruins_visited"
+        }
+      ],
+      "title": "前置 · 古老契约者",
+      "description": "C.C. 在远古遗迹中找到了过往契约者的遗物——她将那份力量分享给了你。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 8,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "契约者印记",
+            "type": "passive",
+            "description": "每场战斗中可恢复 15% 最大生命值（每日一次）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p9_marin_extreme_cos",
+      "category": "goddess",
+      "weight": 8,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "marin_no_shame"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "lewdness",
+          "value": 150
+        }
+      ],
+      "title": "前置 · 极致的 cos 之夜",
+      "description": "海梦今晚 cos 了所有你心仪过的角色，一场极尽缠绵的盛宴。",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 12,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "stat_delta",
+          "stat": "lewdness",
+          "amount": 50
+        }
+      ]
+    },
+    {
+      "id": "p10_aqua_true_power",
+      "category": "goddess",
+      "weight": 4,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "form_is",
+          "form": "wisdom_aqua"
+        },
+        {
+          "type": "stat_gte",
+          "stat": "luck",
+          "value": 120
+        }
+      ],
+      "title": "前置 · 水神的真正力量",
+      "description": "阿库娅醉酒后竟意外觉醒了真正的水神之力，把所有不死生物都净化了一遍。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "真 · 神水净化",
+            "type": "ultimate",
+            "description": "战斗中可使用一次：对不死系敌人造成 500% 伤害，对其他敌人造成 100%。"
+          }
+        },
+        {
+          "type": "stat_delta",
+          "stat": "luck",
+          "amount": 20
+        }
+      ]
+    },
+    {
+      "id": "p11_post_dio",
+      "category": "unconditional",
+      "weight": 15,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "killed_dio"
+        }
+      ],
+      "title": "前置 · 砸瓦鲁多的礼物",
+      "description": "DIO 倒下的瞬间，那块带血的怀表落在你掌心——你领悟了时停的奥秘。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "砸瓦鲁多",
+            "type": "ultimate",
+            "description": "战斗中可使用一次：敌方下回合无法行动，自身造成 200% 攻击力伤害。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p12_post_ainz",
+      "category": "unconditional",
+      "weight": 25,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "killed_ainz"
+        }
+      ],
+      "title": "前置 · 纳萨力克的复仇",
+      "description": "击败安兹后的某个夜里，整座纳萨力克的恶灵齐齐降临，疯狂地报复你。",
+      "effects": [
+        {
+          "type": "set_flag",
+          "key": "nazarick_revenge_active",
+          "value": true,
+          "label": "「纳萨力克报复」状态触发"
+        },
+        {
+          "type": "stat_delta_all",
+          "amount": 5,
+          "negative": true
+        }
+      ]
+    },
+    {
+      "id": "p13_post_poseidon",
+      "category": "unconditional",
+      "weight": 30,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "killed_poseidon"
+        }
+      ],
+      "title": "前置 · 海神的馈赠",
+      "description": "波塞冬倒下后，海面浮起金灿灿的赠礼。海洋之主的祝福从此不会离你而去。",
+      "effects": [
+        {
+          "type": "gold_delta",
+          "amount": 50
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "海神馈赠",
+            "type": "passive",
+            "description": "海洋地形不会再遭遇怪物，每次海洋遭遇直接 +50 金币。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p14_post_saitama",
+      "category": "unconditional",
+      "weight": 15,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "met_saitama"
+        }
+      ],
+      "title": "前置 · 一击的奥义",
+      "description": "光头老师抓抓头：「啊？变强？俯卧撑、仰卧卷、深蹲各 100 个，再加 10 公里跑步。」",
+      "effects": [
+        {
+          "type": "stat_delta_all",
+          "amount": 20,
+          "hpMultiplier": 10
+        },
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "一拳的觉悟",
+            "type": "passive",
+            "description": "对所有非魔王阶敌人的攻击伤害 +50%。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "p15_post_gilgamesh",
+      "category": "unconditional",
+      "weight": 15,
+      "unique": true,
+      "positive": true,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "killed_gilgamesh"
+        }
+      ],
+      "title": "前置 · 乖离剑 · Ea",
+      "description": "黄金王倒下后，万千宝具中那柄拥有撕裂时空力量的剑被你拾起。",
+      "effects": [
+        {
+          "type": "grant_skill",
+          "skill": {
+            "name": "乖离剑 · Ea",
+            "type": "ultimate",
+            "description": "可秒杀下一个非魔神阶敌人，全场限两次使用。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e_lord_dio",
+      "category": "encounter",
+      "weight": 2.1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 20
+        }
+      ],
+      "title": "遭遇 · 领主阶 DIO",
+      "description": "「无駄、无駄、无駄！」吸血鬼之王 DIO 自夜色中浮现，金色瞳孔锁定了你。\n攻击力 600 / 防御力 500 / 幸运 100 / 生命 2500 / 技能：砸瓦鲁多",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 350
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 70,
+                      "label": "你击杀了 DIO，斩获大量金币与威望。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 150
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_dio",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 30,
+                      "label": "DIO 用时停撕开你的防线，你险险逃出生天。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 48,
+                          "max": 90,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 25,
+                      "label": "你竟意外得手，DIO 倒在血泊中。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 150
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 10,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_dio",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 75,
+                      "label": "DIO 一拳贯穿你的胸口！",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 90,
+                          "max": 150,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 3,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.6,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你成功脱离了 DIO 的视线。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 18,
+                  "max": 36,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_jotaro",
+      "category": "encounter",
+      "weight": 2.1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 25
+        },
+        {
+          "type": "has_flag",
+          "key": "killed_dio"
+        }
+      ],
+      "title": "遭遇 · 领主阶 空条承太郎",
+      "description": "「Yare yare daze……」承太郎为 DIO 的死前来寻仇，白金之星无声地伫立在他身后。\n攻击力 700 / 防御力 600 / 幸运 120 / 生命 3000 / 技能：白金之星的连击",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 490
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 65,
+                      "label": "你与承太郎拼了个两败俱伤，赢得了他的尊敬。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 10,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_jotaro",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 35,
+                      "label": "你输了，但承太郎留你一命。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 60,
+                          "max": 120,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 15,
+                      "label": "你奇迹般打赢了！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 12,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_jotaro",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 85,
+                      "label": "白金之星砸碎了你的骨架。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 120,
+                          "max": 180,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 4,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.4,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你侥幸躲过承太郎的视线。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 30,
+                  "max": 60,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_meruem",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "遭遇 · 领主阶 蚁王 · 梅路艾姆",
+      "description": "你撞上了蚁王梅路艾姆，他冷酷地审视着你这个「人类」。\n攻击力 1200 / 防御力 1800 / 幸运 100 / 生命 6000 / 技能：摄食成长",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 630
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 55,
+                      "label": "你斩落了蚁王，王者血脉断绝。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 200,
+                          "max": 400
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 15,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_meruem",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 45,
+                      "label": "你被蚁王生吞了一半生命力。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 120,
+                          "max": 240,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta",
+                          "stat": "attack",
+                          "amount": 10,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 10,
+                      "label": "运气爆棚的一击。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 200,
+                          "max": 400
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 15,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_meruem",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 90,
+                      "label": "你被蚁王无情地碾碎。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 180,
+                          "max": 300,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 5,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.35,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你拼命逃出了蚁王的视野。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 60,
+                  "max": 120,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_lich",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 35
+        }
+      ],
+      "title": "遭遇 · 领主阶 巫妖领主",
+      "description": "枯骨堆中走出的巫妖领主举起骨杖，浓烈的死气笼罩了你。\n攻击力 1000 / 防御力 500 / 幸运 120 / 生命 3000 / 技能：虚无、灵魂摄取",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 490
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 65,
+                      "label": "巫妖领主被你逼出本体，魂飞魄散。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 180
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_lich",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 35,
+                      "label": "灵魂被摄取，你险些再无生气。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 90,
+                          "max": 150,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta",
+                          "stat": "luck",
+                          "amount": 8,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "你险胜！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 180
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_lich",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 80,
+                      "label": "巫妖将你的生命力悉数吸光。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 150,
+                          "max": 240,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 4,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你逃出了死气的范围。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 30,
+                  "max": 60,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_vampire",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 35
+        }
+      ],
+      "title": "遭遇 · 领主阶 吸血鬼领主",
+      "description": "夜雾中浮出一位优雅的吸血鬼领主，他向你伸手邀请——共舞或共死。\n攻击力 800 / 防御力 700 / 幸运 150 / 生命 3500 / 技能：吞噬血液",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 420
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 60,
+                      "label": "你击穿了吸血鬼的心脏。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_vampire",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 40,
+                      "label": "吸血鬼吞食你的血液恢复了大量伤势。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 90,
+                          "max": 150,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "你险胜！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_vampire",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 82,
+                      "label": "你被吸成了人干。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 150,
+                          "max": 240,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 4,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.55,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你成功躲入晨光中。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 36,
+                  "max": 72,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_devil",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 35
+        }
+      ],
+      "title": "遭遇 · 领主阶 恶魔领主",
+      "description": "魔族城镇深处坐镇的恶魔领主已注意到你的存在，他懒洋洋地起身。\n攻击力 450 / 防御力 600 / 幸运 80 / 生命 2000 / 技能：重击",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 315
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 70,
+                      "label": "恶魔领主倒下了。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 160
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 6,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_devil",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 30,
+                      "label": "你受了重创但成功逃离。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 60,
+                          "max": 120,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "意外地击败了。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 80,
+                          "max": 160
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 6,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_devil",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 75,
+                      "label": "你被重击狠狠砸飞。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 108,
+                          "max": 168,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.7,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你溜走了。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 24,
+                  "max": 48,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_cu",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "遭遇 · 领主阶 库丘林",
+      "description": "「啧，又是一个想找死的人。」凯尔特之光持枪而立，鲜红的发丝随风飞舞。\n攻击力 900 / 防御力 600 / 幸运 200 / 生命 3200 / 技能：怒槍贯穿",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 490
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你与库丘林激战至天明，最终斩落英灵。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_cu",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "「刺心枪」贯穿了你的胸口。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 120,
+                          "max": 210,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 15,
+                      "label": "你抓住了瞬间！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_cu",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 85,
+                      "label": "库丘林一刺命中。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 150,
+                          "max": 240,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.45,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你脱离了战圈。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 48,
+                  "max": 90,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_kirito",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "遭遇 · 领主阶 黑剑士桐人",
+      "description": "黑衣剑士抽出双剑，星屑流光在剑锋上跳跃。「让我看看你的实力。」\n攻击力 850 / 防御力 700 / 幸运 130 / 生命 3300 / 技能：星屑流连击",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 525
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 55,
+                      "label": "你斩落了桐人的双剑，他黯然认输。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_kirito",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 45,
+                      "label": "桐人的连击让你苦不堪言。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 108,
+                          "max": 180,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "你险胜！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_kirito",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 85,
+                      "label": "你被双剑刻满了伤痕。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 150,
+                          "max": 240,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你逃出剑士的范围。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 48,
+                  "max": 84,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_phantom",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 32
+        }
+      ],
+      "title": "遭遇 · 领主阶 歌剧院之鬼",
+      "description": "一道凄美的歌声自破败教堂传出，戴着白面具的幽灵歌剧家飘然而至。\n攻击力 700 / 防御力 800 / 幸运 100 / 生命 2800 / 技能：魅惑歌喉",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 455
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 60,
+                      "label": "你撕碎了他的面具，歌声归于沉寂。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_phantom",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 40,
+                      "label": "你被歌声魅惑，险些倒戈。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 90,
+                          "max": 150,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 20,
+                      "label": "你掐准了换气间隙。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_phantom",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 80,
+                      "label": "你被魅惑，自残至重伤。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 120,
+                          "max": 210,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta",
+                          "stat": "luck",
+                          "amount": 5,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你捂住耳朵冲了出去。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 42,
+                  "max": 78,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_lord_alma",
+      "category": "encounter",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 32
+        }
+      ],
+      "title": "遭遇 · 领主阶 黑暗修罗",
+      "description": "影子里走出一名黑发修罗，两柄黑刃同时出鞘。\n攻击力 950 / 防御力 600 / 幸运 180 / 生命 3000 / 技能：影遁连斩",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 490
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 55,
+                      "label": "你识破了影遁，将修罗钉在墙上。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_alma",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 45,
+                      "label": "黑影修罗一刀斩中你的肩膀。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 108,
+                          "max": 180,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "你险胜！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 120,
+                          "max": 220
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 9,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_alma",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 85,
+                      "label": "你被连斩重伤。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 144,
+                          "max": 228,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.4,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你跳入虚空逃出。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 48,
+                  "max": 90,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_gilgamesh",
+      "category": "encounter",
+      "weight": 0.75,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 40
+        }
+      ],
+      "title": "遭遇 · 魔神阶 吉尔伽美什",
+      "description": "黄金英雄王凌空注视着你，万千宝具自虚空中浮现，金光刺得人睁不开眼。\n攻击力 1600 / 防御力 1000 / 幸运 400 / 生命 4000 / 技能：王之财宝",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 600
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 60,
+                      "label": "你避开了所有宝具，最终将王者推下宝座。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_gilgamesh",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 40,
+                      "label": "王之财宝雨点般砸落，你重伤倒地。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 200,
+                          "max": 350,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 5,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "你险胜！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_gilgamesh",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 88,
+                      "label": "你被无数宝具贯穿。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 300,
+                          "max": 450,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.3,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你竟逃出了王者的视野。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 100,
+                  "max": 175,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_ainz",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 60
+        },
+        {
+          "type": "stat_sum_gte",
+          "value": 400
+        }
+      ],
+      "title": "遭遇 · 魔神阶 安兹·乌尔·恭",
+      "description": "黑袍骸骨升上空中，纳萨力克的恶灵齐声诵咏。\n攻击力 1500 / 防御力 2000 / 幸运 200 / 生命 5500 / 技能：纳萨力克的疯狂报复",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 750
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你彻底击碎了不死之王，纳萨力克土崩瓦解。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 700
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 20,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "grant_skill",
+                          "skill": {
+                            "name": "倾国倾城",
+                            "type": "ultimate",
+                            "description": "除最后一日外可跳过任何一次战斗，每场冒险仅可使用一次。"
+                          }
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_ainz",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "安兹召唤万灵，你被压制至濒死。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 250,
+                          "max": 400,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 6,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 8,
+                      "label": "你侥幸命中弱点！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 700
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 20,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_ainz",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 92,
+                      "label": "纳萨力克的恶灵将你撕成碎片。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 350,
+                          "max": 550,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 10,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.2,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你侥幸逃过审判。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 150,
+                  "max": 250,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_nazarick",
+      "category": "encounter",
+      "weight": 2,
+      "conditions": [
+        {
+          "type": "has_flag",
+          "key": "nazarick_revenge_active"
+        }
+      ],
+      "title": "遭遇 · 魔神阶 纳萨力克报复者",
+      "description": "纳萨力克的恶灵之一找到了你的踪迹，复仇之火没有止息。\n攻击力 1400 / 防御力 1500 / 幸运 150 / 生命 4000",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 600
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 55,
+                      "label": "你斩落了一名复仇者。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 200,
+                          "max": 350
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 6,
+                          "hpMultiplier": 10
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 45,
+                      "label": "你被复仇者重创。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 150,
+                          "max": 250,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 10,
+                      "label": "勉强击退。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 100,
+                          "max": 200
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 4,
+                          "hpMultiplier": 10
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 90,
+                      "label": "复仇者们将你打入泥泞。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 200,
+                          "max": 350,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.35,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你脱离了追杀。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 75,
+                  "max": 125,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_naofumi",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 45
+        }
+      ],
+      "title": "遭遇 · 魔神阶 盾之勇者",
+      "description": "披着滴血盾的勇者沉默地伫立。「我不会饶过任何挡路的人。」\n攻击力 800 / 防御力 2500 / 幸运 200 / 生命 5000 / 技能：愤怒之盾",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 650
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你击碎了盾之勇者的屏障。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 15,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_naofumi",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "你的攻击全被反弹回来。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 200,
+                          "max": 300,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 30,
+                      "label": "意外击穿了盾甲。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 15,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_naofumi",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 90,
+                      "label": "你被反弹的伤害彻底压垮。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 300,
+                          "max": 500,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.35,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你拉开了距离。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 100,
+                  "max": 175,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_alucard",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 55
+        }
+      ],
+      "title": "遭遇 · 魔神阶 阿尔卡特",
+      "description": "黑帽与血红披风。「Releasing control art restriction system to level zero...」\n攻击力 2000 / 防御力 1500 / 幸运 250 / 生命 6000 / 技能：吸血鬼之王",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 850
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你击碎了他的最后一道封印。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 700
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 20,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_alucard",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "他从战斗中吸取了你的精气。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 300,
+                          "max": 500,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 5,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 8,
+                      "label": "你抓住了换形的破绽。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 700
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 20,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_alucard",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 92,
+                      "label": "你被千万亡灵吞噬。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 400,
+                          "max": 600,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 8,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.25,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你脱出了他的影域。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 150,
+                  "max": 250,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_ddraig",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 50
+        }
+      ],
+      "title": "遭遇 · 魔神阶 赤龙帝",
+      "description": "天空被烈焰点亮。赤红色巨龙降临，咆哮震耳欲聋。\n攻击力 1800 / 防御力 1700 / 幸运 100 / 生命 6500 / 技能：龙焰吐息",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 750
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你的剑刺穿了它的龙鳞要害。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 350,
+                          "max": 600
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_ddraig",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "龙焰将你烧成焦黑。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 250,
+                          "max": 400,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 8,
+                      "label": "你射穿了龙瞳。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 350,
+                          "max": 600
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_ddraig",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 92,
+                      "label": "龙焰将你彻底吞噬。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 400,
+                          "max": 600,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.3,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你躲入岩缝逃过一劫。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 150,
+                  "max": 250,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_albedo",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 55
+        }
+      ],
+      "title": "遭遇 · 魔神阶 雅儿贝德",
+      "description": "黑翅白裙的女守护者展开战巨剑，深爱的微笑里满是杀意。\n攻击力 1700 / 防御力 2200 / 幸运 200 / 生命 5800 / 技能：守护狂热",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 800
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你击落了她的战巨剑。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 650
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_albedo",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "她的疯狂之斩劈下你的肩胛。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 250,
+                          "max": 450,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 24,
+                      "label": "你侥幸取胜。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 400,
+                          "max": 650
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 18,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_albedo",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 92,
+                      "label": "你被她一斩两断。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 400,
+                          "max": 650,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.25,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你侥幸脱离。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 150,
+                  "max": 250,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_god_levi",
+      "category": "encounter",
+      "weight": 0.5,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 50
+        }
+      ],
+      "title": "遭遇 · 魔神阶 兵长",
+      "description": "黑发兵长平举双刃，瞳孔锁定你的颈动脉。\n攻击力 2200 / 防御力 1200 / 幸运 350 / 生命 4500 / 技能：迅捷连斩",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 750
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你以快制快，斩断了他的双刃。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 550
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 17,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_levi",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "兵长的迅斩切下了你大块血肉。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 250,
+                          "max": 400,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 8,
+                      "label": "你抓住了死角！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 300,
+                          "max": 550
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 17,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_levi",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 92,
+                      "label": "你只看到一道残影，便已倒下。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 400,
+                          "max": 600,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.2,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你侥幸躲入立体机动盲区。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 125,
+                  "max": 200,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_saitama",
+      "category": "encounter",
+      "weight": 0.2,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 40
+        }
+      ],
+      "title": "遭遇 · 魔王阶 琦玉",
+      "description": "光头老师挠了挠头：「啊？要打架啊？」你看清了他的眼神——绝对的虚无。\n攻击力 999999 / 防御力 9999999 / 生命 9999999 / 幸运 0",
+      "choices": [
+        {
+          "text": "出手攻击",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 100,
+                  "label": "光头老师一拳打飞了你。",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "min": 320,
+                      "max": 600,
+                      "negative": true
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 6,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "防御三次（你被允许如此）",
+          "effects": [
+            {
+              "type": "log",
+              "text": "「啊？打不起来？算了。」光头老师转身离去。"
+            },
+            {
+              "type": "set_flag",
+              "key": "met_saitama",
+              "value": true,
+              "silent": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_poseidon",
+      "category": "encounter",
+      "weight": 0.16,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 55
+        }
+      ],
+      "title": "遭遇 · 魔王阶 海神波塞冬",
+      "description": "海面被一柄金色三叉戟劈开，海皇缓步从浪间走出。\n攻击力 3000 / 防御力 2100 / 幸运 150 / 生命 8500 / 技能：三叉戟之击",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 800
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 45,
+                      "label": "你击落了海神的三叉戟。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 500,
+                          "max": 1000
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 25,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_poseidon",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 55,
+                      "label": "三叉戟无视防御贯穿了你。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 400,
+                          "max": 720,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 10,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 5,
+                      "label": "你击中了海神的死穴！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 500,
+                          "max": 1000
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 25,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_poseidon",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 95,
+                      "label": "你被海神冲下了海底。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 600,
+                          "max": 1000,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.2,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你冒死游上了岸。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 160,
+                  "max": 280,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_madoka",
+      "category": "encounter",
+      "weight": 0.12,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 70
+        }
+      ],
+      "title": "遭遇 · 魔王阶 究极魔王",
+      "description": "粉发少女眼中只剩绝望。「我会带走所有的魔女……包括你。」\n攻击力 2800 / 防御力 2500 / 幸运 500 / 生命 9000 / 技能：圆环之理",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 880
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 40,
+                      "label": "你击碎了圆环之理。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 600,
+                          "max": 1100
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 28,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_madoka",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 60,
+                      "label": "你被圆环之理吞噬一部分灵魂。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 480,
+                          "max": 800,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 10,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 4,
+                      "label": "你抓住了瞬间的奇迹。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 600,
+                          "max": 1100
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 28,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_madoka",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 96,
+                      "label": "你被纳入圆环之理。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 720,
+                          "max": 1200,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.15,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你跳出了她的认知。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 200,
+                  "max": 320,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_lucifer",
+      "category": "encounter",
+      "weight": 0.12,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 75
+        }
+      ],
+      "title": "遭遇 · 魔王阶 路西法",
+      "description": "曾经的晨星，堕天使之王。一道黑光劈开夜色。\n攻击力 3500 / 防御力 2500 / 幸运 300 / 生命 10000 / 技能：堕落之翼",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 1000
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 40,
+                      "label": "你斩落了堕天使之王。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 30,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_lucifer",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 60,
+                      "label": "你被堕天之翼掀飞。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 600,
+                          "max": 1000,
+                          "negative": true
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 12,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 3,
+                      "label": "你击中了他的真名。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 30,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_lucifer",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 97,
+                      "label": "你被钉在天空，灵魂崩溃。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 800,
+                          "max": 1400,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.15,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你逃出了他的羽域。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 240,
+                  "max": 360,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_acnologia",
+      "category": "encounter",
+      "weight": 0.12,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 80
+        }
+      ],
+      "title": "遭遇 · 魔王阶 阿克诺洛基亚",
+      "description": "黑蓝色巨龙降临，吞噬大地与天空的怒吼。\n攻击力 3800 / 防御力 3000 / 幸运 100 / 生命 12000 / 技能：龙类灭杀",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 1120
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 35,
+                      "label": "你硬撼了龙类终结者。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 32,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_acnologia",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 65,
+                      "label": "黑龙将你吞下又吐出。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 720,
+                          "max": 1200,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 3,
+                      "label": "你射穿了龙翼连接处。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 32,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_acnologia",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 97,
+                      "label": "你被龙吼粉碎。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 1000,
+                          "max": 1600,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.15,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你避入山岭深处。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 280,
+                  "max": 440,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_demon_chronos",
+      "category": "encounter",
+      "weight": 0.12,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 85
+        }
+      ],
+      "title": "遭遇 · 魔王阶 时之神 · 克罗诺斯",
+      "description": "时空在他面前如纸张般皱缩。「你太脆弱了，凡人。」\n攻击力 3200 / 防御力 2700 / 幸运 600 / 生命 9000 / 技能：时停领域",
+      "choices": [
+        {
+          "text": "应战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 1120
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 40,
+                      "label": "你竟突破了时停，斩落了时之神。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 32,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_chronos",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 60,
+                      "label": "你被时停困住，瞬间崩溃。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 720,
+                          "max": 1120,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 3,
+                      "label": "你抓住了时之神的失误。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "min": 800,
+                          "max": 1500
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 32,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_chronos",
+                          "value": true,
+                          "silent": true
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 97,
+                      "label": "时间停滞，你的生命也随之止息。",
+                      "effects": [
+                        {
+                          "type": "stat_delta",
+                          "stat": "hp",
+                          "min": 920,
+                          "max": 1400,
+                          "negative": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "逃跑",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.1,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你从时之夹缝中逃出。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 280,
+                  "max": 440,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "e_final_boss",
+      "category": "encounter",
+      "weight": 9999,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 95
+        }
+      ],
+      "title": "最终魔王 · 终焉之王 · 巴尔泽法尔",
+      "description": "天地崩塌，所有的不祥都聚于此处。\n这一刻，你站在了第 95 日的尽头——终焉之王缓缓睁眼。\n攻击力 5000 / 防御力 8000 / 幸运 300 / 生命 30000\n技能：灭世意志（无视防御真实伤害）、不灭之躯（复活一次属性+50%）、终焉之歌（降低对方全属性 50%）",
+      "choices": [
+        {
+          "text": "决一死战",
+          "effects": [
+            {
+              "type": "conditional",
+              "cond": {
+                "type": "stat_sum_gte",
+                "value": 1500
+              },
+              "then": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 50,
+                      "label": "你斩落了终焉之王，世界从绝望中被拯救！",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "amount": 9999
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 100,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "hp_restore_to",
+                          "value": 99999
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_final_boss",
+                          "value": true,
+                          "silent": true
+                        },
+                        {
+                          "type": "set_meta_flag",
+                          "key": "ever_killed_final_boss",
+                          "value": true,
+                          "label": "「您已成为传奇 · 终焉斩王」"
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 50,
+                      "label": "终焉之王的不灭之躯压垮了你。",
+                      "effects": [
+                        {
+                          "type": "mark_death"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "else": [
+                {
+                  "type": "weighted",
+                  "branches": [
+                    {
+                      "weight": 15,
+                      "label": "命运之神眷顾，你以最后一刀击穿了它的心脏。",
+                      "effects": [
+                        {
+                          "type": "gold_delta",
+                          "amount": 9999
+                        },
+                        {
+                          "type": "stat_delta_all",
+                          "amount": 100,
+                          "hpMultiplier": 10
+                        },
+                        {
+                          "type": "set_flag",
+                          "key": "killed_final_boss",
+                          "value": true,
+                          "silent": true
+                        },
+                        {
+                          "type": "set_meta_flag",
+                          "key": "ever_killed_final_boss",
+                          "value": true,
+                          "label": "「您已成为传奇 · 终焉斩王」"
+                        }
+                      ]
+                    },
+                    {
+                      "weight": 95,
+                      "label": "灭世意志一击之下，你与世界一同湮灭。",
+                      "effects": [
+                        {
+                          "type": "mark_death"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "使用 誓约胜利之剑 · Excalibur",
+          "conditions": [
+            {
+              "type": "has_skill",
+              "name": "誓约胜利之剑 · Excalibur"
+            }
+          ],
+          "effects": [
+            {
+              "type": "log",
+              "text": "你高举圣剑，金色光辉撕开终焉的夜色。"
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 30,
+                  "label": "Excalibur 一击斩落了终焉之王！",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "amount": 9999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 100,
+                      "hpMultiplier": 10
+                    },
+                    {
+                      "type": "set_flag",
+                      "key": "killed_final_boss",
+                      "value": true,
+                      "silent": true
+                    },
+                    {
+                      "type": "set_meta_flag",
+                      "key": "ever_killed_final_boss",
+                      "value": true,
+                      "label": "「您已成为传奇 · 终焉斩王」"
+                    }
+                  ]
+                },
+                {
+                  "weight": 70,
+                  "label": "Excalibur 的光辉被终焉之力吞没，你重伤倒地。",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "min": 1500,
+                      "max": 2500,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "用「巴雷特狙击步枪」远程一击",
+          "conditions": [
+            {
+              "type": "has_skill",
+              "name": "巴雷特狙击步枪"
+            }
+          ],
+          "effects": [
+            {
+              "type": "log",
+              "text": "你扣下扳机，黑色子弹划破长空。"
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 40,
+                  "label": "巴雷特一击命中眉心！终焉之王轰然倒地！",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "amount": 9999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 100,
+                      "hpMultiplier": 10
+                    },
+                    {
+                      "type": "set_flag",
+                      "key": "killed_final_boss",
+                      "value": true,
+                      "silent": true
+                    },
+                    {
+                      "type": "set_meta_flag",
+                      "key": "ever_killed_final_boss",
+                      "value": true,
+                      "label": "「您已成为传奇 · 终焉斩王」"
+                    },
+                    {
+                      "type": "revoke_skill",
+                      "name": "巴雷特狙击步枪"
+                    }
+                  ]
+                },
+                {
+                  "weight": 60,
+                  "label": "子弹被防御反弹，你陷入苦战。",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "min": 1500,
+                      "max": 2500,
+                      "negative": true
+                    },
+                    {
+                      "type": "revoke_skill",
+                      "name": "巴雷特狙击步枪"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "使用 Excalibur · Morgan",
+          "conditions": [
+            {
+              "type": "has_skill",
+              "name": "Excalibur · Morgan"
+            }
+          ],
+          "effects": [
+            {
+              "type": "log",
+              "text": "你举起黑化王者之剑，世界被血色光辉浸染。"
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 35,
+                  "label": "Excalibur Morgan 撕裂了终焉之王！",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "amount": 9999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 100,
+                      "hpMultiplier": 10
+                    },
+                    {
+                      "type": "set_flag",
+                      "key": "killed_final_boss",
+                      "value": true,
+                      "silent": true
+                    },
+                    {
+                      "type": "set_meta_flag",
+                      "key": "ever_killed_final_boss",
+                      "value": true,
+                      "label": "「您已成为传奇 · 终焉斩王」"
+                    }
+                  ]
+                },
+                {
+                  "weight": 65,
+                  "label": "Excalibur 的光辉被吞没。",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "min": 2000,
+                      "max": 3000,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "使用 魔王寂灭",
+          "conditions": [
+            {
+              "type": "has_skill",
+              "name": "魔王寂灭"
+            }
+          ],
+          "effects": [
+            {
+              "type": "log",
+              "text": "芙莉莲的千年咒文从你嘴中念出——"
+            },
+            {
+              "type": "log",
+              "text": "然而，最终魔王不在「非最后一日」之列，咒文未能完全生效……"
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 20,
+                  "label": "古老的魔法削去了终焉之王大半生命，你顺势补刀！",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "amount": 9999
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 100,
+                      "hpMultiplier": 10
+                    },
+                    {
+                      "type": "set_flag",
+                      "key": "killed_final_boss",
+                      "value": true,
+                      "silent": true
+                    },
+                    {
+                      "type": "set_meta_flag",
+                      "key": "ever_killed_final_boss",
+                      "value": true,
+                      "label": "「您已成为传奇 · 终焉斩王」"
+                    }
+                  ]
+                },
+                {
+                  "weight": 65,
+                  "label": "咒文被弹开，你被反噬重伤。",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "min": 2000,
+                      "max": 3500,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
