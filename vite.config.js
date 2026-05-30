@@ -5,7 +5,7 @@ import { fileURLToPath, URL } from 'node:url'
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1]
 const githubPagesBase = repoName ? `/${repoName}/` : '/'
 const base = process.env.VITE_BASE_PATH || (
-  process.env.GITHUB_ACTIONS === 'true' ? githubPagesBase : '/'
+  process.env.GITHUB_ACTIONS === 'true' ? githubPagesBase : './'
 )
 
 export default defineConfig({
