@@ -10,10 +10,21 @@
             {{ blessing.name }}
           </span>
         </div>
-        <div class="day-counter">
-          <span class="gold-tag" title="金币">{{ player.gold }} $</span>
-          <span class="now">{{ run.currentDay }}</span>
-          <span class="total">/ {{ MAX_DAYS }}</span>
+        <div class="topbar-right">
+          <button
+            class="status-btn"
+            type="button"
+            aria-label="查看角色状态"
+            @click="showStatus = true"
+          >
+            <span class="status-icon">▤</span>
+            <span class="status-text">状态</span>
+          </button>
+          <div class="day-counter">
+            <span class="gold-tag" title="金币">{{ player.gold }} $</span>
+            <span class="now">{{ run.currentDay }}</span>
+            <span class="total">/ {{ MAX_DAYS }}</span>
+          </div>
         </div>
       </header>
 
@@ -94,6 +105,12 @@
       @swapped="onSwapDone"
     />
 
+    <CharacterStatusModal
+      :open="showStatus"
+      :day="run.currentDay"
+      @close="showStatus = false"
+    />
+
     <transition name="modal-fade" appear>
       <div v-if="confirmRestart" class="confirm-overlay" @click.self="confirmRestart = false">
         <div class="confirm-card">
@@ -123,8 +140,10 @@ import DayLog from '@/components/DayLog.vue'
 import EventModal from '@/components/EventModal.vue'
 import GoddessSwapModal from '@/components/GoddessSwapModal.vue'
 import BattleModal from '@/components/BattleModal.vue'
+import CharacterStatusModal from '@/components/CharacterStatusModal.vue'
 import monstersData from '@/data/monsters.json'
-import { createBattle, rollTerrainMonster } from '@/engine/battle'
+import { createBattle, rollTerrainMonster, getBoss } from '@/engine/battle'
+import { applyEffects } from '@/engine'
 
 const router = useRouter()
 const player = usePlayerStore()
@@ -133,6 +152,7 @@ const meta = useMetaStore()
 
 const advancing = ref(false)
 const confirmRestart = ref(false)
+const showStatus = ref(false)
 const activeBattle = ref(null)
 // 强制响应式刷新（battle.js 是 mutate state，需要触发 Vue 重算）
 const battleTick = ref(0)
@@ -291,10 +311,21 @@ function allocate(stat) {
 
 // ============ 战斗相关 ============
 function onBattle(payload) {
-  // payload: { terrain, canFlee, sourceEventId }
-  const terrainPool = monstersData.terrains?.[payload.terrain] ?? []
-  const enemy = rollTerrainMonster(terrainPool, run.currentDay)
+  // payload: { terrain, monsterId, enemyOverride, canFlee, tier, onWin, onLose, onEscape, sourceEventId }
+  let enemy = null
+  if (payload.enemyOverride) {
+    enemy = { ...payload.enemyOverride }
+    if (!enemy.hpMax) enemy.hpMax = enemy.hp
+    if (!enemy.defenseMax) enemy.defenseMax = enemy.defense
+  } else if (payload.monsterId) {
+    enemy = getBoss(monstersData.bosses ?? {}, payload.monsterId)
+  } else if (payload.terrain) {
+    const terrainPool = monstersData.terrains?.[payload.terrain] ?? []
+    enemy = rollTerrainMonster(terrainPool, run.currentDay)
+  }
   if (!enemy) return
+  if (payload.tier) enemy.tier = payload.tier
+
   const playerSnap = {
     hp: player.stats.hp,
     hpMax: player.stats.hpMax,
@@ -303,7 +334,18 @@ function onBattle(payload) {
     luck: player.stats.luck,
     skills: player.skills
   }
-  activeBattle.value = createBattle(playerSnap, enemy, { canFlee: payload.canFlee })
+  const battle = createBattle(playerSnap, enemy, { canFlee: payload.canFlee })
+  // 注入祝福 battleHooks（如先手无敌）
+  const hooks = player.statusFlags?.__blessing_hooks
+  if (hooks?.firstTurnInvuln) {
+    battle._firstTurnInvuln = true
+  }
+  battle._callbacks = {
+    onWin: payload.onWin ?? null,
+    onLose: payload.onLose ?? null,
+    onEscape: payload.onEscape ?? null
+  }
+  activeBattle.value = battle
 }
 
 function onBattleMutated() {
@@ -317,11 +359,29 @@ function onBattleFinish(battle) {
     const finalHp = Math.max(0, Math.min(player.stats.hpMax, battle.player.hp))
     player.stats.hp = finalHp
   }
-  // 应用奖励
+  // 应用奖励（含祝福 goldMul）
   if (battle.result === 'win' && battle.reward?.gold) {
-    player.addGold(battle.reward.gold)
+    const hooks = player.statusFlags?.__blessing_hooks
+    const mul = hooks?.goldMul ?? 1
+    player.addGold(Math.round(battle.reward.gold * mul))
   }
   player.persist()
+
+  // 执行 BOSS 战 onWin / onLose / onEscape 附加效果
+  const cb = battle?._callbacks ?? {}
+  let extraLogs = []
+  let extraDead = false
+  const effectKey = battle.result === 'win' ? 'onWin'
+                  : battle.result === 'lose' ? 'onLose'
+                  : battle.result === 'escape' ? 'onEscape'
+                  : null
+  if (effectKey && cb[effectKey] && cb[effectKey].length) {
+    const state = snapshotState(player, run)
+    const r = applyEffects(state, cb[effectKey])
+    commitState(player, run, meta, r.state, r.meta)
+    extraLogs = r.logs
+    if (r.meta.death) extraDead = true
+  }
 
   // 写入历史
   run.pushHistory({
@@ -329,15 +389,14 @@ function onBattleFinish(battle) {
     type: 'event',
     eventTitle: `战斗 · ${battle.enemy.name}`,
     choice: battle.result === 'win' ? '胜利' : battle.result === 'lose' ? '战败' : '逃跑',
-    logs: battle.log.slice(-6)
+    logs: [...battle.log.slice(-6), ...extraLogs]
   })
 
-  const dead = battle.result === 'lose' || player.stats.hp <= 0
+  const dead = battle.result === 'lose' || player.stats.hp <= 0 || extraDead
   activeBattle.value = null
 
   if (dead) {
     run.markDeath()
-    // 战败时清理任何暂存的 pendingLocation 防止下一天继续遗留
     run.clearPendingLocation()
     router.push('/end')
   }
@@ -443,6 +502,36 @@ onMounted(() => {
   color: #fff;
   flex-shrink: 0;
 }
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  min-height: 30px;
+  background: rgba(255, 216, 107, 0.12);
+  border: 1px solid rgba(255, 216, 107, 0.4);
+  color: #ffd86b;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s, transform 0.1s;
+}
+@media (hover: hover) {
+  .status-btn:hover { background: rgba(255, 216, 107, 0.22); }
+}
+.status-btn:active { transform: scale(0.95); }
+.status-icon { font-size: 0.95rem; line-height: 1; }
+.status-text { line-height: 1; }
 
 .gold-tag {
   font-size: 0.78rem;

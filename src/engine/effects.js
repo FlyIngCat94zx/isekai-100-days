@@ -252,13 +252,69 @@ const HANDLERS = {
 
   /**
    * 触发战斗：在 meta 中设置 pendingBattle，由 UI 层根据 terrain 抽取怪物进入战斗
-   * { terrain: 'desert' | 'jungle' | 'ocean', canFlee?: true, monsterId?: string }
+   * 完整字段：
+   *   terrain?  : 'desert' | 'jungle' | 'ocean' —— 从地形池随机抽
+   *   monsterId?: 直接指定怪物 ID（优先于 terrain），从 bosses 池查
+   *   enemyOverride?: 完整 enemy 对象（最高优先级，可绕过 monsters.json）
+   *   canFlee?  : 默认 true，BOSS 应设 false
+   *   tier?     : 'normal' | 'lord' | 'god' | 'demon' | 'final' —— 战斗结束后用于结算/UI 标识
+   *   onWin?    : effects[] —— 胜利时追加结算（属性奖励、set_flag 等）
+   *   onLose?   : effects[] —— 战败时追加结算（默认不写则等同于 mark_death）
+   *   onEscape? : effects[] —— 逃跑成功时追加结算
    */
   spawn_battle(_state, e, _logs, meta) {
     meta.pendingBattle = {
       terrain: e.terrain ?? null,
       monsterId: e.monsterId ?? null,
-      canFlee: e.canFlee !== false
+      enemyOverride: e.enemyOverride ?? null,
+      canFlee: e.canFlee !== false,
+      tier: e.tier ?? 'normal',
+      onWin: e.onWin ?? null,
+      onLose: e.onLose ?? null,
+      onEscape: e.onEscape ?? null
+    }
+  },
+
+  /**
+   * 添加一个每日 buff / debuff，持续 duration 天
+   * { id?, label, stat?, amount?, hp?, duration, source? }
+   *   stat: 每日叠加到的属性（attack/defense/luck/hp/lewdness）
+   *   hp:   每日额外 hp ±（不影响 hpMax）
+   *   amount: stat 的每日 ±
+   *   duration: 持续天数（0 / 不填 = 无限直到 clear）
+   *   id: 唯一标识，未提供则用 label
+   *
+   * 这些 buff 存在 statusFlags.__daily_effects 里（数组），由 dailyTick 在每日开头自动结算。
+   */
+  add_daily_buff(state, e, logs) {
+    if (!state.statusFlags.__daily_effects) state.statusFlags.__daily_effects = []
+    const id = e.id ?? e.label ?? 'unnamed'
+    // 同 id 已存在则刷新持续时间
+    const existing = state.statusFlags.__daily_effects.findIndex(b => b.id === id)
+    const buff = {
+      id,
+      label: e.label ?? id,
+      stat: e.stat ?? null,
+      amount: e.amount ?? 0,
+      hp: e.hp ?? 0,
+      duration: e.duration ?? 0,
+      remaining: e.duration ?? 0,
+      source: e.source ?? null
+    }
+    if (existing >= 0) {
+      state.statusFlags.__daily_effects[existing] = buff
+    } else {
+      state.statusFlags.__daily_effects.push(buff)
+    }
+    if (e.label) logs.push(`获得效果「${e.label}」${e.duration ? `（${e.duration} 日）` : ''}`)
+  },
+
+  clear_daily_buff(state, e, logs) {
+    if (!state.statusFlags.__daily_effects) return
+    const idx = state.statusFlags.__daily_effects.findIndex(b => b.id === e.id)
+    if (idx >= 0) {
+      const [removed] = state.statusFlags.__daily_effects.splice(idx, 1)
+      if (e.silent !== true) logs.push(`效果「${removed.label}」消散`)
     }
   },
 
@@ -359,6 +415,20 @@ function resolveDeath(state, meta) {
       meta.death = false
       return { dead: false, logs: extra }
     }
+    // 祝福类免死（护命人偶 / 凤凰之羽 I/II 等，含 description "免除一次死亡" 的 passive）
+    const blessingReviveIdx = state.skills.findIndex(s =>
+      s.source === 'blessing' &&
+      s.type === 'passive' &&
+      (s.description ?? '').includes('免除一次死亡')
+    )
+    if (blessingReviveIdx >= 0) {
+      const removed = state.skills.splice(blessingReviveIdx, 1)[0]
+      const reviveHp = Math.max(1, Math.floor(state.stats.hpMax * 0.5))
+      state.stats.hp = reviveHp
+      extra.push(`「${removed.name}」化作守护挡下了致命一击，生命值恢复至 ${reviveHp}。`)
+      meta.death = false
+      return { dead: false, logs: extra }
+    }
     state.stats.hp = 0
     return { dead: true, logs: extra }
   }
@@ -392,7 +462,8 @@ function cloneState(s) {
     blessing: s.blessing ? { ...s.blessing } : null,
     run: {
       currentDay: s.run?.currentDay ?? 0,
-      consumedUniqueEvents: [...(s.run?.consumedUniqueEvents ?? [])]
+      consumedUniqueEvents: [...(s.run?.consumedUniqueEvents ?? [])],
+      forcedNextEventId: s.run?.forcedNextEventId ?? null
     }
   }
 }

@@ -322,6 +322,324 @@
               ]
             }
           ]
+        },
+        {
+          "text": "寻宝 · 第 1/3 次（5 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_human_count",
+              "value": 0
+            },
+            {
+              "type": "gold_gte",
+              "value": 5
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 5,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_human_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 25,
+                  "label": "徒劳无功，什么也没找到。",
+                  "effects": []
+                },
+                {
+                  "weight": 25,
+                  "label": "掉落几枚硬币 +5~15 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 5,
+                      "max": 15
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到护甲碎片 防御 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到磨刀石 攻击 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到四叶草 幸运 +3",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "挖到上古宝箱：全属性 +3 +40 $",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 3
+                    },
+                    {
+                      "type": "gold_delta",
+                      "amount": 40
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "触发陷阱 -25 HP",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 25,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "寻宝 · 第 2/3 次（10 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_human_count",
+              "value": 1
+            },
+            {
+              "type": "gold_gte",
+              "value": 10
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 10,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_human_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 25,
+                  "label": "徒劳无功，什么也没找到。",
+                  "effects": []
+                },
+                {
+                  "weight": 25,
+                  "label": "掉落几枚硬币 +5~15 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 5,
+                      "max": 15
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到护甲碎片 防御 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到磨刀石 攻击 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到四叶草 幸运 +3",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "挖到上古宝箱：全属性 +3 +40 $",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 3
+                    },
+                    {
+                      "type": "gold_delta",
+                      "amount": 40
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "触发陷阱 -25 HP",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 25,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "寻宝 · 第 3/3 次（20 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_human_count",
+              "value": 2
+            },
+            {
+              "type": "gold_gte",
+              "value": 20
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 20,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_human_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 25,
+                  "label": "徒劳无功，什么也没找到。",
+                  "effects": []
+                },
+                {
+                  "weight": 25,
+                  "label": "掉落几枚硬币 +5~15 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 5,
+                      "max": 15
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到护甲碎片 防御 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到磨刀石 攻击 +2",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 2
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到四叶草 幸运 +3",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "挖到上古宝箱：全属性 +3 +40 $",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 3
+                    },
+                    {
+                      "type": "gold_delta",
+                      "amount": 40
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "触发陷阱 -25 HP",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 25,
+                      "negative": true
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -475,6 +793,405 @@
                       "amount": 10,
                       "negative": true,
                       "hpMultiplier": 10
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "寻宝 · 第 1/3 次（20 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_demon_count",
+              "value": 0
+            },
+            {
+              "type": "gold_gte",
+              "value": 20
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 20,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_demon_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 15,
+                  "label": "魔族的废墟里空无一物。",
+                  "effects": []
+                },
+                {
+                  "weight": 20,
+                  "label": "挖到黑金硬币 +30~60 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 30,
+                      "max": 60
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到恶魔之骨 攻击 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到地狱铁甲 防御 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到诡异骰子 幸运 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "获得魔族祝福 5 日全属性 +2",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing",
+                      "label": "魔族祝福",
+                      "stat": "attack",
+                      "amount": 2,
+                      "duration": 5
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing2",
+                      "label": "魔族祝福 II",
+                      "stat": "defense",
+                      "amount": 2,
+                      "duration": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到禁忌典籍：全属性 +5 hpMax +50",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 5,
+                      "hpMultiplier": 10
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "惊扰怨灵 -80 HP 4 日诅咒",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 80,
+                      "negative": true
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_demon_grave_curse",
+                      "label": "怨灵诅咒",
+                      "stat": "attack",
+                      "amount": -2,
+                      "duration": 4
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "寻宝 · 第 2/3 次（40 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_demon_count",
+              "value": 1
+            },
+            {
+              "type": "gold_gte",
+              "value": 40
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 40,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_demon_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 15,
+                  "label": "魔族的废墟里空无一物。",
+                  "effects": []
+                },
+                {
+                  "weight": 20,
+                  "label": "挖到黑金硬币 +30~60 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 30,
+                      "max": 60
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到恶魔之骨 攻击 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到地狱铁甲 防御 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到诡异骰子 幸运 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "获得魔族祝福 5 日全属性 +2",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing",
+                      "label": "魔族祝福",
+                      "stat": "attack",
+                      "amount": 2,
+                      "duration": 5
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing2",
+                      "label": "魔族祝福 II",
+                      "stat": "defense",
+                      "amount": 2,
+                      "duration": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到禁忌典籍：全属性 +5 hpMax +50",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 5,
+                      "hpMultiplier": 10
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "惊扰怨灵 -80 HP 4 日诅咒",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 80,
+                      "negative": true
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_demon_grave_curse",
+                      "label": "怨灵诅咒",
+                      "stat": "attack",
+                      "amount": -2,
+                      "duration": 4
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "寻宝 · 第 3/3 次（80 $）",
+          "conditions": [
+            {
+              "type": "flag_value",
+              "key": "treasure_demon_count",
+              "value": 2
+            },
+            {
+              "type": "gold_gte",
+              "value": 80
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 80,
+              "negative": true
+            },
+            {
+              "type": "increment_flag",
+              "key": "treasure_demon_count",
+              "amount": 1
+            },
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 15,
+                  "label": "魔族的废墟里空无一物。",
+                  "effects": []
+                },
+                {
+                  "weight": 20,
+                  "label": "挖到黑金硬币 +30~60 $",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 30,
+                      "max": 60
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到恶魔之骨 攻击 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "attack",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 15,
+                  "label": "挖到地狱铁甲 防御 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "defense",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到诡异骰子 幸运 +5",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "获得魔族祝福 5 日全属性 +2",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing",
+                      "label": "魔族祝福",
+                      "stat": "attack",
+                      "amount": 2,
+                      "duration": 5
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_demon_blessing2",
+                      "label": "魔族祝福 II",
+                      "stat": "defense",
+                      "amount": 2,
+                      "duration": 5
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "挖到禁忌典籍：全属性 +5 hpMax +50",
+                  "effects": [
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 5,
+                      "hpMultiplier": 10
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "惊扰怨灵 -80 HP 4 日诅咒",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "hp",
+                      "amount": 80,
+                      "negative": true
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_demon_grave_curse",
+                      "label": "怨灵诅咒",
+                      "stat": "attack",
+                      "amount": -2,
+                      "duration": 4
                     }
                   ]
                 }
@@ -3410,116 +4127,45 @@
       "description": "「无駄、无駄、无駄！」吸血鬼之王 DIO 自夜色中浮现，金色瞳孔锁定了你。\n攻击力 600 / 防御力 500 / 幸运 100 / 生命 2500 / 技能：砸瓦鲁多",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 350
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_dio",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 70,
-                      "label": "你击杀了 DIO，斩获大量金币与威望。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 150
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_dio",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 30,
-                      "label": "DIO 用时停撕开你的防线，你险险逃出生天。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 48,
-                          "max": 90,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_dio",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 80,
+                  "max": 150
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 25,
-                      "label": "你竟意外得手，DIO 倒在血泊中。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 150
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 10,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_dio",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 75,
-                      "label": "DIO 一拳贯穿你的胸口！",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 90,
-                          "max": 150,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 3,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
@@ -3527,7 +4173,7 @@
               "then": [
                 {
                   "type": "log",
-                  "text": "你成功脱离了 DIO 的视线。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
@@ -3563,124 +4209,61 @@
       "description": "「Yare yare daze……」承太郎为 DIO 的死前来寻仇，白金之星无声地伫立在他身后。\n攻击力 700 / 防御力 600 / 幸运 120 / 生命 3000 / 技能：白金之星的连击",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 490
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_jotaro",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 65,
-                      "label": "你与承太郎拼了个两败俱伤，赢得了他的尊敬。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 10,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_jotaro",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 35,
-                      "label": "你输了，但承太郎留你一命。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 60,
-                          "max": 120,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_jotaro",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 80,
+                  "max": 150
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 15,
-                      "label": "你奇迹般打赢了！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 12,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_jotaro",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 85,
-                      "label": "白金之星砸碎了你的骨架。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 120,
-                          "max": 180,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 4,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.4,
+              "chance": 0.55,
               "then": [
                 {
                   "type": "log",
-                  "text": "你侥幸躲过承太郎的视线。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 30,
-                  "max": 60,
+                  "min": 22,
+                  "max": 40,
                   "negative": true
                 }
               ]
@@ -3704,134 +4287,61 @@
       "description": "你撞上了蚁王梅路艾姆，他冷酷地审视着你这个「人类」。\n攻击力 1200 / 防御力 1800 / 幸运 100 / 生命 6000 / 技能：摄食成长",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 630
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_meruem",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 55,
-                      "label": "你斩落了蚁王，王者血脉断绝。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 200,
-                          "max": 400
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 15,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_meruem",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 45,
-                      "label": "你被蚁王生吞了一半生命力。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 120,
-                          "max": 240,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta",
-                          "stat": "attack",
-                          "amount": 10,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_meruem",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 9,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 100,
+                  "max": 180
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 10,
-                      "label": "运气爆棚的一击。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 200,
-                          "max": 400
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 15,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_meruem",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 90,
-                      "label": "你被蚁王无情地碾碎。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 180,
-                          "max": 300,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 5,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.35,
+              "chance": 0.5,
               "then": [
                 {
                   "type": "log",
-                  "text": "你拼命逃出了蚁王的视野。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 60,
-                  "max": 120,
+                  "min": 28,
+                  "max": 50,
                   "negative": true
                 }
               ]
@@ -3855,134 +4365,61 @@
       "description": "枯骨堆中走出的巫妖领主举起骨杖，浓烈的死气笼罩了你。\n攻击力 1000 / 防御力 500 / 幸运 120 / 生命 3000 / 技能：虚无、灵魂摄取",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 490
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_lich",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 65,
-                      "label": "巫妖领主被你逼出本体，魂飞魄散。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 180
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_lich",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 35,
-                      "label": "灵魂被摄取，你险些再无生气。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 90,
-                          "max": 150,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta",
-                          "stat": "luck",
-                          "amount": 8,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_lich",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 90,
+                  "max": 170
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "你险胜！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 180
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_lich",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 80,
-                      "label": "巫妖将你的生命力悉数吸光。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 150,
-                          "max": 240,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 4,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.5,
+              "chance": 0.55,
               "then": [
                 {
                   "type": "log",
-                  "text": "你逃出了死气的范围。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 30,
-                  "max": 60,
+                  "min": 22,
+                  "max": 42,
                   "negative": true
                 }
               ]
@@ -4006,112 +4443,45 @@
       "description": "夜雾中浮出一位优雅的吸血鬼领主，他向你伸手邀请——共舞或共死。\n攻击力 800 / 防御力 700 / 幸运 150 / 生命 3500 / 技能：吞噬血液",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 420
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_vampire",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 60,
-                      "label": "你击穿了吸血鬼的心脏。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_vampire",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 40,
-                      "label": "吸血鬼吞食你的血液恢复了大量伤势。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 90,
-                          "max": 150,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_vampire",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 85,
+                  "max": 160
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "你险胜！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_vampire",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 82,
-                      "label": "你被吸成了人干。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 150,
-                          "max": 240,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 4,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
@@ -4119,15 +4489,15 @@
               "then": [
                 {
                   "type": "log",
-                  "text": "你成功躲入晨光中。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 36,
-                  "max": 72,
+                  "min": 22,
+                  "max": 42,
                   "negative": true
                 }
               ]
@@ -4151,122 +4521,60 @@
       "description": "魔族城镇深处坐镇的恶魔领主已注意到你的存在，他懒洋洋地起身。\n攻击力 450 / 防御力 600 / 幸运 80 / 生命 2000 / 技能：重击",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 315
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_devil",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 70,
-                      "label": "恶魔领主倒下了。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 160
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 6,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_devil",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 30,
-                      "label": "你受了重创但成功逃离。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 60,
-                          "max": 120,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_devil",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 100,
+                  "max": 180
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "意外地击败了。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 80,
-                          "max": 160
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 6,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_devil",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 75,
-                      "label": "你被重击狠狠砸飞。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 108,
-                          "max": 168,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.7,
+              "chance": 0.5,
               "then": [
                 {
                   "type": "log",
-                  "text": "你溜走了。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 24,
+                  "min": 26,
                   "max": 48,
                   "negative": true
                 }
@@ -4291,123 +4599,61 @@
       "description": "「啧，又是一个想找死的人。」凯尔特之光持枪而立，鲜红的发丝随风飞舞。\n攻击力 900 / 防御力 600 / 幸运 200 / 生命 3200 / 技能：怒槍贯穿",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 490
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_cu",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你与库丘林激战至天明，最终斩落英灵。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_cu",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "「刺心枪」贯穿了你的胸口。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 120,
-                          "max": 210,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_cu",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 9,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 110,
+                  "max": 200
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 15,
-                      "label": "你抓住了瞬间！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_cu",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 85,
-                      "label": "库丘林一刺命中。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 150,
-                          "max": 240,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.45,
+              "chance": 0.5,
               "then": [
                 {
                   "type": "log",
-                  "text": "你脱离了战圈。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 48,
-                  "max": 90,
+                  "min": 30,
+                  "max": 55,
                   "negative": true
                 }
               ]
@@ -4431,123 +4677,61 @@
       "description": "黑衣剑士抽出双剑，星屑流光在剑锋上跳跃。「让我看看你的实力。」\n攻击力 850 / 防御力 700 / 幸运 130 / 生命 3300 / 技能：星屑流连击",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 525
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_kirito",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 55,
-                      "label": "你斩落了桐人的双剑，他黯然认输。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_kirito",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 45,
-                      "label": "桐人的连击让你苦不堪言。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 108,
-                          "max": 180,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_kirito",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 95,
+                  "max": 170
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "你险胜！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_kirito",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 85,
-                      "label": "你被双剑刻满了伤痕。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 150,
-                          "max": 240,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.5,
+              "chance": 0.55,
               "then": [
                 {
                   "type": "log",
-                  "text": "你逃出剑士的范围。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 48,
-                  "max": 84,
+                  "min": 22,
+                  "max": 42,
                   "negative": true
                 }
               ]
@@ -4571,129 +4755,61 @@
       "description": "一道凄美的歌声自破败教堂传出，戴着白面具的幽灵歌剧家飘然而至。\n攻击力 700 / 防御力 800 / 幸运 100 / 生命 2800 / 技能：魅惑歌喉",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 455
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_phantom",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 60,
-                      "label": "你撕碎了他的面具，歌声归于沉寂。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_phantom",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 40,
-                      "label": "你被歌声魅惑，险些倒戈。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 90,
-                          "max": 150,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_phantom",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 100,
+                  "max": 180
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 20,
-                      "label": "你掐准了换气间隙。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_phantom",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 80,
-                      "label": "你被魅惑，自残至重伤。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 120,
-                          "max": 210,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta",
-                          "stat": "luck",
-                          "amount": 5,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.5,
+              "chance": 0.6,
               "then": [
                 {
                   "type": "log",
-                  "text": "你捂住耳朵冲了出去。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 42,
-                  "max": 78,
+                  "min": 18,
+                  "max": 36,
                   "negative": true
                 }
               ]
@@ -4717,123 +4833,61 @@
       "description": "影子里走出一名黑发修罗，两柄黑刃同时出鞘。\n攻击力 950 / 防御力 600 / 幸运 180 / 生命 3000 / 技能：影遁连斩",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 490
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_alma",
+              "tier": "lord",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 55,
-                      "label": "你识破了影遁，将修罗钉在墙上。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_alma",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 45,
-                      "label": "黑影修罗一刀斩中你的肩膀。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 108,
-                          "max": 180,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_alma",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 8,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 90,
+                  "max": 170
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "你险胜！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 120,
-                          "max": 220
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 9,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_alma",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 85,
-                      "label": "你被连斩重伤。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 144,
-                          "max": 228,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.4,
+              "chance": 0.55,
               "then": [
                 {
                   "type": "log",
-                  "text": "你跳入虚空逃出。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 48,
-                  "max": 90,
+                  "min": 22,
+                  "max": 42,
                   "negative": true
                 }
               ]
@@ -4857,133 +4911,61 @@
       "description": "黄金英雄王凌空注视着你，万千宝具自虚空中浮现，金光刺得人睁不开眼。\n攻击力 1600 / 防御力 1000 / 幸运 400 / 生命 4000 / 技能：王之财宝",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 600
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_gilgamesh",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 60,
-                      "label": "你避开了所有宝具，最终将王者推下宝座。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_gilgamesh",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 40,
-                      "label": "王之财宝雨点般砸落，你重伤倒地。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 200,
-                          "max": 350,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 5,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_gilgamesh",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 18,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 300,
+                  "max": 500
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "你险胜！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_gilgamesh",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 88,
-                      "label": "你被无数宝具贯穿。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 300,
-                          "max": 450,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.3,
+              "chance": 0.4,
               "then": [
                 {
                   "type": "log",
-                  "text": "你竟逃出了王者的视野。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 100,
-                  "max": 175,
+                  "min": 80,
+                  "max": 150,
                   "negative": true
                 }
               ]
@@ -5011,141 +4993,61 @@
       "description": "黑袍骸骨升上空中，纳萨力克的恶灵齐声诵咏。\n攻击力 1500 / 防御力 2000 / 幸运 200 / 生命 5500 / 技能：纳萨力克的疯狂报复",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 750
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_ainz",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你彻底击碎了不死之王，纳萨力克土崩瓦解。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 700
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 20,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "grant_skill",
-                          "skill": {
-                            "name": "倾国倾城",
-                            "type": "ultimate",
-                            "description": "除最后一日外可跳过任何一次战斗，每场冒险仅可使用一次。"
-                          }
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_ainz",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "安兹召唤万灵，你被压制至濒死。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 250,
-                          "max": 400,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 6,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_ainz",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 18,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 320,
+                  "max": 520
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 8,
-                      "label": "你侥幸命中弱点！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 700
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 20,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_ainz",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 92,
-                      "label": "纳萨力克的恶灵将你撕成碎片。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 350,
-                          "max": 550,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 10,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.2,
+              "chance": 0.4,
               "then": [
                 {
                   "type": "log",
-                  "text": "你侥幸逃过审判。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 150,
-                  "max": 250,
+                  "min": 85,
+                  "max": 160,
                   "negative": true
                 }
               ]
@@ -5168,107 +5070,61 @@
       "description": "纳萨力克的恶灵之一找到了你的踪迹，复仇之火没有止息。\n攻击力 1400 / 防御力 1500 / 幸运 150 / 生命 4000",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 600
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_nazarick",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 55,
-                      "label": "你斩落了一名复仇者。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 200,
-                          "max": 350
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 6,
-                          "hpMultiplier": 10
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 45,
-                      "label": "你被复仇者重创。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 150,
-                          "max": 250,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_nazarick",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 16,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 320,
+                  "max": 520
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 10,
-                      "label": "勉强击退。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 100,
-                          "max": 200
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 4,
-                          "hpMultiplier": 10
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 90,
-                      "label": "复仇者们将你打入泥泞。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 200,
-                          "max": 350,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.35,
+              "chance": 0.4,
               "then": [
                 {
                   "type": "log",
-                  "text": "你脱离了追杀。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 75,
-                  "max": 125,
+                  "min": 80,
+                  "max": 150,
                   "negative": true
                 }
               ]
@@ -5292,123 +5148,61 @@
       "description": "披着滴血盾的勇者沉默地伫立。「我不会饶过任何挡路的人。」\n攻击力 800 / 防御力 2500 / 幸运 200 / 生命 5000 / 技能：愤怒之盾",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 650
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_naofumi",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你击碎了盾之勇者的屏障。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 15,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_naofumi",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "你的攻击全被反弹回来。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 200,
-                          "max": 300,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_naofumi",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 16,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 280,
+                  "max": 480
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 30,
-                      "label": "意外击穿了盾甲。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 15,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_naofumi",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 90,
-                      "label": "你被反弹的伤害彻底压垮。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 300,
-                          "max": 500,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.35,
+              "chance": 0.45,
               "then": [
                 {
                   "type": "log",
-                  "text": "你拉开了距离。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 100,
-                  "max": 175,
+                  "min": 70,
+                  "max": 140,
                   "negative": true
                 }
               ]
@@ -5432,133 +5226,61 @@
       "description": "黑帽与血红披风。「Releasing control art restriction system to level zero...」\n攻击力 2000 / 防御力 1500 / 幸运 250 / 生命 6000 / 技能：吸血鬼之王",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 850
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_alucard",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你击碎了他的最后一道封印。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 700
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 20,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_alucard",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "他从战斗中吸取了你的精气。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 300,
-                          "max": 500,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 5,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_alucard",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 20,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 350,
+                  "max": 550
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 8,
-                      "label": "你抓住了换形的破绽。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 700
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 20,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_alucard",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 92,
-                      "label": "你被千万亡灵吞噬。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 400,
-                          "max": 600,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 8,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.25,
+              "chance": 0.4,
               "then": [
                 {
                   "type": "log",
-                  "text": "你脱出了他的影域。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 150,
-                  "max": 250,
+                  "min": 90,
+                  "max": 170,
                   "negative": true
                 }
               ]
@@ -5582,123 +5304,61 @@
       "description": "天空被烈焰点亮。赤红色巨龙降临，咆哮震耳欲聋。\n攻击力 1800 / 防御力 1700 / 幸运 100 / 生命 6500 / 技能：龙焰吐息",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 750
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_ddraig",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你的剑刺穿了它的龙鳞要害。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 350,
-                          "max": 600
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_ddraig",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "龙焰将你烧成焦黑。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 250,
-                          "max": 400,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_ddraig",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 18,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 320,
+                  "max": 520
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 8,
-                      "label": "你射穿了龙瞳。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 350,
-                          "max": 600
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_ddraig",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 92,
-                      "label": "龙焰将你彻底吞噬。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 400,
-                          "max": 600,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.3,
+              "chance": 0.45,
               "then": [
                 {
                   "type": "log",
-                  "text": "你躲入岩缝逃过一劫。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 150,
-                  "max": 250,
+                  "min": 80,
+                  "max": 150,
                   "negative": true
                 }
               ]
@@ -5722,123 +5382,61 @@
       "description": "黑翅白裙的女守护者展开战巨剑，深爱的微笑里满是杀意。\n攻击力 1700 / 防御力 2200 / 幸运 200 / 生命 5800 / 技能：守护狂热",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 800
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_albedo",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你击落了她的战巨剑。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 650
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_albedo",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "她的疯狂之斩劈下你的肩胛。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 250,
-                          "max": 450,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_albedo",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 18,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 310,
+                  "max": 510
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 24,
-                      "label": "你侥幸取胜。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 400,
-                          "max": 650
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 18,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_albedo",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 92,
-                      "label": "你被她一斩两断。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 400,
-                          "max": 650,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.25,
+              "chance": 0.45,
               "then": [
                 {
                   "type": "log",
-                  "text": "你侥幸脱离。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 150,
-                  "max": 250,
+                  "min": 80,
+                  "max": 150,
                   "negative": true
                 }
               ]
@@ -5862,123 +5460,61 @@
       "description": "黑发兵长平举双刃，瞳孔锁定你的颈动脉。\n攻击力 2200 / 防御力 1200 / 幸运 350 / 生命 4500 / 技能：迅捷连斩",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（手动战斗）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 750
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_levi",
+              "tier": "god",
+              "canFlee": true,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你以快制快，斩断了他的双刃。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 550
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 17,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_levi",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "兵长的迅斩切下了你大块血肉。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 250,
-                          "max": 400,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_levi",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 20,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 340,
+                  "max": 540
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 8,
-                      "label": "你抓住了死角！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 300,
-                          "max": 550
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 17,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_levi",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 92,
-                      "label": "你只看到一道残影，便已倒下。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 400,
-                          "max": 600,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "mark_death"
                 }
               ]
             }
           ]
         },
         {
-          "text": "逃跑",
+          "text": "逃跑（事件层）",
           "effects": [
             {
               "type": "chance",
-              "chance": 0.2,
+              "chance": 0.5,
               "then": [
                 {
                   "type": "log",
-                  "text": "你侥幸躲入立体机动盲区。"
+                  "text": "你成功脱离了敌人的视线。"
                 }
               ],
               "else": [
                 {
                   "type": "stat_delta",
                   "stat": "hp",
-                  "min": 125,
-                  "max": 200,
+                  "min": 70,
+                  "max": 140,
                   "negative": true
                 }
               ]
@@ -6002,45 +5538,40 @@
       "description": "光头老师挠了挠头：「啊？要打架啊？」你看清了他的眼神——绝对的虚无。\n攻击力 999999 / 防御力 9999999 / 生命 9999999 / 幸运 0",
       "choices": [
         {
-          "text": "出手攻击",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "weighted",
-              "branches": [
+              "type": "spawn_battle",
+              "monsterId": "boss_saitama",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "weight": 100,
-                  "label": "光头老师一拳打飞了你。",
-                  "effects": [
-                    {
-                      "type": "stat_delta",
-                      "stat": "hp",
-                      "min": 320,
-                      "max": 600,
-                      "negative": true
-                    },
-                    {
-                      "type": "stat_delta_all",
-                      "amount": 6,
-                      "negative": true
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_saitama",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 50,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1500,
+                  "max": 2500
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
+                }
+              ],
+              "onLose": [
+                {
+                  "type": "mark_death"
                 }
               ]
-            }
-          ]
-        },
-        {
-          "text": "防御三次（你被允许如此）",
-          "effects": [
-            {
-              "type": "log",
-              "text": "「啊？打不起来？算了。」光头老师转身离去。"
-            },
-            {
-              "type": "set_flag",
-              "key": "met_saitama",
-              "value": true,
-              "silent": true
             }
           ]
         }
@@ -6061,129 +5592,38 @@
       "description": "海面被一柄金色三叉戟劈开，海皇缓步从浪间走出。\n攻击力 3000 / 防御力 2100 / 幸运 150 / 生命 8500 / 技能：三叉戟之击",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 800
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_poseidon",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 45,
-                      "label": "你击落了海神的三叉戟。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 500,
-                          "max": 1000
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 25,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_poseidon",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 55,
-                      "label": "三叉戟无视防御贯穿了你。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 400,
-                          "max": 720,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 10,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_poseidon",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 45,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1400,
+                  "max": 2400
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 5,
-                      "label": "你击中了海神的死穴！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 500,
-                          "max": 1000
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 25,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_poseidon",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 95,
-                      "label": "你被海神冲下了海底。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 600,
-                          "max": 1000,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "逃跑",
-          "effects": [
-            {
-              "type": "chance",
-              "chance": 0.2,
-              "then": [
-                {
-                  "type": "log",
-                  "text": "你冒死游上了岸。"
-                }
-              ],
-              "else": [
-                {
-                  "type": "stat_delta",
-                  "stat": "hp",
-                  "min": 160,
-                  "max": 280,
-                  "negative": true
+                  "type": "mark_death"
                 }
               ]
             }
@@ -6206,129 +5646,38 @@
       "description": "粉发少女眼中只剩绝望。「我会带走所有的魔女……包括你。」\n攻击力 2800 / 防御力 2500 / 幸运 500 / 生命 9000 / 技能：圆环之理",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 880
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_madoka",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 40,
-                      "label": "你击碎了圆环之理。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 600,
-                          "max": 1100
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 28,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_madoka",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 60,
-                      "label": "你被圆环之理吞噬一部分灵魂。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 480,
-                          "max": 800,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 10,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_madoka",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 48,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1500,
+                  "max": 2500
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 4,
-                      "label": "你抓住了瞬间的奇迹。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 600,
-                          "max": 1100
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 28,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_madoka",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 96,
-                      "label": "你被纳入圆环之理。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 720,
-                          "max": 1200,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "逃跑",
-          "effects": [
-            {
-              "type": "chance",
-              "chance": 0.15,
-              "then": [
-                {
-                  "type": "log",
-                  "text": "你跳出了她的认知。"
-                }
-              ],
-              "else": [
-                {
-                  "type": "stat_delta",
-                  "stat": "hp",
-                  "min": 200,
-                  "max": 320,
-                  "negative": true
+                  "type": "mark_death"
                 }
               ]
             }
@@ -6351,129 +5700,38 @@
       "description": "曾经的晨星，堕天使之王。一道黑光劈开夜色。\n攻击力 3500 / 防御力 2500 / 幸运 300 / 生命 10000 / 技能：堕落之翼",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 1000
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_lucifer",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 40,
-                      "label": "你斩落了堕天使之王。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 30,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_lucifer",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 60,
-                      "label": "你被堕天之翼掀飞。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 600,
-                          "max": 1000,
-                          "negative": true
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 12,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_lucifer",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 50,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1600,
+                  "max": 2600
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 3,
-                      "label": "你击中了他的真名。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 30,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_lucifer",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 97,
-                      "label": "你被钉在天空，灵魂崩溃。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 800,
-                          "max": 1400,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "逃跑",
-          "effects": [
-            {
-              "type": "chance",
-              "chance": 0.15,
-              "then": [
-                {
-                  "type": "log",
-                  "text": "你逃出了他的羽域。"
-                }
-              ],
-              "else": [
-                {
-                  "type": "stat_delta",
-                  "stat": "hp",
-                  "min": 240,
-                  "max": 360,
-                  "negative": true
+                  "type": "mark_death"
                 }
               ]
             }
@@ -6496,124 +5754,38 @@
       "description": "黑蓝色巨龙降临，吞噬大地与天空的怒吼。\n攻击力 3800 / 防御力 3000 / 幸运 100 / 生命 12000 / 技能：龙类灭杀",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 1120
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_acnologia",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 35,
-                      "label": "你硬撼了龙类终结者。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 32,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_acnologia",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 65,
-                      "label": "黑龙将你吞下又吐出。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 720,
-                          "max": 1200,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_acnologia",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 50,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1700,
+                  "max": 2700
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 3,
-                      "label": "你射穿了龙翼连接处。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 32,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_acnologia",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 97,
-                      "label": "你被龙吼粉碎。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 1000,
-                          "max": 1600,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "逃跑",
-          "effects": [
-            {
-              "type": "chance",
-              "chance": 0.15,
-              "then": [
-                {
-                  "type": "log",
-                  "text": "你避入山岭深处。"
-                }
-              ],
-              "else": [
-                {
-                  "type": "stat_delta",
-                  "stat": "hp",
-                  "min": 280,
-                  "max": 440,
-                  "negative": true
+                  "type": "mark_death"
                 }
               ]
             }
@@ -6636,124 +5808,38 @@
       "description": "时空在他面前如纸张般皱缩。「你太脆弱了，凡人。」\n攻击力 3200 / 防御力 2700 / 幸运 600 / 生命 9000 / 技能：时停领域",
       "choices": [
         {
-          "text": "应战",
+          "text": "应战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 1120
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_chronos",
+              "tier": "demon",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 40,
-                      "label": "你竟突破了时停，斩落了时之神。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 32,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_chronos",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 60,
-                      "label": "你被时停困住，瞬间崩溃。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 720,
-                          "max": 1120,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_chronos",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 50,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 1600,
+                  "max": 2600
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 3,
-                      "label": "你抓住了时之神的失误。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "min": 800,
-                          "max": 1500
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 32,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_chronos",
-                          "value": true,
-                          "silent": true
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 97,
-                      "label": "时间停滞，你的生命也随之止息。",
-                      "effects": [
-                        {
-                          "type": "stat_delta",
-                          "stat": "hp",
-                          "min": 920,
-                          "max": 1400,
-                          "negative": true
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "逃跑",
-          "effects": [
-            {
-              "type": "chance",
-              "chance": 0.1,
-              "then": [
-                {
-                  "type": "log",
-                  "text": "你从时之夹缝中逃出。"
-                }
-              ],
-              "else": [
-                {
-                  "type": "stat_delta",
-                  "stat": "hp",
-                  "min": 280,
-                  "max": 440,
-                  "negative": true
+                  "type": "mark_death"
                 }
               ]
             }
@@ -6776,100 +5862,135 @@
       "description": "天地崩塌，所有的不祥都聚于此处。\n这一刻，你站在了第 95 日的尽头——终焉之王缓缓睁眼。\n攻击力 5000 / 防御力 8000 / 幸运 300 / 生命 30000\n技能：灭世意志（无视防御真实伤害）、不灭之躯（复活一次属性+50%）、终焉之歌（降低对方全属性 50%）",
       "choices": [
         {
-          "text": "决一死战",
+          "text": "决一死战（必战）",
           "effects": [
             {
-              "type": "conditional",
-              "cond": {
-                "type": "stat_sum_gte",
-                "value": 1500
-              },
-              "then": [
+              "type": "spawn_battle",
+              "monsterId": "boss_final",
+              "tier": "final",
+              "canFlee": false,
+              "onWin": [
                 {
-                  "type": "weighted",
-                  "branches": [
-                    {
-                      "weight": 50,
-                      "label": "你斩落了终焉之王，世界从绝望中被拯救！",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "amount": 9999
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 100,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "hp_restore_to",
-                          "value": 99999
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_final_boss",
-                          "value": true,
-                          "silent": true
-                        },
-                        {
-                          "type": "set_meta_flag",
-                          "key": "ever_killed_final_boss",
-                          "value": true,
-                          "label": "「您已成为传奇 · 终焉斩王」"
-                        }
-                      ]
-                    },
-                    {
-                      "weight": 50,
-                      "label": "终焉之王的不灭之躯压垮了你。",
-                      "effects": [
-                        {
-                          "type": "mark_death"
-                        }
-                      ]
-                    }
-                  ]
+                  "type": "set_flag",
+                  "key": "killed_final_boss",
+                  "value": true,
+                  "silent": true
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 100,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 9999,
+                  "max": 9999
+                },
+                {
+                  "type": "hp_restore_to",
+                  "value": 99999
+                },
+                {
+                  "type": "set_meta_flag",
+                  "key": "ever_killed_final_boss",
+                  "value": true,
+                  "label": "「您已成为传奇 · 终焉斩王」"
                 }
               ],
-              "else": [
+              "onLose": [
                 {
-                  "type": "weighted",
-                  "branches": [
+                  "type": "mark_death"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1_lost_pouch",
+      "category": "unconditional",
+      "weight": 2,
+      "title": "路边的钱袋",
+      "description": "你在路边踢到一个鼓鼓的钱袋，似乎是某个旅人遗失的。",
+      "choices": [
+        {
+          "text": "收下（+ 金币）",
+          "effects": [
+            {
+              "type": "gold_delta",
+              "min": 5,
+              "max": 30
+            }
+          ]
+        },
+        {
+          "text": "原地放回",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你恪守原则，将钱袋放回原处。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m2_thief_attack",
+      "category": "unconditional",
+      "weight": 1.5,
+      "conditions": [
+        {
+          "type": "gold_gte",
+          "value": 20
+        }
+      ],
+      "title": "飞贼袭来",
+      "description": "一道身影从你怀中掠过，再低头时，钱袋已轻了不少。",
+      "choices": [
+        {
+          "text": "认栽",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 60,
+                  "label": "损失 10~30 金币",
+                  "effects": [
                     {
-                      "weight": 15,
-                      "label": "命运之神眷顾，你以最后一刀击穿了它的心脏。",
-                      "effects": [
-                        {
-                          "type": "gold_delta",
-                          "amount": 9999
-                        },
-                        {
-                          "type": "stat_delta_all",
-                          "amount": 100,
-                          "hpMultiplier": 10
-                        },
-                        {
-                          "type": "set_flag",
-                          "key": "killed_final_boss",
-                          "value": true,
-                          "silent": true
-                        },
-                        {
-                          "type": "set_meta_flag",
-                          "key": "ever_killed_final_boss",
-                          "value": true,
-                          "label": "「您已成为传奇 · 终焉斩王」"
-                        }
-                      ]
-                    },
+                      "type": "gold_delta",
+                      "min": 10,
+                      "max": 30,
+                      "negative": true
+                    }
+                  ]
+                },
+                {
+                  "weight": 30,
+                  "label": "损失 30~80 金币",
+                  "effects": [
                     {
-                      "weight": 95,
-                      "label": "灭世意志一击之下，你与世界一同湮灭。",
-                      "effects": [
-                        {
-                          "type": "mark_death"
-                        }
-                      ]
+                      "type": "gold_delta",
+                      "min": 30,
+                      "max": 80,
+                      "negative": true
+                    }
+                  ]
+                },
+                {
+                  "weight": 10,
+                  "label": "飞贼笨拙撞树，反而留下一袋金币 +20~50",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "min": 20,
+                      "max": 50
                     }
                   ]
                 }
@@ -6878,58 +5999,105 @@
           ]
         },
         {
-          "text": "使用 誓约胜利之剑 · Excalibur",
+          "text": "追击（攻击 ≥ 30）",
           "conditions": [
             {
-              "type": "has_skill",
-              "name": "誓约胜利之剑 · Excalibur"
+              "type": "stat_gte",
+              "stat": "attack",
+              "value": 30
             }
           ],
           "effects": [
             {
-              "type": "log",
-              "text": "你高举圣剑，金色光辉撕开终焉的夜色。"
+              "type": "chance",
+              "chance": 0.7,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你一刀劈倒了飞贼，从其身上搜出双倍金币！"
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 30,
+                  "max": 80
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "飞贼比你想象的更狡猾。"
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 20,
+                  "max": 50,
+                  "negative": true
+                },
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "min": 10,
+                  "max": 30,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m3_gambling_house",
+      "category": "unconditional",
+      "weight": 1.2,
+      "conditions": [
+        {
+          "type": "gold_gte",
+          "value": 10
+        }
+      ],
+      "title": "赌场之夜",
+      "description": "昏暗的赌场里，每个人都在屏息看着你手里的骰子。",
+      "choices": [
+        {
+          "text": "小赌怡情（10 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 10
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 10,
+              "negative": true
             },
             {
               "type": "weighted",
               "branches": [
                 {
-                  "weight": 30,
-                  "label": "Excalibur 一击斩落了终焉之王！",
+                  "weight": 45,
+                  "label": "惨败，钱赔光了。",
+                  "effects": []
+                },
+                {
+                  "weight": 40,
+                  "label": "回本翻倍 +20",
                   "effects": [
                     {
                       "type": "gold_delta",
-                      "amount": 9999
-                    },
-                    {
-                      "type": "stat_delta_all",
-                      "amount": 100,
-                      "hpMultiplier": 10
-                    },
-                    {
-                      "type": "set_flag",
-                      "key": "killed_final_boss",
-                      "value": true,
-                      "silent": true
-                    },
-                    {
-                      "type": "set_meta_flag",
-                      "key": "ever_killed_final_boss",
-                      "value": true,
-                      "label": "「您已成为传奇 · 终焉斩王」"
+                      "amount": 20
                     }
                   ]
                 },
                 {
-                  "weight": 70,
-                  "label": "Excalibur 的光辉被终焉之力吞没，你重伤倒地。",
+                  "weight": 15,
+                  "label": "大赚 +50",
                   "effects": [
                     {
-                      "type": "stat_delta",
-                      "stat": "hp",
-                      "min": 1500,
-                      "max": 2500,
-                      "negative": true
+                      "type": "gold_delta",
+                      "amount": 50
                     }
                   ]
                 }
@@ -6938,126 +6106,68 @@
           ]
         },
         {
-          "text": "用「巴雷特狙击步枪」远程一击",
+          "text": "豪赌（50 $，需 luck ≥ 10）",
           "conditions": [
             {
-              "type": "has_skill",
-              "name": "巴雷特狙击步枪"
+              "type": "gold_gte",
+              "value": 50
+            },
+            {
+              "type": "stat_gte",
+              "stat": "luck",
+              "value": 10
             }
           ],
           "effects": [
             {
-              "type": "log",
-              "text": "你扣下扳机，黑色子弹划破长空。"
+              "type": "gold_delta",
+              "amount": 50,
+              "negative": true
             },
             {
               "type": "weighted",
               "branches": [
                 {
                   "weight": 40,
-                  "label": "巴雷特一击命中眉心！终焉之王轰然倒地！",
-                  "effects": [
-                    {
-                      "type": "gold_delta",
-                      "amount": 9999
-                    },
-                    {
-                      "type": "stat_delta_all",
-                      "amount": 100,
-                      "hpMultiplier": 10
-                    },
-                    {
-                      "type": "set_flag",
-                      "key": "killed_final_boss",
-                      "value": true,
-                      "silent": true
-                    },
-                    {
-                      "type": "set_meta_flag",
-                      "key": "ever_killed_final_boss",
-                      "value": true,
-                      "label": "「您已成为传奇 · 终焉斩王」"
-                    },
-                    {
-                      "type": "revoke_skill",
-                      "name": "巴雷特狙击步枪"
-                    }
-                  ]
+                  "label": "惨败。",
+                  "effects": []
                 },
-                {
-                  "weight": 60,
-                  "label": "子弹被防御反弹，你陷入苦战。",
-                  "effects": [
-                    {
-                      "type": "stat_delta",
-                      "stat": "hp",
-                      "min": 1500,
-                      "max": 2500,
-                      "negative": true
-                    },
-                    {
-                      "type": "revoke_skill",
-                      "name": "巴雷特狙击步枪"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "text": "使用 Excalibur · Morgan",
-          "conditions": [
-            {
-              "type": "has_skill",
-              "name": "Excalibur · Morgan"
-            }
-          ],
-          "effects": [
-            {
-              "type": "log",
-              "text": "你举起黑化王者之剑，世界被血色光辉浸染。"
-            },
-            {
-              "type": "weighted",
-              "branches": [
                 {
                   "weight": 35,
-                  "label": "Excalibur Morgan 撕裂了终焉之王！",
+                  "label": "小赚 +120",
                   "effects": [
                     {
                       "type": "gold_delta",
-                      "amount": 9999
-                    },
-                    {
-                      "type": "stat_delta_all",
-                      "amount": 100,
-                      "hpMultiplier": 10
-                    },
-                    {
-                      "type": "set_flag",
-                      "key": "killed_final_boss",
-                      "value": true,
-                      "silent": true
-                    },
-                    {
-                      "type": "set_meta_flag",
-                      "key": "ever_killed_final_boss",
-                      "value": true,
-                      "label": "「您已成为传奇 · 终焉斩王」"
+                      "amount": 120
                     }
                   ]
                 },
                 {
-                  "weight": 65,
-                  "label": "Excalibur 的光辉被吞没。",
+                  "weight": 20,
+                  "label": "大赚 +250 并属性 +1",
                   "effects": [
                     {
-                      "type": "stat_delta",
-                      "stat": "hp",
-                      "min": 2000,
-                      "max": 3000,
-                      "negative": true
+                      "type": "gold_delta",
+                      "amount": 250
+                    },
+                    {
+                      "type": "random_stat_delta",
+                      "amount": 1,
+                      "pickCount": 1
+                    }
+                  ]
+                },
+                {
+                  "weight": 5,
+                  "label": "一发入魂 +500 全属性 +2",
+                  "effects": [
+                    {
+                      "type": "gold_delta",
+                      "amount": 500
+                    },
+                    {
+                      "type": "stat_delta_all",
+                      "amount": 2
                     }
                   ]
                 }
@@ -7066,66 +6176,1443 @@
           ]
         },
         {
-          "text": "使用 魔王寂灭",
+          "text": "不玩了",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你转身离开了赌场。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4_merchant",
+      "category": "unconditional",
+      "weight": 1,
+      "conditions": [
+        {
+          "type": "gold_gte",
+          "value": 30
+        }
+      ],
+      "title": "游商的橱窗",
+      "description": "一位披着斗篷的游商铺开了奇货：药水、护符与传闻中的\"勇气符印\"。",
+      "choices": [
+        {
+          "text": "买药水（30 $，回满 HP）",
           "conditions": [
             {
-              "type": "has_skill",
-              "name": "魔王寂灭"
+              "type": "gold_gte",
+              "value": 30
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 30,
+              "negative": true
+            },
+            {
+              "type": "hp_restore_to",
+              "value": 99999
+            }
+          ]
+        },
+        {
+          "text": "买护符（60 $，攻防 +3）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 60
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 60,
+              "negative": true
+            },
+            {
+              "type": "stat_delta",
+              "stat": "attack",
+              "amount": 3
+            },
+            {
+              "type": "stat_delta",
+              "stat": "defense",
+              "amount": 3
+            }
+          ]
+        },
+        {
+          "text": "买勇气符印（150 $，全属性 +5）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 150
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 150,
+              "negative": true
+            },
+            {
+              "type": "stat_delta_all",
+              "amount": 5,
+              "hpMultiplier": 10
+            }
+          ]
+        },
+        {
+          "text": "看看就走",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你婉拒了游商。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m5_church_donation",
+      "category": "unconditional",
+      "weight": 1,
+      "conditions": [
+        {
+          "type": "gold_gte",
+          "value": 20
+        }
+      ],
+      "title": "教堂的祈愿",
+      "description": "路过一座白色教堂，神职人员邀请你捐献金币以换神之祝福。",
+      "choices": [
+        {
+          "text": "捐 20 $（祝福 5 日）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 20
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 20,
+              "negative": true
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_church_blessing",
+              "label": "教堂祝福",
+              "stat": "luck",
+              "amount": 2,
+              "duration": 5
+            }
+          ]
+        },
+        {
+          "text": "捐 80 $（强力祝福 7 日）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 80
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 80,
+              "negative": true
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_church_blessing_plus",
+              "label": "教堂的强力祝福",
+              "stat": "attack",
+              "amount": 3,
+              "duration": 7
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_church_blessing_plus2",
+              "label": "教堂的强力祝福 II",
+              "stat": "defense",
+              "amount": 3,
+              "duration": 7
+            }
+          ]
+        },
+        {
+          "text": "拒绝",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你低头离开了教堂。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_curse_plague",
+      "category": "unconditional",
+      "weight": 0.9,
+      "unique": false,
+      "title": "黑死病爆发",
+      "description": "昏暗的小镇上飘着刺鼻气息，你的喉头一阵剧痛。",
+      "choices": [
+        {
+          "text": "硬挺过去",
+          "effects": [
+            {
+              "type": "add_daily_buff",
+              "id": "debuff_plague",
+              "label": "瘟疫感染",
+              "hp": -25,
+              "duration": 4
+            },
+            {
+              "type": "log",
+              "text": "感染瘟疫，每日 -25 HP 持续 4 日。"
+            }
+          ]
+        },
+        {
+          "text": "花 40 $ 买药",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 40
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 40,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "及时服下解药，免于感染。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_devil_curse",
+      "category": "unconditional",
+      "weight": 0.7,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 30
+        }
+      ],
+      "title": "恶魔的诅咒",
+      "description": "夜深时分，一道阴影越过了你的影子。",
+      "choices": [
+        {
+          "text": "默念神祈",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.4,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "诅咒被你的意志驱散。"
+                }
+              ],
+              "else": [
+                {
+                  "type": "add_daily_buff",
+                  "id": "debuff_devil_curse",
+                  "label": "恶魔诅咒",
+                  "stat": "attack",
+                  "amount": -2,
+                  "duration": 5
+                },
+                {
+                  "type": "log",
+                  "text": "你感受到攻击力被持续侵蚀 5 日。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "回敬一刀（攻击 ≥ 40）",
+          "conditions": [
+            {
+              "type": "stat_gte",
+              "stat": "attack",
+              "value": 40
             }
           ],
           "effects": [
             {
               "type": "log",
-              "text": "芙莉莲的千年咒文从你嘴中念出——"
+              "text": "你的杀气吓退了诅咒之影。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "attack",
+              "amount": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_holy_light",
+      "category": "unconditional",
+      "weight": 0.8,
+      "title": "圣光降临",
+      "description": "一束温暖的光从云间洒下，将你整个人笼罩。",
+      "choices": [
+        {
+          "text": "接受洗礼",
+          "effects": [
+            {
+              "type": "add_daily_buff",
+              "id": "buff_holy_light",
+              "label": "圣光护佑",
+              "stat": "defense",
+              "amount": 3,
+              "duration": 6
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_holy_light_hp",
+              "label": "圣光恢复",
+              "hp": 30,
+              "duration": 6
             },
             {
               "type": "log",
-              "text": "然而，最终魔王不在「非最后一日」之列，咒文未能完全生效……"
+              "text": "6 日内每日防御 +3 且回复 30 HP。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_witch_potion",
+      "category": "unconditional",
+      "weight": 0.8,
+      "conditions": [
+        {
+          "type": "gold_gte",
+          "value": 25
+        }
+      ],
+      "title": "女巫的小棚",
+      "description": "皱巴巴的女巫朝你晃了晃手里冒泡的紫色药剂。",
+      "choices": [
+        {
+          "text": "买力量药剂（25 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 25
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 25,
+              "negative": true
             },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_strength_potion",
+              "label": "力量药剂",
+              "stat": "attack",
+              "amount": 4,
+              "duration": 4
+            }
+          ]
+        },
+        {
+          "text": "买幸运药剂（25 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 25
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 25,
+              "negative": true
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_luck_potion",
+              "label": "幸运药剂",
+              "stat": "luck",
+              "amount": 4,
+              "duration": 4
+            }
+          ]
+        },
+        {
+          "text": "试试免费试饮",
+          "effects": [
             {
               "type": "weighted",
               "branches": [
                 {
-                  "weight": 20,
-                  "label": "古老的魔法削去了终焉之王大半生命，你顺势补刀！",
+                  "weight": 40,
+                  "label": "味道意外不错，全属性 +1",
                   "effects": [
                     {
-                      "type": "gold_delta",
-                      "amount": 9999
-                    },
-                    {
                       "type": "stat_delta_all",
-                      "amount": 100,
-                      "hpMultiplier": 10
-                    },
-                    {
-                      "type": "set_flag",
-                      "key": "killed_final_boss",
-                      "value": true,
-                      "silent": true
-                    },
-                    {
-                      "type": "set_meta_flag",
-                      "key": "ever_killed_final_boss",
-                      "value": true,
-                      "label": "「您已成为传奇 · 终焉斩王」"
+                      "amount": 1
                     }
                   ]
                 },
                 {
-                  "weight": 65,
-                  "label": "咒文被弹开，你被反噬重伤。",
+                  "weight": 40,
+                  "label": "腹泻不止 -30 HP",
                   "effects": [
                     {
                       "type": "stat_delta",
                       "stat": "hp",
-                      "min": 2000,
-                      "max": 3500,
+                      "amount": 30,
                       "negative": true
+                    }
+                  ]
+                },
+                {
+                  "weight": 20,
+                  "label": "中毒 3 日每日 -15 HP",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_witch_poison",
+                      "label": "女巫毒素",
+                      "hp": -15,
+                      "duration": 3
                     }
                   ]
                 }
               ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s_lewd_succubus",
+      "category": "unconditional",
+      "weight": 0.7,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 35
+        }
+      ],
+      "title": "魅魔的诱惑",
+      "description": "酒馆角落里，红裙女子朝你眨眼，舌头优雅地舔过尖牙。",
+      "choices": [
+        {
+          "text": "抗拒",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你强行别开视线。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "defense",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "text": "前往房间",
+          "effects": [
+            {
+              "type": "weighted",
+              "branches": [
+                {
+                  "weight": 50,
+                  "label": "榨干一夜，疲惫数日",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_succubus_drain",
+                      "label": "精气被吸取",
+                      "stat": "attack",
+                      "amount": -2,
+                      "duration": 3
+                    },
+                    {
+                      "type": "add_daily_buff",
+                      "id": "debuff_succubus_drain2",
+                      "label": "精气被吸取 II",
+                      "hp": -20,
+                      "duration": 3
+                    }
+                  ]
+                },
+                {
+                  "weight": 30,
+                  "label": "反客为主 +幸运 3",
+                  "effects": [
+                    {
+                      "type": "stat_delta",
+                      "stat": "luck",
+                      "amount": 3
+                    }
+                  ]
+                },
+                {
+                  "weight": 20,
+                  "label": "收获魅魔之吻 · 7 日攻击 +3",
+                  "effects": [
+                    {
+                      "type": "add_daily_buff",
+                      "id": "buff_succubus_kiss",
+                      "label": "魅魔之吻",
+                      "stat": "attack",
+                      "amount": 3,
+                      "duration": 7
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_assassin_1",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 18
+        }
+      ],
+      "title": "杀手追猎 · 一",
+      "description": "你脖子后突然一凉，回头只看到一道残影掠过屋顶。",
+      "choices": [
+        {
+          "text": "警觉戒备",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你绷紧神经，杀手暂时退去。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_assassin_step",
+              "value": 1,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_assassin_2"
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_alert",
+              "label": "警觉戒备",
+              "stat": "defense",
+              "amount": 1,
+              "duration": 5
+            }
+          ]
+        },
+        {
+          "text": "正面追击",
+          "effects": [
+            {
+              "type": "spawn_battle",
+              "terrain": "jungle",
+              "canFlee": false,
+              "onWin": [
+                {
+                  "type": "gold_delta",
+                  "min": 20,
+                  "max": 50
+                },
+                {
+                  "type": "log",
+                  "text": "杀手协会盯上了你的踪迹..."
+                },
+                {
+                  "type": "set_flag",
+                  "key": "chain_assassin_step",
+                  "value": 1,
+                  "silent": true
+                },
+                {
+                  "type": "force_event",
+                  "eventId": "chain_assassin_2"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_assassin_2",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_assassin_step",
+          "value": 1
+        }
+      ],
+      "title": "杀手追猎 · 二",
+      "description": "夜半时分，三个黑影同时跃出。这次他们是认真的。",
+      "choices": [
+        {
+          "text": "迎战",
+          "effects": [
+            {
+              "type": "spawn_battle",
+              "enemyOverride": {
+                "name": "杀手三人组",
+                "tier": "lord",
+                "attack": 400,
+                "defense": 350,
+                "defenseMax": 350,
+                "luck": 100,
+                "hp": 1500,
+                "hpMax": 1500,
+                "skill": {
+                  "name": "同步暗杀",
+                  "type": "burst",
+                  "mul": 1.8,
+                  "desc": "同步背刺造成 180% 攻击伤害"
+                },
+                "gold": [
+                  80,
+                  150
+                ],
+                "level": "·"
+              },
+              "canFlee": false,
+              "onWin": [
+                {
+                  "type": "gold_delta",
+                  "min": 80,
+                  "max": 150
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 3
+                },
+                {
+                  "type": "set_flag",
+                  "key": "chain_assassin_step",
+                  "value": 2,
+                  "silent": true
+                },
+                {
+                  "type": "force_event",
+                  "eventId": "chain_assassin_3"
+                },
+                {
+                  "type": "log",
+                  "text": "幸存的一人留下血迹逃走了……"
+                }
+              ],
+              "onLose": [
+                {
+                  "type": "mark_death"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "花 100 $ 收买",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 100
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 100,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "杀手收下金币，转身消失在夜色中。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_assassin_step",
+              "value": 2,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_assassin_3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_assassin_3",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_assassin_step",
+          "value": 2
+        }
+      ],
+      "title": "杀手追猎 · 终",
+      "description": "杀手协会会长亲自现身：「能挺到这里，倒是给了你一个加入我们的机会。」",
+      "choices": [
+        {
+          "text": "接受招募",
+          "effects": [
+            {
+              "type": "grant_skill",
+              "skill": {
+                "name": "刺杀",
+                "type": "ultimate",
+                "description": "战斗时高额单次伤害，不可闪避。",
+                "source": "event"
+              }
+            },
+            {
+              "type": "log",
+              "text": "你成为了协会的\"暗影成员\"。"
+            },
+            {
+              "type": "consume_flag",
+              "key": "chain_assassin_step"
+            }
+          ]
+        },
+        {
+          "text": "终结协会会长",
+          "effects": [
+            {
+              "type": "spawn_battle",
+              "enemyOverride": {
+                "name": "协会会长",
+                "tier": "god",
+                "attack": 1400,
+                "defense": 1100,
+                "defenseMax": 1100,
+                "luck": 380,
+                "hp": 4200,
+                "hpMax": 4200,
+                "skill": {
+                  "name": "绝对零度刺杀",
+                  "type": "burst",
+                  "mul": 2.5,
+                  "desc": "无视护甲 250% 伤害"
+                },
+                "gold": [
+                  400,
+                  600
+                ],
+                "level": "·"
+              },
+              "canFlee": false,
+              "onWin": [
+                {
+                  "type": "gold_delta",
+                  "min": 400,
+                  "max": 600
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 15,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "log",
+                  "text": "协会从此瓦解。"
+                },
+                {
+                  "type": "consume_flag",
+                  "key": "chain_assassin_step"
+                }
+              ],
+              "onLose": [
+                {
+                  "type": "mark_death"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_merchant_1",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 8
+        },
+        {
+          "type": "gold_gte",
+          "value": 30
+        }
+      ],
+      "title": "奸商初遇 · 一",
+      "description": "商人脸上堆笑：「客官好眼光！这把『精灵之剑』是真品啊！」",
+      "choices": [
+        {
+          "text": "买下 30 $",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 30
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 30,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "你拿到的是一把生锈铁剑。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_merchant_step",
+              "value": 1,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_merchant_2"
+            }
+          ]
+        },
+        {
+          "text": "识破走开",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你冷哼一声，商人朝你瞪了眼。"
+            },
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_merchant_2",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_merchant_step",
+          "value": 1
+        }
+      ],
+      "title": "奸商重逢 · 二",
+      "description": "又是那个商人：「客官！这次绝对是真品 —— 龙鳞护甲，只要 80 $！」",
+      "choices": [
+        {
+          "text": "再信一次（80 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 80
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 80,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "你拿到的是涂了银漆的鱼鳞片。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_merchant_step",
+              "value": 2,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_merchant_3"
+            }
+          ]
+        },
+        {
+          "text": "揍他一顿",
+          "effects": [
+            {
+              "type": "log",
+              "text": "商人挨了一拳，乖乖退还所有金币！"
+            },
+            {
+              "type": "gold_delta",
+              "amount": 50
+            },
+            {
+              "type": "consume_flag",
+              "key": "chain_merchant_step"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_merchant_3",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_merchant_step",
+          "value": 2
+        }
+      ],
+      "title": "奸商真容 · 终",
+      "description": "第三次相遇，商人脱下伪装 —— 竟是化形的金龙！「你居然两次都信了我，作为奖励，赠你真品。」",
+      "choices": [
+        {
+          "text": "接过真品",
+          "effects": [
+            {
+              "type": "stat_delta_all",
+              "amount": 10,
+              "hpMultiplier": 10
+            },
+            {
+              "type": "gold_delta",
+              "amount": 200
+            },
+            {
+              "type": "log",
+              "text": "金龙化作金粉散去，留下真正的传说装备。"
+            },
+            {
+              "type": "consume_flag",
+              "key": "chain_merchant_step"
+            }
+          ]
+        },
+        {
+          "text": "挑战金龙",
+          "effects": [
+            {
+              "type": "spawn_battle",
+              "enemyOverride": {
+                "name": "化形金龙",
+                "tier": "god",
+                "attack": 1600,
+                "defense": 1200,
+                "defenseMax": 1200,
+                "luck": 300,
+                "hp": 4500,
+                "hpMax": 4500,
+                "skill": {
+                  "name": "龙息焚天",
+                  "type": "burst",
+                  "mul": 2.2,
+                  "desc": "220% 真实伤害"
+                },
+                "gold": [
+                  600,
+                  1000
+                ],
+                "level": "·"
+              },
+              "canFlee": false,
+              "onWin": [
+                {
+                  "type": "gold_delta",
+                  "min": 600,
+                  "max": 1000
+                },
+                {
+                  "type": "stat_delta_all",
+                  "amount": 20,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "consume_flag",
+                  "key": "chain_merchant_step"
+                }
+              ],
+              "onLose": [
+                {
+                  "type": "mark_death"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_trial_1",
+      "category": "unconditional",
+      "weight": 0.8,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "day_gte",
+          "value": 25
+        }
+      ],
+      "title": "试炼之塔 · 一层",
+      "description": "黑曜石塔门为你而开，门匾刻着「力量」。",
+      "choices": [
+        {
+          "text": "入塔（攻击 ≥ 30）",
+          "conditions": [
+            {
+              "type": "stat_gte",
+              "stat": "attack",
+              "value": 30
+            }
+          ],
+          "effects": [
+            {
+              "type": "stat_delta",
+              "stat": "attack",
+              "amount": 5
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_trial_step",
+              "value": 1,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_trial_2"
+            }
+          ]
+        },
+        {
+          "text": "入塔（强行）",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "log",
+                  "text": "你勉强通过，惨胜如败。"
+                },
+                {
+                  "type": "stat_delta",
+                  "stat": "attack",
+                  "amount": 2
+                },
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "amount": 40,
+                  "negative": true
+                },
+                {
+                  "type": "set_flag",
+                  "key": "chain_trial_step",
+                  "value": 1,
+                  "silent": true
+                },
+                {
+                  "type": "force_event",
+                  "eventId": "chain_trial_2"
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "你被试炼者击退。"
+                },
+                {
+                  "type": "stat_delta",
+                  "stat": "hp",
+                  "amount": 60,
+                  "negative": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "text": "离开",
+          "effects": [
+            {
+              "type": "log",
+              "text": "你转身离去。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_trial_2",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_trial_step",
+          "value": 1
+        }
+      ],
+      "title": "试炼之塔 · 二层",
+      "description": "门匾刻着「智慧」。一池静水映出你的内心。",
+      "choices": [
+        {
+          "text": "凝望水面（幸运 ≥ 15）",
+          "conditions": [
+            {
+              "type": "stat_gte",
+              "stat": "luck",
+              "value": 15
+            }
+          ],
+          "effects": [
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 5
+            },
+            {
+              "type": "stat_delta",
+              "stat": "defense",
+              "amount": 3
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_trial_step",
+              "value": 2,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_trial_3"
+            }
+          ]
+        },
+        {
+          "text": "直接闯入",
+          "effects": [
+            {
+              "type": "chance",
+              "chance": 0.5,
+              "then": [
+                {
+                  "type": "stat_delta",
+                  "stat": "defense",
+                  "amount": 2
+                },
+                {
+                  "type": "set_flag",
+                  "key": "chain_trial_step",
+                  "value": 2,
+                  "silent": true
+                },
+                {
+                  "type": "force_event",
+                  "eventId": "chain_trial_3"
+                }
+              ],
+              "else": [
+                {
+                  "type": "log",
+                  "text": "你被映像所惑，迷失数日。"
+                },
+                {
+                  "type": "add_daily_buff",
+                  "id": "debuff_trial_confused",
+                  "label": "试炼之迷",
+                  "stat": "luck",
+                  "amount": -2,
+                  "duration": 5
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_trial_3",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_trial_step",
+          "value": 2
+        }
+      ],
+      "title": "试炼之塔 · 顶层",
+      "description": "门匾刻着「意志」。一具古老盔甲挺立在中央，金属之中传出咏唱。",
+      "choices": [
+        {
+          "text": "正面交锋",
+          "effects": [
+            {
+              "type": "spawn_battle",
+              "enemyOverride": {
+                "name": "试炼守护者",
+                "tier": "god",
+                "attack": 1300,
+                "defense": 1400,
+                "defenseMax": 1400,
+                "luck": 200,
+                "hp": 4500,
+                "hpMax": 4500,
+                "skill": {
+                  "name": "意志一击",
+                  "type": "burst",
+                  "mul": 2,
+                  "desc": "200% 真实伤害"
+                },
+                "gold": [
+                  300,
+                  500
+                ],
+                "level": "·"
+              },
+              "canFlee": false,
+              "onWin": [
+                {
+                  "type": "stat_delta_all",
+                  "amount": 15,
+                  "hpMultiplier": 10
+                },
+                {
+                  "type": "gold_delta",
+                  "min": 300,
+                  "max": 500
+                },
+                {
+                  "type": "log",
+                  "text": "你掌握了「试炼之印」，全属性大幅提升！"
+                },
+                {
+                  "type": "consume_flag",
+                  "key": "chain_trial_step"
+                }
+              ],
+              "onLose": [
+                {
+                  "type": "mark_death"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_goddess_aqua_1",
+      "category": "unconditional",
+      "weight": 1.4,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "goddess_is",
+          "goddess": "wisdom_aqua"
+        },
+        {
+          "type": "day_gte",
+          "value": 5
+        }
+      ],
+      "title": "阿库娅的醉酒提案 · 一",
+      "description": "「喂！我有个绝妙的赚钱主意！只要先垫付一点点小钱！」",
+      "choices": [
+        {
+          "text": "听她说说（垫付 30 $）",
+          "conditions": [
+            {
+              "type": "gold_gte",
+              "value": 30
+            }
+          ],
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 30,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "阿库娅嬉笑着拿钱跑了，让你晚上再来。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_aqua_step",
+              "value": 1,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_goddess_aqua_2"
+            }
+          ]
+        },
+        {
+          "text": "回绝",
+          "effects": [
+            {
+              "type": "log",
+              "text": "阿库娅瘪起嘴气鼓鼓地走了。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_goddess_aqua_2",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_aqua_step",
+          "value": 1
+        }
+      ],
+      "title": "阿库娅的醉酒提案 · 二",
+      "description": "阿库娅烂醉如泥地躺在酒馆，把所有金币花在了酒和零食上。",
+      "choices": [
+        {
+          "text": "原谅她",
+          "effects": [
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 5
+            },
+            {
+              "type": "log",
+              "text": "阿库娅含泪保证下次一定还。"
+            },
+            {
+              "type": "set_flag",
+              "key": "chain_aqua_step",
+              "value": 2,
+              "silent": true
+            },
+            {
+              "type": "force_event",
+              "eventId": "chain_goddess_aqua_3"
+            }
+          ]
+        },
+        {
+          "text": "逼她还钱",
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 30
+            },
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 1,
+              "negative": true
+            },
+            {
+              "type": "log",
+              "text": "阿库娅含泪还了 30 $，但你失去了她的好感。"
+            },
+            {
+              "type": "consume_flag",
+              "key": "chain_aqua_step"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chain_goddess_aqua_3",
+      "category": "unconditional",
+      "weight": 1,
+      "unique": true,
+      "conditions": [
+        {
+          "type": "flag_value",
+          "key": "chain_aqua_step",
+          "value": 2
+        }
+      ],
+      "title": "阿库娅的醉酒提案 · 终",
+      "description": "第二天阿库娅神色严肃地递给你一只锦囊：「这是真正的礼物。」",
+      "choices": [
+        {
+          "text": "收下",
+          "effects": [
+            {
+              "type": "gold_delta",
+              "amount": 200
+            },
+            {
+              "type": "stat_delta",
+              "stat": "luck",
+              "amount": 10
+            },
+            {
+              "type": "add_daily_buff",
+              "id": "buff_aqua_lucky_charm",
+              "label": "阿库娅的幸运护符",
+              "stat": "luck",
+              "amount": 3,
+              "duration": 10
+            },
+            {
+              "type": "log",
+              "text": "阿库娅这次说话算话。"
+            },
+            {
+              "type": "consume_flag",
+              "key": "chain_aqua_step"
             }
           ]
         }

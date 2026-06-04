@@ -15,14 +15,52 @@ const DEFAULT_EVENT_CHANCE = 0.5
  *
  * 所有玩家每日基础恢复 5% 生命值（在 form 效果之前应用），
  * 对 saber_alter / misaka_level6 等持续掉血形态依然是净损失。
+ *
+ * 同时结算 statusFlags.__daily_effects 数组中的所有持续 buff/debuff。
  */
 export function tickDaily(state, dailyEffectsByForm = {}) {
   const formEffects = dailyEffectsByForm[state.form] ?? []
+  // 把 __daily_effects 数组里的每条转换成对应的 effect
+  const buffEffects = []
+  const daily = state.statusFlags?.__daily_effects ?? []
+  for (const b of daily) {
+    if (b.stat && b.amount) {
+      buffEffects.push({ type: 'stat_delta', stat: b.stat, amount: b.amount })
+    }
+    if (b.hp) {
+      buffEffects.push({ type: 'stat_delta', stat: 'hp', amount: b.hp })
+    }
+  }
+  // 装备祝福的每日效果
+  const blessingDaily = state.statusFlags?.__blessing_daily ?? []
   const allEffects = [
     { type: 'hp_heal_percent', percent: 0.05 },
-    ...formEffects
+    ...formEffects,
+    ...buffEffects,
+    ...blessingDaily
   ]
-  return applyEffects(state, allEffects)
+  const result = applyEffects(state, allEffects)
+  // 推进每个 buff 的 remaining，过期则移除
+  const after = result.state
+  if (after.statusFlags.__daily_effects?.length) {
+    const survived = []
+    for (const b of after.statusFlags.__daily_effects) {
+      if (b.duration <= 0) {
+        // 永久 buff
+        survived.push(b)
+        continue
+      }
+      const nb = { ...b, remaining: (b.remaining ?? b.duration) - 1 }
+      if (nb.remaining > 0) {
+        survived.push(nb)
+      } else {
+        result.logs.push(`效果「${b.label}」消散`)
+      }
+    }
+    after.statusFlags.__daily_effects = survived
+    if (survived.length === 0) delete after.statusFlags.__daily_effects
+  }
+  return result
 }
 
 /**

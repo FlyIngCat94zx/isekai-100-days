@@ -3,11 +3,13 @@
     <div v-if="battle" class="modal-overlay" @click.self="onBackdrop">
       <div class="modal-card">
         <header class="head">
-          <span class="day-tag">第 {{ day }} 日 · 战斗</span>
+          <span class="day-tag" :class="`tier-${battle.enemy.tier ?? 'normal'}`">
+            第 {{ day }} 日 · {{ tierLabel(battle.enemy.tier) }}
+          </span>
         </header>
 
         <!-- 敌人 -->
-        <section class="enemy">
+        <section class="enemy" :class="`tier-${battle.enemy.tier ?? 'normal'}`">
           <div class="enemy-head">
             <span class="ename">{{ battle.enemy.name }} <span class="lv">Lv.{{ battle.enemy.level }}</span></span>
             <span class="stat-mini">攻 {{ battle.enemy.attack }} 防 {{ battle.enemy.defense }}/{{ battle.enemy.defenseMax }}</span>
@@ -111,6 +113,15 @@ const usableSkills = computed(() => {
 const TAG_LABELS = { skill: '特技', weapon: '武器', ultimate: '必杀', passive: '被动' }
 function tagLabel(t) { return TAG_LABELS[t] ?? '技能' }
 
+const TIER_LABELS = {
+  normal: '战斗',
+  lord: '领主之战',
+  god: '魔神之战',
+  demon: '魔王之战',
+  final: '终焉之战'
+}
+function tierLabel(t) { return TIER_LABELS[t] ?? '战斗' }
+
 function logClass(line) {
   if (/胜利|倒下|获得|脱离|寂灭/.test(line)) return 'log emphasis'
   if (/造成|无视|护甲吸收|时停/.test(line)) return 'log atk'
@@ -189,6 +200,10 @@ watch(
   padding: 2px 10px;
   border-radius: 999px;
 }
+.day-tag.tier-lord { color: #ffd86b; background: rgba(255, 216, 107, 0.18); }
+.day-tag.tier-god  { color: #cc5de8; background: rgba(204, 93, 232, 0.18); }
+.day-tag.tier-demon{ color: #ff77c6; background: rgba(255, 119, 198, 0.22); }
+.day-tag.tier-final{ color: #fff; background: linear-gradient(90deg, #ff77c6, #ffd86b); padding: 2px 12px; letter-spacing: 3px; }
 
 .enemy, .player {
   background: rgba(0, 0, 0, 0.3);

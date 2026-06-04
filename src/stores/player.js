@@ -266,6 +266,76 @@ export const usePlayerStore = defineStore('player', () => {
     }
   }
 
+  /**
+   * 应用一个开局祝福。
+   * blessingObj 结构见 blessings.json：
+   *   { id, tier, name, description, startEffects?, dailyEffects?, battleHooks? }
+   * - startEffects 立即作用一次（属性 / 物品 / 金币 / grant_skill / 等等）
+   * - dailyEffects 写入 statusFlags.__blessing_daily，由 dailyTick 每日跑
+   * - battleHooks 写入 statusFlags.__blessing_hooks，由 Adventure / battle 处理
+   *
+   * 注意：本函数采用同步内联实现，避免循环依赖 engine。
+   */
+  function applyStartBlessing(blessingObj) {
+    if (!blessingObj) return
+    // 标记当前装备的祝福（便于 UI/状态弹窗显示）
+    statusFlags.value.__equipped_blessing = blessingObj.id
+
+    // startEffects：原地应用一组简单 effect（仅覆盖常用 type）
+    for (const e of blessingObj.startEffects ?? []) {
+      applyOneStartEffect(e)
+    }
+
+    // dailyEffects：写入 __blessing_daily 字段
+    if (blessingObj.dailyEffects?.length) {
+      statusFlags.value.__blessing_daily = [...blessingObj.dailyEffects]
+    }
+
+    // battleHooks：写入 __blessing_hooks 字段
+    if (blessingObj.battleHooks) {
+      statusFlags.value.__blessing_hooks = { ...blessingObj.battleHooks }
+    }
+
+    persist()
+  }
+
+  function applyOneStartEffect(e) {
+    switch (e.type) {
+      case 'stat_delta': {
+        const amt = (e.amount ?? 0) * (e.negative ? -1 : 1)
+        addToStat(e.stat, amt)
+        break
+      }
+      case 'stat_delta_all': {
+        const amt = (e.amount ?? 0) * (e.negative ? -1 : 1)
+        const hpMul = e.hpMultiplier ?? 10
+        for (const k of ['attack', 'defense', 'luck']) addToStat(k, amt)
+        if (amt > 0) {
+          addToStat('hpMax', amt * hpMul)
+          addToStat('hp', amt * hpMul)
+        }
+        break
+      }
+      case 'gold_delta': {
+        const amt = (e.amount ?? 0) * (e.negative ? -1 : 1)
+        addGold(amt)
+        break
+      }
+      case 'add_item': {
+        addItem(e.key, e.count ?? 1)
+        break
+      }
+      case 'grant_skill': {
+        if (e.skill?.name) grantSkill({ ...e.skill, source: e.skill.source ?? 'blessing' })
+        break
+      }
+      default: {
+        // 复杂 effect 不在 start 时处理（如 weighted/chance 等），祝福数据只用简单 effect
+        break
+      }
+    }
+  }
+
   return {
     blessing,
     form,
@@ -294,6 +364,7 @@ export const usePlayerStore = defineStore('player', () => {
     hasFlag,
     setForm,
     addSwappedForm,
+    applyStartBlessing,
     reset
   }
 })

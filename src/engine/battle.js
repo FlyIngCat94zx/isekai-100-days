@@ -61,6 +61,31 @@ export function rollTerrainMonster(terrainPool, day) {
 }
 
 /**
+ * 按 ID 从 bosses 池里取一个 BOSS。
+ * BOSS 不参与等级缩放（数值在配置里已固定）。
+ * 返回 enemy 形态（与 scaleMonster 输出一致），增加 tier 字段。
+ */
+export function getBoss(bossPool, monsterId) {
+  if (!bossPool || !monsterId) return null
+  const m = bossPool[monsterId]
+  if (!m) return null
+  return {
+    id: monsterId,
+    name: m.name,
+    level: '·',
+    tier: m.tier ?? 'normal',
+    attack: m.attack,
+    defense: m.defense,
+    defenseMax: m.defense,
+    luck: m.luck,
+    hp: m.hp,
+    hpMax: m.hp,
+    skill: m.skill ?? null,
+    gold: [m.goldMin ?? 0, m.goldMax ?? 0]
+  }
+}
+
+/**
  * 创建一场战斗
  */
 export function createBattle(playerSnap, enemy, opts = {}) {
@@ -143,6 +168,15 @@ function checkEnd(state) {
 function enemyTurn(state) {
   if (state.result) return
   state.turn = 'enemy'
+  // 先手必胜祝福：第一回合敌方无法造成伤害
+  if (state._firstTurnInvuln && state.turnNum === 1) {
+    state.log.push(`「先手必胜」光环闪耀，${state.enemy.name} 的攻击被完全弹开！`)
+    state._firstTurnInvuln = false
+    state.player.defending = false
+    state.turnNum += 1
+    state.turn = 'player'
+    return
+  }
   // 10% 概率使用技能（如果有）
   let used = null
   if (state.enemy.skill && rand() < 0.2) used = state.enemy.skill
@@ -299,8 +333,22 @@ export function playerUseSkill(state, skillName) {
       break
     }
     default: {
-      const r = calcDamage(state.player, state.enemy, 1.5)
-      state.log.push(`你使出「${skill.name}」 — ${formatDmgLog('你', state.enemy.name, r)}`)
+      // 通用 ultimate：从描述里提取倍率（支持 "1.5 倍 / 2.0 倍 / 2.2 倍" 等）
+      // 也支持 "无视护甲" / "不可闪避" 关键字
+      const desc = skill.description ?? ''
+      const mulMatch = desc.match(/([0-9]+(?:\.[0-9]+)?)\s*倍/)
+      const mul = mulMatch ? parseFloat(mulMatch[1]) : 1.5
+      const ignoreArmor = /无视护甲/.test(desc)
+      const noDodge = /不可闪避/.test(desc)
+      const r = calcDamage(state.player, state.enemy, mul, ignoreArmor)
+      if (noDodge) r.dodged = false
+      state.log.push(`你使出「${skill.name}」 — ${formatDmgLog('你', state.enemy.name, r)}${ignoreArmor ? '（无视护甲）' : ''}`)
+      // 特殊后效：恢复 30% HP
+      if (/恢复\s*30%\s*HP/i.test(desc)) {
+        const heal = Math.round(state.player.hpMax * 0.3)
+        state.player.hp = Math.min(state.player.hpMax, state.player.hp + heal)
+        state.log.push(`「${skill.name}」治愈了你 ${heal} HP。`)
+      }
     }
   }
   if (checkEnd(state)) return state

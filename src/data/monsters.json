@@ -11,28 +11,709 @@
   },
   "terrains": {
     "desert": [
-      { "id": "sand_worm",    "name": "沙虫",        "weight": 30, "attack": 10, "defense": 20, "luck": 0,  "hp": 90,  "skill": null,                                                                          "goldMin": 1,  "goldMax": 3 },
-      { "id": "stone_golem",  "name": "石岩怪",      "weight": 20, "attack": 20, "defense": 50, "luck": 5,  "hp": 150, "skill": { "name": "硬化", "type": "buff", "desc": "每回合自身防御 +5" },                "goldMin": 3,  "goldMax": 6 },
-      { "id": "desert_scorp", "name": "沙漠巨蝎",    "weight": 15, "attack": 35, "defense": 30, "luck": 8,  "hp": 120, "skill": { "name": "毒刺", "type": "dot", "desc": "命中时附加每回合 -10 HP 持续 3 回合" },"goldMin": 5,  "goldMax": 9 },
-      { "id": "sand_elem",    "name": "沙暴元素",    "weight": 15, "attack": 25, "defense": 15, "luck": 15, "hp": 80,  "skill": { "name": "沙尘暴", "type": "burst", "mul": 1.2, "desc": "造成 120% 攻击伤害" }, "goldMin": 4,  "goldMax": 7 },
-      { "id": "pharaoh",      "name": "法老守卫",    "weight": 12, "attack": 45, "defense": 60, "luck": 5,  "hp": 200, "skill": { "name": "诅咒", "type": "dot", "desc": "命中时附加每回合 -15 HP 持续 2 回合" },"goldMin": 10, "goldMax": 18 },
-      { "id": "desert_drake", "name": "沙漠龙",      "weight": 8,  "attack": 60, "defense": 40, "luck": 20, "hp": 300, "skill": { "name": "龙息", "type": "burst", "mul": 1.5, "desc": "造成 150% 攻击伤害" }, "goldMin": 20, "goldMax": 35 }
+      {
+        "id": "sand_worm",
+        "name": "沙虫",
+        "weight": 30,
+        "attack": 10,
+        "defense": 20,
+        "luck": 0,
+        "hp": 90,
+        "skill": null,
+        "goldMin": 1,
+        "goldMax": 3
+      },
+      {
+        "id": "stone_golem",
+        "name": "石岩怪",
+        "weight": 20,
+        "attack": 20,
+        "defense": 50,
+        "luck": 5,
+        "hp": 150,
+        "skill": {
+          "name": "硬化",
+          "type": "buff",
+          "desc": "每回合自身防御 +5"
+        },
+        "goldMin": 3,
+        "goldMax": 6
+      },
+      {
+        "id": "desert_scorp",
+        "name": "沙漠巨蝎",
+        "weight": 15,
+        "attack": 35,
+        "defense": 30,
+        "luck": 8,
+        "hp": 120,
+        "skill": {
+          "name": "毒刺",
+          "type": "dot",
+          "desc": "命中时附加每回合 -10 HP 持续 3 回合"
+        },
+        "goldMin": 5,
+        "goldMax": 9
+      },
+      {
+        "id": "sand_elem",
+        "name": "沙暴元素",
+        "weight": 15,
+        "attack": 25,
+        "defense": 15,
+        "luck": 15,
+        "hp": 80,
+        "skill": {
+          "name": "沙尘暴",
+          "type": "burst",
+          "mul": 1.2,
+          "desc": "造成 120% 攻击伤害"
+        },
+        "goldMin": 4,
+        "goldMax": 7
+      },
+      {
+        "id": "pharaoh",
+        "name": "法老守卫",
+        "weight": 12,
+        "attack": 45,
+        "defense": 60,
+        "luck": 5,
+        "hp": 200,
+        "skill": {
+          "name": "诅咒",
+          "type": "dot",
+          "desc": "命中时附加每回合 -15 HP 持续 2 回合"
+        },
+        "goldMin": 10,
+        "goldMax": 18
+      },
+      {
+        "id": "desert_drake",
+        "name": "沙漠龙",
+        "weight": 8,
+        "attack": 60,
+        "defense": 40,
+        "luck": 20,
+        "hp": 300,
+        "skill": {
+          "name": "龙息",
+          "type": "burst",
+          "mul": 1.5,
+          "desc": "造成 150% 攻击伤害"
+        },
+        "goldMin": 20,
+        "goldMax": 35
+      }
     ],
     "jungle": [
-      { "id": "poison_frog",  "name": "毒蛙",        "weight": 30, "attack": 15, "defense": 10, "luck": 5,  "hp": 60,  "skill": { "name": "毒液", "type": "dot", "desc": "命中时附加每回合 -8 HP 持续 3 回合" },"goldMin": 1,  "goldMax": 3 },
-      { "id": "man_eater",    "name": "食人花",      "weight": 20, "attack": 30, "defense": 20, "luck": 0,  "hp": 100, "skill": { "name": "缠绕", "type": "leech", "amount": 10, "desc": "每回合扣 5 HP 并自身回 10" }, "goldMin": 3,  "goldMax": 6 },
-      { "id": "jungle_tiger", "name": "丛林虎",      "weight": 18, "attack": 40, "defense": 25, "luck": 10, "hp": 140, "skill": { "name": "猛扑", "type": "burst", "mul": 1.3, "desc": "造成 130% 攻击伤害" }, "goldMin": 5,  "goldMax": 9 },
-      { "id": "ent",          "name": "树精",        "weight": 15, "attack": 20, "defense": 60, "luck": 5,  "hp": 250, "skill": { "name": "自然恢复", "type": "buff", "desc": "每回合自身防御 +10" },             "goldMin": 7,  "goldMax": 12 },
-      { "id": "jungle_naga",  "name": "丛林巨蟒",    "weight": 12, "attack": 50, "defense": 35, "luck": 8,  "hp": 180, "skill": { "name": "绞杀", "type": "burst", "mul": 1.2, "desc": "造成 120% 攻击伤害" }, "goldMin": 9,  "goldMax": 15 },
-      { "id": "ruin_idol",    "name": "遗迹石像",    "weight": 5,  "attack": 55, "defense": 45, "luck": 25, "hp": 280, "skill": { "name": "自然之怒", "type": "burst", "mul": 1.4, "desc": "造成 140% 攻击伤害" }, "goldMin": 15, "goldMax": 25 }
+      {
+        "id": "poison_frog",
+        "name": "毒蛙",
+        "weight": 30,
+        "attack": 15,
+        "defense": 10,
+        "luck": 5,
+        "hp": 60,
+        "skill": {
+          "name": "毒液",
+          "type": "dot",
+          "desc": "命中时附加每回合 -8 HP 持续 3 回合"
+        },
+        "goldMin": 1,
+        "goldMax": 3
+      },
+      {
+        "id": "man_eater",
+        "name": "食人花",
+        "weight": 20,
+        "attack": 30,
+        "defense": 20,
+        "luck": 0,
+        "hp": 100,
+        "skill": {
+          "name": "缠绕",
+          "type": "leech",
+          "amount": 10,
+          "desc": "每回合扣 5 HP 并自身回 10"
+        },
+        "goldMin": 3,
+        "goldMax": 6
+      },
+      {
+        "id": "jungle_tiger",
+        "name": "丛林虎",
+        "weight": 18,
+        "attack": 40,
+        "defense": 25,
+        "luck": 10,
+        "hp": 140,
+        "skill": {
+          "name": "猛扑",
+          "type": "burst",
+          "mul": 1.3,
+          "desc": "造成 130% 攻击伤害"
+        },
+        "goldMin": 5,
+        "goldMax": 9
+      },
+      {
+        "id": "ent",
+        "name": "树精",
+        "weight": 15,
+        "attack": 20,
+        "defense": 60,
+        "luck": 5,
+        "hp": 250,
+        "skill": {
+          "name": "自然恢复",
+          "type": "buff",
+          "desc": "每回合自身防御 +10"
+        },
+        "goldMin": 7,
+        "goldMax": 12
+      },
+      {
+        "id": "jungle_naga",
+        "name": "丛林巨蟒",
+        "weight": 12,
+        "attack": 50,
+        "defense": 35,
+        "luck": 8,
+        "hp": 180,
+        "skill": {
+          "name": "绞杀",
+          "type": "burst",
+          "mul": 1.2,
+          "desc": "造成 120% 攻击伤害"
+        },
+        "goldMin": 9,
+        "goldMax": 15
+      },
+      {
+        "id": "ruin_idol",
+        "name": "遗迹石像",
+        "weight": 5,
+        "attack": 55,
+        "defense": 45,
+        "luck": 25,
+        "hp": 280,
+        "skill": {
+          "name": "自然之怒",
+          "type": "burst",
+          "mul": 1.4,
+          "desc": "造成 140% 攻击伤害"
+        },
+        "goldMin": 15,
+        "goldMax": 25
+      }
     ],
     "ocean": [
-      { "id": "shark",        "name": "鲨鱼",        "weight": 30, "attack": 45, "defense": 20, "luck": 5,  "hp": 120, "skill": { "name": "流血撕咬", "type": "dot", "desc": "命中时附加每回合 -12 HP 持续 2 回合" }, "goldMin": 3,  "goldMax": 7 },
-      { "id": "giant_octo",   "name": "巨型章鱼",    "weight": 22, "attack": 35, "defense": 30, "luck": 10, "hp": 180, "skill": { "name": "触手缠绕", "type": "debuff", "amount": 0.3, "duration": 2, "desc": "降低对方防御 30% 持续 2 回合" }, "goldMin": 6,  "goldMax": 10 },
-      { "id": "siren",        "name": "海妖",        "weight": 18, "attack": 50, "defense": 25, "luck": 20, "hp": 150, "skill": { "name": "魅惑之歌", "type": "burst", "mul": 1.1, "desc": "造成 110% 攻击伤害" }, "goldMin": 8,  "goldMax": 14 },
-      { "id": "deep_turtle",  "name": "深海巨龟",    "weight": 15, "attack": 25, "defense": 80, "luck": 8,  "hp": 350, "skill": { "name": "龟甲守护", "type": "buff", "amount": 20, "duration": 2, "desc": "增加自身防御 20 持续 2 回合" }, "goldMin": 10, "goldMax": 18 },
-      { "id": "thunder_jelly","name": "雷霆水母",    "weight": 10, "attack": 60, "defense": 15, "luck": 12, "hp": 100, "skill": { "name": "雷电触手", "type": "burst", "mul": 1.3, "desc": "造成 130% 攻击伤害" }, "goldMin": 10, "goldMax": 16 },
-      { "id": "sea_dragon",   "name": "海龙王",      "weight": 5,  "attack": 80, "defense": 50, "luck": 30, "hp": 400, "skill": { "name": "深海漩涡", "type": "burst", "mul": 1.6, "desc": "造成 160% 攻击伤害" }, "goldMin": 40, "goldMax": 60 }
+      {
+        "id": "shark",
+        "name": "鲨鱼",
+        "weight": 30,
+        "attack": 45,
+        "defense": 20,
+        "luck": 5,
+        "hp": 120,
+        "skill": {
+          "name": "流血撕咬",
+          "type": "dot",
+          "desc": "命中时附加每回合 -12 HP 持续 2 回合"
+        },
+        "goldMin": 3,
+        "goldMax": 7
+      },
+      {
+        "id": "giant_octo",
+        "name": "巨型章鱼",
+        "weight": 22,
+        "attack": 35,
+        "defense": 30,
+        "luck": 10,
+        "hp": 180,
+        "skill": {
+          "name": "触手缠绕",
+          "type": "debuff",
+          "amount": 0.3,
+          "duration": 2,
+          "desc": "降低对方防御 30% 持续 2 回合"
+        },
+        "goldMin": 6,
+        "goldMax": 10
+      },
+      {
+        "id": "siren",
+        "name": "海妖",
+        "weight": 18,
+        "attack": 50,
+        "defense": 25,
+        "luck": 20,
+        "hp": 150,
+        "skill": {
+          "name": "魅惑之歌",
+          "type": "burst",
+          "mul": 1.1,
+          "desc": "造成 110% 攻击伤害"
+        },
+        "goldMin": 8,
+        "goldMax": 14
+      },
+      {
+        "id": "deep_turtle",
+        "name": "深海巨龟",
+        "weight": 15,
+        "attack": 25,
+        "defense": 80,
+        "luck": 8,
+        "hp": 350,
+        "skill": {
+          "name": "龟甲守护",
+          "type": "buff",
+          "amount": 20,
+          "duration": 2,
+          "desc": "增加自身防御 20 持续 2 回合"
+        },
+        "goldMin": 10,
+        "goldMax": 18
+      },
+      {
+        "id": "thunder_jelly",
+        "name": "雷霆水母",
+        "weight": 10,
+        "attack": 60,
+        "defense": 15,
+        "luck": 12,
+        "hp": 100,
+        "skill": {
+          "name": "雷电触手",
+          "type": "burst",
+          "mul": 1.3,
+          "desc": "造成 130% 攻击伤害"
+        },
+        "goldMin": 10,
+        "goldMax": 16
+      },
+      {
+        "id": "sea_dragon",
+        "name": "海龙王",
+        "weight": 5,
+        "attack": 80,
+        "defense": 50,
+        "luck": 30,
+        "hp": 400,
+        "skill": {
+          "name": "深海漩涡",
+          "type": "burst",
+          "mul": 1.6,
+          "desc": "造成 160% 攻击伤害"
+        },
+        "goldMin": 40,
+        "goldMax": 60
+      }
     ]
+  },
+  "bosses": {
+    "boss_dio": {
+      "name": "DIO（领主阶）",
+      "tier": "lord",
+      "attack": 180,
+      "defense": 180,
+      "luck": 100,
+      "hp": 1000,
+      "skill": {
+        "name": "砸瓦鲁多",
+        "type": "burst",
+        "mul": 1.5,
+        "desc": "时停后造成 200% 真实伤害"
+      },
+      "goldMin": 80,
+      "goldMax": 150
+    },
+    "boss_jotaro": {
+      "name": "空条承太郎（领主阶）",
+      "tier": "lord",
+      "attack": 170,
+      "defense": 170,
+      "luck": 120,
+      "hp": 1100,
+      "skill": {
+        "name": "白金之星",
+        "type": "burst",
+        "mul": 1.3,
+        "desc": "造成 160% 攻击伤害"
+      },
+      "goldMin": 80,
+      "goldMax": 150
+    },
+    "boss_meruem": {
+      "name": "梅鲁艾姆（领主阶）",
+      "tier": "lord",
+      "attack": 200,
+      "defense": 200,
+      "luck": 80,
+      "hp": 1200,
+      "skill": {
+        "name": "至尊王击",
+        "type": "burst",
+        "mul": 1.5,
+        "desc": "造成 180% 攻击伤害"
+      },
+      "goldMin": 100,
+      "goldMax": 180
+    },
+    "boss_lich": {
+      "name": "巫妖王（领主阶）",
+      "tier": "lord",
+      "attack": 130,
+      "defense": 260,
+      "luck": 60,
+      "hp": 1400,
+      "skill": {
+        "name": "亡灵复苏",
+        "type": "leech",
+        "amount": 30,
+        "desc": "每回合扣血并自身回 80"
+      },
+      "goldMin": 90,
+      "goldMax": 170
+    },
+    "boss_vampire": {
+      "name": "吸血伯爵（领主阶）",
+      "tier": "lord",
+      "attack": 180,
+      "defense": 170,
+      "luck": 90,
+      "hp": 1200,
+      "skill": {
+        "name": "血吸",
+        "type": "leech",
+        "amount": 25,
+        "desc": "每回合扣血并自身回 60"
+      },
+      "goldMin": 85,
+      "goldMax": 160
+    },
+    "boss_devil": {
+      "name": "魔界领主（领主阶）",
+      "tier": "lord",
+      "attack": 200,
+      "defense": 220,
+      "luck": 70,
+      "hp": 1200,
+      "skill": {
+        "name": "炽炎喷射",
+        "type": "burst",
+        "mul": 1.4,
+        "desc": "造成 170% 攻击伤害"
+      },
+      "goldMin": 100,
+      "goldMax": 180
+    },
+    "boss_cu": {
+      "name": "库·丘林（领主阶）",
+      "tier": "lord",
+      "attack": 230,
+      "defense": 140,
+      "luck": 130,
+      "hp": 1000,
+      "skill": {
+        "name": "刺穿死棘之枪",
+        "type": "burst",
+        "mul": 1.7,
+        "desc": "无视护甲 220% 伤害"
+      },
+      "goldMin": 110,
+      "goldMax": 200
+    },
+    "boss_kirito": {
+      "name": "桐人（领主阶）",
+      "tier": "lord",
+      "attack": 190,
+      "defense": 160,
+      "luck": 110,
+      "hp": 1100,
+      "skill": {
+        "name": "星爆气流斩",
+        "type": "burst",
+        "mul": 1.5,
+        "desc": "造成 190% 攻击伤害"
+      },
+      "goldMin": 95,
+      "goldMax": 170
+    },
+    "boss_phantom": {
+      "name": "幻影（领主阶）",
+      "tier": "lord",
+      "attack": 180,
+      "defense": 180,
+      "luck": 140,
+      "hp": 1000,
+      "skill": {
+        "name": "影身斩",
+        "type": "burst",
+        "mul": 1.4,
+        "desc": "造成 170% 攻击伤害"
+      },
+      "goldMin": 100,
+      "goldMax": 180
+    },
+    "boss_alma": {
+      "name": "艾尔玛（领主阶）",
+      "tier": "lord",
+      "attack": 170,
+      "defense": 200,
+      "luck": 100,
+      "hp": 1200,
+      "skill": {
+        "name": "幻惑之舞",
+        "type": "buff",
+        "amount": 20,
+        "desc": "每回合自身防御 +50"
+      },
+      "goldMin": 90,
+      "goldMax": 170
+    },
+    "boss_gilgamesh": {
+      "name": "吉尔伽美什（魔神阶）",
+      "tier": "god",
+      "attack": 500,
+      "defense": 400,
+      "luck": 400,
+      "hp": 1500,
+      "skill": {
+        "name": "王之财宝",
+        "type": "burst",
+        "mul": 1.8,
+        "desc": "黄金宝具雨 220% 伤害"
+      },
+      "goldMin": 300,
+      "goldMax": 500
+    },
+    "boss_ainz": {
+      "name": "安兹·乌尔·恭（魔神阶）",
+      "tier": "god",
+      "attack": 470,
+      "defense": 500,
+      "luck": 350,
+      "hp": 1600,
+      "skill": {
+        "name": "死亡瘟疫",
+        "type": "burst",
+        "mul": 1.7,
+        "desc": "范围性死亡 200% 伤害"
+      },
+      "goldMin": 320,
+      "goldMax": 520
+    },
+    "boss_naofumi": {
+      "name": "尚文（魔神阶）",
+      "tier": "god",
+      "attack": 380,
+      "defense": 550,
+      "luck": 380,
+      "hp": 1800,
+      "skill": {
+        "name": "盾之反击",
+        "type": "burst",
+        "mul": 1.5,
+        "desc": "造成 180% 攻击伤害"
+      },
+      "goldMin": 280,
+      "goldMax": 480
+    },
+    "boss_alucard": {
+      "name": "阿卡多(魔神阶）",
+      "tier": "god",
+      "attack": 580,
+      "defense": 350,
+      "luck": 420,
+      "hp": 1500,
+      "skill": {
+        "name": "禁制解除",
+        "type": "leech",
+        "amount": 100,
+        "desc": "每回合扣血并自身回 200"
+      },
+      "goldMin": 350,
+      "goldMax": 550
+    },
+    "boss_ddraig": {
+      "name": "赤龙帝 · 德莱格（魔神阶）",
+      "tier": "god",
+      "attack": 540,
+      "defense": 400,
+      "luck": 360,
+      "hp": 1600,
+      "skill": {
+        "name": "倍化",
+        "type": "buff",
+        "amount": 80,
+        "desc": "每回合自身防御 +200"
+      },
+      "goldMin": 320,
+      "goldMax": 520
+    },
+    "boss_albedo": {
+      "name": "雅儿贝德（魔神阶）",
+      "tier": "god",
+      "attack": 500,
+      "defense": 500,
+      "luck": 350,
+      "hp": 1700,
+      "skill": {
+        "name": "纳萨力克之爱",
+        "type": "burst",
+        "mul": 1.6,
+        "desc": "190% 范围伤害"
+      },
+      "goldMin": 310,
+      "goldMax": 510
+    },
+    "boss_levi": {
+      "name": "兵长 · 利威尔（魔神阶）",
+      "tier": "god",
+      "attack": 620,
+      "defense": 350,
+      "luck": 450,
+      "hp": 1400,
+      "skill": {
+        "name": "立体机动 · 颈断击",
+        "type": "burst",
+        "mul": 1.9,
+        "desc": "无视护甲 230% 伤害"
+      },
+      "goldMin": 340,
+      "goldMax": 540
+    },
+    "boss_nazarick": {
+      "name": "纳萨力克近卫（魔神阶）",
+      "tier": "god",
+      "attack": 500,
+      "defense": 400,
+      "luck": 320,
+      "hp": 1700,
+      "skill": {
+        "name": "影之骑士",
+        "type": "burst",
+        "mul": 1.6,
+        "desc": "造成 185% 攻击伤害"
+      },
+      "goldMin": 320,
+      "goldMax": 520
+    },
+    "boss_saitama": {
+      "name": "埼玉（魔王阶）",
+      "tier": "demon",
+      "attack": 140,
+      "defense": 100,
+      "luck": 200,
+      "hp": 1100,
+      "skill": {
+        "name": "认真一拳",
+        "type": "burst",
+        "mul": 2,
+        "desc": "350% 真实伤害"
+      },
+      "goldMin": 1500,
+      "goldMax": 2500
+    },
+    "boss_poseidon": {
+      "name": "波塞冬（魔王阶）",
+      "tier": "demon",
+      "attack": 130,
+      "defense": 120,
+      "luck": 250,
+      "hp": 1300,
+      "skill": {
+        "name": "潮汐审判",
+        "type": "burst",
+        "mul": 1.8,
+        "desc": "300% 真实伤害"
+      },
+      "goldMin": 1400,
+      "goldMax": 2400
+    },
+    "boss_madoka": {
+      "name": "魔法少女 · 小圆（魔王阶）",
+      "tier": "demon",
+      "attack": 140,
+      "defense": 90,
+      "luck": 350,
+      "hp": 1200,
+      "skill": {
+        "name": "圆环之理",
+        "type": "burst",
+        "mul": 1.9,
+        "desc": "320% 真实伤害"
+      },
+      "goldMin": 1500,
+      "goldMax": 2500
+    },
+    "boss_lucifer": {
+      "name": "路西法（魔王阶）",
+      "tier": "demon",
+      "attack": 160,
+      "defense": 110,
+      "luck": 220,
+      "hp": 1300,
+      "skill": {
+        "name": "堕天之火",
+        "type": "burst",
+        "mul": 2,
+        "desc": "330% 真实伤害"
+      },
+      "goldMin": 1600,
+      "goldMax": 2600
+    },
+    "boss_acnologia": {
+      "name": "黑龙 · 阿克诺洛基亚（魔王阶）",
+      "tier": "demon",
+      "attack": 180,
+      "defense": 100,
+      "luck": 200,
+      "hp": 1400,
+      "skill": {
+        "name": "灭龙咆哮",
+        "type": "burst",
+        "mul": 2,
+        "desc": "340% 真实伤害"
+      },
+      "goldMin": 1700,
+      "goldMax": 2700
+    },
+    "boss_chronos": {
+      "name": "克罗诺斯 · 时之巨神（魔王阶）",
+      "tier": "demon",
+      "attack": 140,
+      "defense": 140,
+      "luck": 280,
+      "hp": 1500,
+      "skill": {
+        "name": "时间冻结",
+        "type": "burst",
+        "mul": 1.8,
+        "desc": "310% 真实伤害"
+      },
+      "goldMin": 1600,
+      "goldMax": 2600
+    },
+    "boss_final": {
+      "name": "终焉之王 · 巴尔泽法尔",
+      "tier": "final",
+      "attack": 120,
+      "defense": 80,
+      "luck": 300,
+      "hp": 1500,
+      "skill": {
+        "name": "灭世意志",
+        "type": "burst",
+        "mul": 2,
+        "desc": "400% 真实伤害"
+      },
+      "goldMin": 9999,
+      "goldMax": 9999
+    }
   }
 }

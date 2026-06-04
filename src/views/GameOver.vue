@@ -55,6 +55,21 @@
           <div v-if="levelsUp > 0" class="level-up">
             🎉 升级 {{ levelsUp }} 级！获得 {{ pointsGained }} 点属性点
           </div>
+          <div v-if="blessingsGained.length" class="blessings-gained">
+            <div class="bg-title">✨ 获得了新祝福 ✨</div>
+            <div
+              v-for="b in blessingsGained"
+              :key="b.id"
+              class="bg-card"
+              :style="{ borderColor: tierColor(b.tier) }"
+            >
+              <span class="bg-tier" :style="{ background: tierColor(b.tier) }">{{ b.tier }}</span>
+              <div class="bg-info">
+                <div class="bg-name">{{ b.name }}</div>
+                <div class="bg-desc">{{ b.description }}</div>
+              </div>
+            </div>
+          </div>
           <div class="level-info">
             当前等级 Lv.{{ meta.level }}（{{ meta.exp }} / {{ nextRequired }} exp）
             <span v-if="meta.unspentPoints > 0" class="points">未分配点数：{{ meta.unspentPoints }}</span>
@@ -89,6 +104,7 @@ import { usePlayerStore } from '@/stores/player'
 import { useRunStore, MAX_DAYS } from '@/stores/run'
 import { useMetaStore, expRequiredFor } from '@/stores/meta'
 import goddessData from '@/data/goddesses.json'
+import blessingsData from '@/data/blessings.json'
 import DayLog from '@/components/DayLog.vue'
 
 const router = useRouter()
@@ -141,7 +157,12 @@ const nextRequired = computed(() => expRequiredFor(meta.level))
 // 在 onMounted 应用一次
 const levelsUp = ref(0)
 const pointsGained = ref(0)
+const blessingsGained = ref([])
 const settled = ref(false)
+
+function tierColor(tier) {
+  return blessingsData.tiers?.[tier]?.color ?? '#fff'
+}
 
 function startOver() {
   // 保留 nickname / metaFlags / exp / level / unspentPoints
@@ -168,6 +189,7 @@ onMounted(() => {
     const r = meta.addExp(totalGainedExp.value)
     levelsUp.value = r.levelsUp
     pointsGained.value = r.pointsGained
+    blessingsGained.value = r.blessingsGained ?? []
     settled.value = true
     run.markExpSettled?.()
   }
@@ -366,6 +388,53 @@ onMounted(() => {
   color: #ffd86b;
   font-weight: 700;
   font-size: 0.95rem;
+}
+
+.blessings-gained {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(135deg, rgba(204, 93, 232, 0.15), rgba(255, 119, 198, 0.1));
+  border: 1px solid rgba(204, 93, 232, 0.4);
+  border-radius: 10px;
+  animation: blessing-glow 2s ease-in-out infinite alternate;
+}
+.bg-title {
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #f0a5ff;
+  letter-spacing: 2px;
+}
+.bg-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1.5px solid;
+  border-radius: 8px;
+}
+.bg-tier {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #1a0f3a;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.bg-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.bg-name { font-weight: 700; font-size: 0.92rem; color: #fff; }
+.bg-desc { font-size: 0.78rem; color: rgba(255, 255, 255, 0.78); line-height: 1.45; }
+
+@keyframes blessing-glow {
+  0% { box-shadow: 0 0 8px rgba(204, 93, 232, 0.3); }
+  100% { box-shadow: 0 0 18px rgba(255, 119, 198, 0.5); }
 }
 
 .level-info {

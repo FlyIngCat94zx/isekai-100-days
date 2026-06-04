@@ -134,6 +134,25 @@
           </div>
         </div>
 
+        <!-- 开局祝福选择 -->
+        <div class="blessing-row">
+          <div class="blessing-info">
+            <span class="bl-label">开局祝福</span>
+            <template v-if="equippedBlessingDetail">
+              <span class="bl-tier" :style="{ background: tierColor(equippedBlessingDetail.tier) }">
+                {{ equippedBlessingDetail.tier }}
+              </span>
+              <span class="bl-name">{{ equippedBlessingDetail.name }}</span>
+            </template>
+            <template v-else>
+              <span class="bl-empty">未携带 · 已获得 {{ meta.ownedBlessings.length }} 种</span>
+            </template>
+          </div>
+          <button class="bl-btn" @click="showBlessingPicker = true">
+            {{ meta.ownedBlessings.length ? '选择' : '查看' }}
+          </button>
+        </div>
+
         <div class="actions">
           <button class="ghost" :disabled="drawing" @click="redraw">
             {{ drawing ? '神光降临中…' : '重新选择女神' }}
@@ -142,6 +161,11 @@
         </div>
       </section>
     </div>
+
+    <BlessingPickerModal
+      :open="showBlessingPicker"
+      @close="showBlessingPicker = false"
+    />
   </div>
 </template>
 
@@ -152,11 +176,21 @@ import { usePlayerStore } from '@/stores/player'
 import { useMetaStore, expRequiredFor } from '@/stores/meta'
 import { useRunStore } from '@/stores/run'
 import goddessData from '@/data/goddesses.json'
+import blessingsData from '@/data/blessings.json'
+import BlessingPickerModal from '@/components/BlessingPickerModal.vue'
 
 const player = usePlayerStore()
 const meta = useMetaStore()
 const run = useRunStore()
 const router = useRouter()
+
+const showBlessingPicker = ref(false)
+const equippedBlessingDetail = computed(() =>
+  meta.equippedBlessing
+    ? blessingsData.blessings.find(b => b.id === meta.equippedBlessing)
+    : null
+)
+function tierColor(tier) { return blessingsData.tiers?.[tier]?.color ?? '#fff' }
 
 const nextExpRequired = computed(() => expRequiredFor(meta.level))
 
@@ -268,6 +302,11 @@ function redraw() {
 }
 
 function startAdventure() {
+  // 应用装备的开局祝福
+  if (meta.equippedBlessing) {
+    const b = blessingsData.blessings.find(x => x.id === meta.equippedBlessing)
+    if (b) player.applyStartBlessing(b)
+  }
   run.startNewRun()
   meta.incrementRuns()
   router.push('/adventure')
@@ -648,6 +687,67 @@ button.ghost:active {
   .alloc-btn:not(:disabled):hover { background: rgba(110, 231, 183, 0.25); }
 }
 .alloc-btn:not(:disabled):active { transform: scale(0.98); }
+
+.blessing-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(204, 93, 232, 0.3);
+  border-radius: 10px;
+}
+.blessing-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+.bl-label {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+}
+.bl-tier {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1a0f3a;
+}
+.bl-name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bl-empty {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.82rem;
+}
+.bl-btn {
+  padding: 7px 14px;
+  min-height: 32px;
+  border-radius: 6px;
+  border: 1px solid rgba(204, 93, 232, 0.5);
+  background: rgba(204, 93, 232, 0.18);
+  color: #f0a5ff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.bl-btn:active { transform: scale(0.96); }
 
 .actions {
   display: flex;

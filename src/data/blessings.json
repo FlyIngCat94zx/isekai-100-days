@@ -1,0 +1,159 @@
+{
+  "_doc": "祝福分级 / 每升 5 级随机抽 1 个。每场冒险只能携带 1 个。effects 三类：startEffects 开局应用一次；dailyEffects 每日 tick 应用；battleHooks 战斗时被动（reviveOnce / firstTurnInvuln / goldMul / always 头一回合无敌）",
+  "tiers": {
+    "B": { "label": "B", "color": "#9ec5ff", "weight": 60 },
+    "A": { "label": "A", "color": "#cc5de8", "weight": 30 },
+    "S": { "label": "S", "color": "#ffd86b", "weight": 10 }
+  },
+  "blessings": [
+    {
+      "id": "b_strength",
+      "tier": "B",
+      "name": "力量印记",
+      "description": "初始攻击力 +5",
+      "startEffects": [{ "type": "stat_delta", "stat": "attack", "amount": 5 }]
+    },
+    {
+      "id": "b_iron_wall",
+      "tier": "B",
+      "name": "铁壁之祈",
+      "description": "初始防御力 +5",
+      "startEffects": [{ "type": "stat_delta", "stat": "defense", "amount": 5 }]
+    },
+    {
+      "id": "b_lucky_star",
+      "tier": "B",
+      "name": "幸运之星",
+      "description": "初始幸运值 +5",
+      "startEffects": [{ "type": "stat_delta", "stat": "luck", "amount": 5 }]
+    },
+    {
+      "id": "b_vitality",
+      "tier": "B",
+      "name": "生命脉动",
+      "description": "初始生命上限 +50（满血）",
+      "startEffects": [
+        { "type": "stat_delta", "stat": "hpMax", "amount": 50 },
+        { "type": "stat_delta", "stat": "hp", "amount": 50 }
+      ]
+    },
+    {
+      "id": "b_starting_gold",
+      "tier": "B",
+      "name": "始旅财囊",
+      "description": "初始金币 +80",
+      "startEffects": [{ "type": "gold_delta", "amount": 80 }]
+    },
+    {
+      "id": "b_daily_attack",
+      "tier": "B",
+      "name": "持戈不辍",
+      "description": "每日攻击力 +1（持续整局）",
+      "dailyEffects": [{ "type": "stat_delta", "stat": "attack", "amount": 1 }]
+    },
+    {
+      "id": "b_daily_defense",
+      "tier": "B",
+      "name": "晨练之心",
+      "description": "每日防御力 +1（持续整局）",
+      "dailyEffects": [{ "type": "stat_delta", "stat": "defense", "amount": 1 }]
+    },
+    {
+      "id": "b_daily_luck",
+      "tier": "B",
+      "name": "晨星垂青",
+      "description": "每日幸运值 +1（持续整局）",
+      "dailyEffects": [{ "type": "stat_delta", "stat": "luck", "amount": 1 }]
+    },
+    {
+      "id": "b_daily_heal",
+      "tier": "B",
+      "name": "微息治愈",
+      "description": "每日额外恢复 10 HP",
+      "dailyEffects": [{ "type": "hp_heal", "amount": 10 }]
+    },
+    {
+      "id": "b_revive_doll",
+      "tier": "B",
+      "name": "护命人偶",
+      "description": "整局冒险免除一次死亡（可与女神免死叠加）",
+      "startEffects": [
+        { "type": "grant_skill", "skill": { "name": "护命人偶", "type": "passive", "description": "免除一次死亡。", "source": "blessing" } }
+      ]
+    },
+
+    {
+      "id": "a_balanced_growth",
+      "tier": "A",
+      "name": "均衡成长",
+      "description": "初始全属性 +5（hp 上限 +50）",
+      "startEffects": [{ "type": "stat_delta_all", "amount": 5, "hpMultiplier": 10 }]
+    },
+    {
+      "id": "a_daily_all",
+      "tier": "A",
+      "name": "日日精进",
+      "description": "每日全属性 +1",
+      "dailyEffects": [{ "type": "stat_delta_all", "amount": 1 }]
+    },
+    {
+      "id": "a_treasure_hunter",
+      "tier": "A",
+      "name": "寻宝者",
+      "description": "初始金币 +300，且战斗胜利金币 ×1.5",
+      "startEffects": [{ "type": "gold_delta", "amount": 300 }],
+      "battleHooks": { "goldMul": 1.5 }
+    },
+    {
+      "id": "a_iron_will",
+      "tier": "A",
+      "name": "钢铁意志",
+      "description": "初始生命上限 +200（满血），每日额外 +10 HP",
+      "startEffects": [
+        { "type": "stat_delta", "stat": "hpMax", "amount": 200 },
+        { "type": "stat_delta", "stat": "hp", "amount": 200 }
+      ],
+      "dailyEffects": [{ "type": "hp_heal", "amount": 10 }]
+    },
+    {
+      "id": "a_first_strike",
+      "tier": "A",
+      "name": "先手必胜",
+      "description": "每场战斗第一回合伤害免疫",
+      "battleHooks": { "firstTurnInvuln": true }
+    },
+
+    {
+      "id": "s_godly_growth",
+      "tier": "S",
+      "name": "神之成长",
+      "description": "初始全属性 +10（hp 上限 +100），每日全属性 +1",
+      "startEffects": [{ "type": "stat_delta_all", "amount": 10, "hpMultiplier": 10 }],
+      "dailyEffects": [{ "type": "stat_delta_all", "amount": 1 }]
+    },
+    {
+      "id": "s_phoenix",
+      "tier": "S",
+      "name": "凤凰涅槃",
+      "description": "整局免除两次死亡，且每场战斗胜利金币 ×2",
+      "startEffects": [
+        { "type": "grant_skill", "skill": { "name": "凤凰之羽 I", "type": "passive", "description": "免除一次死亡。", "source": "blessing" } },
+        { "type": "grant_skill", "skill": { "name": "凤凰之羽 II", "type": "passive", "description": "免除一次死亡。", "source": "blessing" } }
+      ],
+      "battleHooks": { "goldMul": 2.0 }
+    },
+    {
+      "id": "s_railgun_master",
+      "tier": "S",
+      "name": "电磁之王",
+      "description": "开局即学得「超电磁炮」（必杀，6~10 倍攻击且无视护甲），并每日 5% 概率获得硬币",
+      "startEffects": [
+        { "type": "grant_skill", "skill": { "name": "超电磁炮", "type": "ultimate", "description": "战斗时消耗硬币 1 枚，造成 6~10 倍攻击力的伤害，无视防御。", "source": "blessing" } },
+        { "type": "add_item", "key": "coin", "label": "硬币", "count": 3 }
+      ],
+      "dailyEffects": [
+        { "type": "chance", "chance": 0.05, "then": [{ "type": "add_item", "key": "coin", "label": "硬币" }] }
+      ]
+    }
+  ]
+}
